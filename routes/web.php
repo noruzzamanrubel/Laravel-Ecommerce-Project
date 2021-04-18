@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MainUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,9 +25,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin:admin']], function ()
 });
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('user.index');
 })->name('dashboard');
+
+//logout route
+Route::get('/user/logout', [MainUserController::class, 'Logout'])->name('user.logout');
+
+Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
