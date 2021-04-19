@@ -17,15 +17,16 @@ $(document).ready(function(){
 
 
 	  $('[data-toggle="tooltip"]').tooltip();
-	
 
 
-
-
-
-
-
-	
+		//user profile picture js
+        $('#profilepicture').change(function(e) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#show_profilepicture').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        })
 
 	
 });
