@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class MainUserController extends Controller
 {
@@ -48,7 +49,32 @@ class MainUserController extends Controller
             'message' => 'User Profile Update Successfully',
             'alert-type' => 'success',
         );
-        
+
         return redirect()->route('user.profile')->with($notification);
+    }
+
+    public function UserPasswordEdit()
+    {
+        return view('user.password.edit_password');
+    }
+
+    public function UserPasswordUpdate(Request $request)
+    {
+        $validateData = $request->validate([
+            'old_password' => 'required',
+            'password' => 'required | confirmed',
+        ]);
+
+        $hashedPassword = Auth::user()->password;
+        if (Hash::check($request->old_password, $hashedPassword)) {
+            $id = Auth::user()->id;
+            $user = User::find($id);
+            $user->password = Hash::make($request->password);
+            $user->save();
+            Auth::logout();
+            return redirect()->route('login');
+        } else {
+            return redirect()->back();
+        }
     }
 }
