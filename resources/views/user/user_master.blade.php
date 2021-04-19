@@ -23,12 +23,15 @@
     <!-- <link rel="stylesheet" href="assets/plugins/chartjs-bar-chart/chart.css"> -->
     <!--Custom CSS-->
     <link rel="stylesheet" href="{{ asset('userbackend/panel/assets/css/style.css') }}">
+    <!-- Toastr css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body id="page-top">
     <!-- preloader -->
     <div class="preloader">
-        <img src="{{asset('userbackend/panel/assets/images/preloader.gif')}}" alt="">
+        <img src="{{ asset('userbackend/panel/assets/images/preloader.gif') }}" alt="">
     </div>
     <!-- wrapper -->
     <div class="wrapper">
@@ -38,8 +41,9 @@
             <!-- logo -->
             <div class="sidebar_logo">
                 <a href="index.html">
-                    <img src="{{asset('userbackend/panel/assets/images/logo.png')}}" alt="" class="img-fluid logo1">
-                    <img src="{{asset('userbackend/panel/assets/images/logo_small.png')}}" alt="" class="img-fluid logo2">
+                    <img src="{{ asset('userbackend/panel/assets/images/logo.png') }}" alt="" class="img-fluid logo1">
+                    <img src="{{ asset('userbackend/panel/assets/images/logo_small.png') }}" alt=""
+                        class="img-fluid logo2">
                 </a>
             </div>
             <div class="sidebar_btn">
@@ -74,7 +78,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user1.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user1.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Madelyn <span><i class="far fa-clock"></i> today</span></h6>
@@ -85,7 +90,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user2.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user2.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Melvin <span><i class="far fa-clock"></i> today</span></h6>
@@ -96,7 +102,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user3.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user3.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Olinda <span><i class="far fa-clock"></i> today</span></h6>
@@ -107,7 +114,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user1.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user1.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Johnson <span><i class="far fa-clock"></i> today</span></h6>
@@ -118,7 +126,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user3.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user3.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Madelyn <span><i class="far fa-clock"></i> today</span></h6>
@@ -129,7 +138,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user2.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user2.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Melvin <span><i class="far fa-clock"></i> today</span></h6>
@@ -140,7 +150,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user3.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user3.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Olinda <span><i class="far fa-clock"></i> today</span></h6>
@@ -151,7 +162,8 @@
                             <li>
                                 <a href="#">
                                     <div class="img-part">
-                                        <img src="{{asset('userbackend/panel/assets/images/user1.jpg')}}" alt="" class="img-fluid">
+                                        <img src="{{ asset('userbackend/panel/assets/images/user1.jpg') }}" alt=""
+                                            class="img-fluid">
                                     </div>
                                     <div class="text-part">
                                         <h6>Johnson <span><i class="far fa-clock"></i> today</span></h6>
@@ -260,15 +272,18 @@
                 <li><a data-toggle="dropdown" href="#"><i class="far fa-user"></i></a>
                     <div class="user_item dropdown-menu dropdown-menu-right">
                         <div class="admin">
-                            <a href="#" class="user_link"><img src="{{asset('userbackend/panel/assets/images/admin.jpg')}}" alt=""></a>
+                            <a href="#" class="user_link"><img
+                                    src="{{ asset('userbackend/panel/assets/images/admin.jpg') }}" alt=""></a>
                         </div>
                         <ul>
 
-                            <li><a href="{{route('user.profile')}}"><span><i class="fas fa-user"></i></span> User Profile</a></li>
+                            <li><a href="{{ route('user.profile') }}"><span><i class="fas fa-user"></i></span> User
+                                    Profile</a></li>
                             <li><a href=" "><span><i class="fas fa-cogs"></i></span> Password Change</a></li>
                             <li>
 
-                                <a href="{{route('user.logout')}}"><span><i class="fas fa-unlock-alt"></i></span> Logout</a>
+                                <a href="{{ route('user.logout') }}"><span><i class="fas fa-unlock-alt"></i></span>
+                                    Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -451,7 +466,28 @@
     <!-- Main js -->
     <script src="{{ asset('userbackend/panel/assets/js/main.js') }}"></script>
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+            }
+        @endif
+
+    </script>
 
 
 
