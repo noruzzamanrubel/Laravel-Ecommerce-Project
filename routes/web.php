@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\MainAdminController;
 use App\Http\Controllers\MainUserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +33,12 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
     return view('user.index');
 })->name('dashboard');
 
-
-
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+Route::get('/admin/profile', [MainAdminController::class, 'AdminProfile'])->name('admin.profile');
+Route::get('/admin/profile/edit', [MainAdminController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
+Route::post('/admin/profile/store', [MainAdminController::class, 'AdminProfileStore'])->name('admin.profile.store');
+Route::get('/admin/password/edit', [MainAdminController::class, 'AdminPasswordEdit'])->name('admin.password.edit');
+Route::post('/admin/password/update', [MainAdminController::class, 'AdminPasswordUpdate'])->name('admin.password.update');
 
 //User All Route
 Route::get('/user/logout', [MainUserController::class, 'Logout'])->name('user.logout');
