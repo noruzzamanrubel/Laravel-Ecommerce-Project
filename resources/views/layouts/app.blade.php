@@ -162,7 +162,7 @@
                         <div class="col-lg-3 footer_col">
                             <div class="footer_column footer_contact">
                                 <div class="logo_container">
-                                    <div class="logo"><a href="#">OneTech</a></div>
+                                    <div class="logo"><a href="{{url('/')}}"><img src="{{asset('frontend/images/logo.png')}}" alt=""></a></div>
                                 </div>
                                 <div class="footer_title">Got Question? Call Us 24/7</div>
                                 <div class="footer_phone">+38 068 005 3570</div>
@@ -245,8 +245,8 @@
                                         document.write(new Date().getFullYear());
 
                                     </script> All rights reserved | This template is made with <i class="fa fa-heart"
-                                        aria-hidden="true"></i> by <a href="https://colorlib.com"
-                                        target="_blank">Colorlib</a>
+                                        aria-hidden="true"></i> by <a href="https://boomdevs.com/"
+                                        target="_blank">BoomDevs</a>
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 </div>
                                 <div class="logos ml-sm-auto">
