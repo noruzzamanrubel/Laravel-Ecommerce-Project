@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainAdminController;
 use App\Http\Controllers\MainUserController;
 use App\Http\Controllers\category\CategoryController;
+use App\Http\Controllers\category\BrandController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,14 @@ Route::post('/admin/store/category', [CategoryController::class, 'StoreCategory'
 Route::get('/delete/category/{id}', [CategoryController::class, 'DeleteCategory']);
 Route::get('/edit/category/{category}', [CategoryController::class, 'EditCategory']);
 Route::post('/update/category/{category}', [CategoryController::class, 'UpdateCategory'])->name('category.update');
+
+
+// All Category Route
+Route::get('/admin/brand', [BrandController::class, 'index'])->name('brand');
+Route::post('/admin/store/brand', [CategoryController::class, 'StoreBrand'])->name('brand.store');
+// Route::get('/delete/category/{id}', [CategoryController::class, 'DeleteCategory']);
+// Route::get('/edit/category/{category}', [CategoryController::class, 'EditCategory']);
+// Route::post('/update/category/{category}', [CategoryController::class, 'UpdateCategory'])->name('category.update');
 
 
 // Category

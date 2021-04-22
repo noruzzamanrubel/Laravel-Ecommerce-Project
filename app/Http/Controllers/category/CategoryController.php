@@ -13,6 +13,7 @@ class CategoryController extends Controller
         $category = Category::all();
         return view('admin.category.category', compact('category'));
     }
+    
     public function StoreCategory(Request $request)
     {
         $validated = $request->validate([
