@@ -29,13 +29,18 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Starlight Responsive Bootstrap 4 Admin Template</title>
+    <title>Ecommerce Project</title>
 
     <!-- vendor css -->
     <link href="{{ asset('adminbackend/lib/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
     <link href="{{ asset('adminbackend/lib/Ionicons/css/ionicons.css') }}" rel="stylesheet">
     <link href="{{ asset('adminbackend/lib/perfect-scrollbar/css/perfect-scrollbar.css') }}" rel="stylesheet">
     <link href="{{ asset('adminbackend/lib/rickshaw/rickshaw.min.css') }}" rel="stylesheet">
+
+    <!-- dataTables css -->
+    <link href="{{asset('adminbackend/lib/highlightjs/github.css')}}" rel="stylesheet">
+    <link href="{{asset('adminbackend/lib/datatables/jquery.dataTables.css')}}" rel="stylesheet">
+    <link href="{{asset('adminbackend/lib/select2/css/select2.min.css')}}" rel="stylesheet">
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('adminbackend/css/starlight.css') }}">
@@ -251,6 +256,11 @@
     <script src="{{ asset('adminbackend/lib/Flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset('adminbackend/lib/flot-spline/jquery.flot.spline.js') }}"></script>
 
+    <script src="{{asset('adminbackend/lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{asset('adminbackend/lib/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('adminbackend/lib/datatables-responsive/dataTables.responsive.js')}}"></script>
+    <script src="{{asset('adminbackend/lib/select2/js/select2.min.js')}}"></script>
+
     <script src="{{ asset('adminbackend/js/starlight.js') }}"></script>
     <script src="{{ asset('adminbackend/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('adminbackend/js/dashboard.js') }}"></script>
@@ -276,6 +286,31 @@
             }
         @endif
 
+    </script>
+
+    <script>
+        $(function(){
+        'use strict';
+
+        $('#datatable1').DataTable({
+            responsive: true,
+            language: {
+            searchPlaceholder: 'Search...',
+            sSearch: '',
+            lengthMenu: '_MENU_ items/page',
+            }
+        });
+
+        $('#datatable2').DataTable({
+            bLengthChange: false,
+            searching: false,
+            responsive: true
+        });
+
+        // Select2
+        $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+        });
     </script>
 
 </body>

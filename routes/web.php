@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainAdminController;
 use App\Http\Controllers\MainUserController;
+use App\Http\Controllers\category\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,3 +48,22 @@ Route::get('/user/profile/edit', [MainUserController::class, 'UserProfileEdit'])
 Route::post('/user/profile/store', [MainUserController::class, 'UserProfileStore'])->name('profile.store');
 Route::get('/user/password/edit', [MainUserController::class, 'UserPasswordEdit'])->name('user.password.edit');
 Route::post('/user/password/update', [MainUserController::class, 'UserPasswordUpdate'])->name('password.update');
+
+// All Category Route
+Route::get('/admin/categories', [CategoryController::class, 'Category'])->name('categories');
+Route::post('/admin/store/category', [CategoryController::class, 'StoreCategory'])->name('category.store');
+Route::get('/delete/category/{id}', [CategoryController::class, 'DeleteCategory']);
+Route::get('/edit/category/{category}', [CategoryController::class, 'EditCategory']);
+Route::post('/update/category/{category}', [CategoryController::class, 'UpdateCategory'])->name('category.update');
+
+
+// Category
+// Route::group([
+//     'prefix' => 'categories',
+// ], function () {
+//     Route::post('/', [CategoryController::class, 'index'])->name('categories.index');
+//     Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
+//     Route::get('/{category}', [CategoryController::class, 'show'])->name('categories.show');
+//     Route::post('/{category}', [CategoryController::class, 'update'])->name('categories.update');
+//     Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+// });
