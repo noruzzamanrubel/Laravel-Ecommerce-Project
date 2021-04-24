@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function Category()
+    public function index()
     {
         $category = Category::all();
         return view('admin.category.category', compact('category'));
     }
     
-    public function StoreCategory(Request $request)
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'category_name' => 'required|unique:categories|max:255',
@@ -32,13 +32,13 @@ class CategoryController extends Controller
 
     }
 
-    public function EditCategory($id)
+    public function edit($id)
     {
         $edit_category = Category::findorfail($id);
         return view('admin.category.edit', compact('edit_category'));
     }
 
-    public function UpdateCategory(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $validated = $request->validate([
             'category_name' => 'required|unique:categories|max:255',
@@ -55,7 +55,7 @@ class CategoryController extends Controller
         return redirect()->route('categories')->with($notification);
     }
 
-    public function DeleteCategory($id)
+    public function destroy($id)
     {
         $deletecat = Category::findorfail($id);
         $deletecat->delete();

@@ -5,6 +5,7 @@ use App\Http\Controllers\MainAdminController;
 use App\Http\Controllers\MainUserController;
 use App\Http\Controllers\category\CategoryController;
 use App\Http\Controllers\category\BrandController;
+use App\Http\Controllers\category\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,12 +52,11 @@ Route::get('/user/password/edit', [MainUserController::class, 'UserPasswordEdit'
 Route::post('/user/password/update', [MainUserController::class, 'UserPasswordUpdate'])->name('password.update');
 
 // All Category Route
-Route::get('/admin/categories', [CategoryController::class, 'Category'])->name('categories');
-Route::post('/admin/store/category', [CategoryController::class, 'StoreCategory'])->name('category.store');
-Route::get('/delete/category/{id}', [CategoryController::class, 'DeleteCategory']);
-Route::get('/edit/category/{category}', [CategoryController::class, 'EditCategory']);
-Route::post('/update/category/{category}', [CategoryController::class, 'UpdateCategory'])->name('category.update');
-
+Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories');
+Route::post('/admin/store/category', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/delete/category/{id}', [CategoryController::class, 'destroy']);
+Route::get('/edit/category/{category}', [CategoryController::class, 'edit']);
+Route::post('/update/category/{category}', [CategoryController::class, 'update'])->name('category.update');
 
 // All Category Route
 Route::get('/admin/brand', [BrandController::class, 'index'])->name('brand');
@@ -65,6 +65,12 @@ Route::get('/edit/brand/{id}', [BrandController::class, 'edit']);
 Route::get('/delete/brand/{id}', [BrandController::class, 'destroy']);
 Route::post('/update/brand/{id}', [BrandController::class, 'update'])->name('brand.update');
 
+// All SubCategory Route
+Route::get('/admin/subcategory', [SubCategoryController::class, 'index'])->name('subcategory');
+Route::post('/admin/store/subcategory', [SubCategoryController::class, 'store'])->name('subcategory.store');
+Route::get('/edit/subcategory/{id}', [SubCategoryController::class, 'edit']);
+Route::get('/delete/subcategory/{id}', [SubCategoryController::class, 'destroy']);
+Route::post('/update/subcategory/{id}', [SubCategoryController::class, 'update'])->name('subcategory.update');
 
 // Category
 // Route::group([
