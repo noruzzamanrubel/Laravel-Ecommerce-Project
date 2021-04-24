@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{ $key +1 }}</td>
                                 <td>{{ $row->brand_name }}</td>
-                                <td>{{ $row->brand_logo	 }}</td>
+                                <td><img src="{{URL::to($row->brand_logo)}}" width="80px" height="70px"></td>
                                 <td>
                                     <a href="{{ URL::to('edit/brand/' . $row->id) }} "
                                         class="btn btn-sm btn-info">Edit</a>
@@ -69,7 +69,7 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('brand.store') }}">
+                    <form method="POST" action="{{ route('brand.store') }}" enctype="multipart/form-data">
                         <div class="modal-body pd-20">
                             @csrf
                             <div class="form-group">
@@ -77,11 +77,11 @@
                                 <input id="brandname" type="text" class="form-control" name="brand_name"
                                     placeholder="Input Brand name here">
                             </div>
-                            {{-- <div class="form-group">
+                            <div class="form-group">
                                 <label for="brandlogo">Brand Logo</label>
                                 <input id="brandlogo" type="file" class="form-control" name="brand_logo"
                                     placeholder="Upload Brand logo here">
-                            </div> --}}
+                            </div>
                         </div><!-- modal-body -->
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-info pd-x-20">Submit</button>

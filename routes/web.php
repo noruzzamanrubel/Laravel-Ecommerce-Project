@@ -60,10 +60,10 @@ Route::post('/update/category/{category}', [CategoryController::class, 'UpdateCa
 
 // All Category Route
 Route::get('/admin/brand', [BrandController::class, 'index'])->name('brand');
-Route::post('/admin/store/brand', [CategoryController::class, 'StoreBrand'])->name('brand.store');
-// Route::get('/delete/category/{id}', [CategoryController::class, 'DeleteCategory']);
-// Route::get('/edit/category/{category}', [CategoryController::class, 'EditCategory']);
-// Route::post('/update/category/{category}', [CategoryController::class, 'UpdateCategory'])->name('category.update');
+Route::post('/admin/store/brand', [BrandController::class, 'store'])->name('brand.store');
+Route::get('/edit/brand/{id}', [BrandController::class, 'edit']);
+Route::get('/delete/brand/{id}', [BrandController::class, 'destroy']);
+Route::post('/update/brand/{id}', [BrandController::class, 'update'])->name('brand.update');
 
 
 // Category
