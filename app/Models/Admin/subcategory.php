@@ -12,4 +12,9 @@ class Subcategory extends Model
         'category_id',
         'subcategory_name',
     ];
+
+    // public function category()
+    // {
+    //     return $this->hasOne(Category::class, 'category_name');
+    // }
 }

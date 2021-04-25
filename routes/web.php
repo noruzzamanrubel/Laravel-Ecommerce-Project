@@ -6,6 +6,7 @@ use App\Http\Controllers\MainUserController;
 use App\Http\Controllers\category\CategoryController;
 use App\Http\Controllers\category\BrandController;
 use App\Http\Controllers\category\SubCategoryController;
+use App\Http\Controllers\category\CouponController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +72,14 @@ Route::post('/admin/store/subcategory', [SubCategoryController::class, 'store'])
 Route::get('/edit/subcategory/{id}', [SubCategoryController::class, 'edit']);
 Route::get('/delete/subcategory/{id}', [SubCategoryController::class, 'destroy']);
 Route::post('/update/subcategory/{id}', [SubCategoryController::class, 'update'])->name('subcategory.update');
+
+
+// All Coupon Route
+Route::get('/admin/coupon', [CouponController::class, 'index'])->name('coupon');
+Route::post('/admin/store/coupon', [CouponController::class, 'store'])->name('coupon.store');
+Route::get('/edit/coupon/{id}', [CouponController::class, 'edit']);
+Route::get('/delete/coupon/{id}', [CouponController::class, 'destroy']);
+Route::post('/update/coupon/{id}', [CouponController::class, 'update'])->name('coupon.update');
 
 // Category
 // Route::group([
