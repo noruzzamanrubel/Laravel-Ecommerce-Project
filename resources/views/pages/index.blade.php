@@ -5170,10 +5170,20 @@
                             </div>
                         </div>
                         <div class="newsletter_content clearfix">
-                            <form action="#" class="newsletter_form">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form method="POST" action="{{route('newsletter.store')}}" class="newsletter_form">
+                                @csrf
                                 <input type="email" class="newsletter_input" required="required"
-                                    placeholder="Enter your email address">
-                                <button class="newsletter_button">Subscribe</button>
+                                    placeholder="Enter your email address" name="email">
+                                <button type="submit" class="newsletter_button">Subscribe</button>
                             </form>
                             <div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
                         </div>

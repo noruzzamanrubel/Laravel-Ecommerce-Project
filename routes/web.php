@@ -7,6 +7,7 @@ use App\Http\Controllers\category\CategoryController;
 use App\Http\Controllers\category\BrandController;
 use App\Http\Controllers\category\SubCategoryController;
 use App\Http\Controllers\category\CouponController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,6 +81,11 @@ Route::post('/admin/store/coupon', [CouponController::class, 'store'])->name('co
 Route::get('/edit/coupon/{id}', [CouponController::class, 'edit']);
 Route::get('/delete/coupon/{id}', [CouponController::class, 'destroy']);
 Route::post('/update/coupon/{id}', [CouponController::class, 'update'])->name('coupon.update');
+
+// All Newsletter Route
+Route::get('/admin/newsletter', [NewsletterController::class, 'index'])->name('newsletter');
+Route::post('/admin/store/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
+Route::get('/delete/newsletter/{id}', [NewsletterController::class, 'destroy']);
 
 // Category
 // Route::group([

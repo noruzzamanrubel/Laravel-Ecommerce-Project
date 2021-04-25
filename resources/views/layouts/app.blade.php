@@ -18,6 +18,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 
+    <!-- Toastr css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
 </head>
 
 <body>
@@ -66,8 +69,8 @@
                                 <div class="top_bar_user">
                                     <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
                                     </div>
-                                    <div><a href="{{route('register')}}">Register</a></div>
-                                    <div><a href="{{route('login')}}">Sign in</a></div>
+                                    <div><a href="{{ route('register') }}">Register</a></div>
+                                    <div><a href="{{ route('login') }}">Sign in</a></div>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +87,8 @@
                         <!-- Logo -->
                         <div class="col-lg-2 col-sm-3 col-3 order-1">
                             <div class="logo_container">
-                                <div class="logo"><a href="{{url('/')}}"><img src="{{asset('frontend/images/logo.png')}}" alt=""></a></div>
+                                <div class="logo"><a href="{{ url('/') }}"><img
+                                            src="{{ asset('frontend/images/logo.png') }}" alt=""></a></div>
                             </div>
                         </div>
 
@@ -162,7 +166,8 @@
                         <div class="col-lg-3 footer_col">
                             <div class="footer_column footer_contact">
                                 <div class="logo_container">
-                                    <div class="logo"><a href="{{url('/')}}"><img src="{{asset('frontend/images/logo.png')}}" alt=""></a></div>
+                                    <div class="logo"><a href="{{ url('/') }}"><img
+                                                src="{{ asset('frontend/images/logo.png') }}" alt=""></a></div>
                                 </div>
                                 <div class="footer_title">Got Question? Call Us 24/7</div>
                                 <div class="footer_phone">+38 068 005 3570</div>
@@ -280,6 +285,30 @@
     <script src="{{ asset('frontend/plugins/slick-1.8.0/slick.js') }}"></script>
     <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+            }
+        @endif
+
+    </script>
+
 </body>
 
 </html>
