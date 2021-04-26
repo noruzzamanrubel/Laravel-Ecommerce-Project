@@ -1,3 +1,6 @@
 .bootstrap-tagsinput {
     display: block !important;
 }
+.custom-file {
+    display: block;
+}

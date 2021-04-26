@@ -89,6 +89,9 @@ Route::post('/admin/store/newsletter', [NewsletterController::class, 'store'])->
 Route::get('/delete/newsletter/{id}', [NewsletterController::class, 'destroy']);
 
 
+//Show sub category with ajax
+Route::get('/admin/get/subcategory/{category_id}', [ProductController::class, 'Getsubcat']);
+
 // All Product Route
 Route::get('/admin/product/all', [ProductController::class, 'index'])->name('all.product');
 Route::get('/admin/product/add', [ProductController::class, 'create'])->name('add.product');
