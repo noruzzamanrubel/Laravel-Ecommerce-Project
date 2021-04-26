@@ -75,7 +75,6 @@ Route::get('/edit/subcategory/{id}', [SubCategoryController::class, 'edit']);
 Route::get('/delete/subcategory/{id}', [SubCategoryController::class, 'destroy']);
 Route::post('/update/subcategory/{id}', [SubCategoryController::class, 'update'])->name('subcategory.update');
 
-
 // All Coupon Route
 Route::get('/admin/coupon', [CouponController::class, 'index'])->name('coupon');
 Route::post('/admin/store/coupon', [CouponController::class, 'store'])->name('coupon.store');
@@ -87,10 +86,6 @@ Route::post('/update/coupon/{id}', [CouponController::class, 'update'])->name('c
 Route::get('/admin/newsletter', [NewsletterController::class, 'index'])->name('newsletter');
 Route::post('/admin/store/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
 Route::get('/delete/newsletter/{id}', [NewsletterController::class, 'destroy']);
-
-
-//Show sub category with ajax
-Route::get('/admin/get/subcategory/{category_id}', [ProductController::class, 'Getsubcat']);
 
 // All Product Route
 Route::get('/admin/product/all', [ProductController::class, 'index'])->name('all.product');
