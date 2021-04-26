@@ -44,10 +44,17 @@
 
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{ asset('adminbackend/css/starlight.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminbackend/css/custom.css') }}">
+
+    <!-- summernote CSS -->
+    <link href="{{ asset('adminbackend/lib/summernote/summernote-bs4.css') }}" rel="stylesheet">
+
+    <!-- tagsinput CSS -->
+    <link href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet" />
 
     <!-- Toastr css -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-    
+    @yield('external-css');
 </head>
 
 <body>
@@ -267,7 +274,18 @@
     <script src="{{ asset('adminbackend/js/ResizeSensor.js') }}"></script>
     <script src="{{ asset('adminbackend/js/dashboard.js') }}"></script>
 
+    <!-- summernote js -->
+    <script src="{{ asset('adminbackend/lib/medium-editor/medium-editor.js') }}"></script>
+    <script src="{{ asset('adminbackend/lib/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ asset('adminbackend/js/editor.js') }}"> </script>
+
+    <link href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css" rel="stylesheet" />
+
+    <!-- toastr js -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <!-- sweetalert js -->
+    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
 
     <script>
         @if (Session::has('message'))
@@ -287,34 +305,6 @@
             break;
             }
         @endif
-
-    </script>
-
-    <script>
-        $(function() {
-            'use strict';
-
-            $('#datatable1').DataTable({
-                responsive: true,
-                language: {
-                    searchPlaceholder: 'Search...',
-                    sSearch: '',
-                    lengthMenu: '_MENU_ items/page',
-                }
-            });
-
-            $('#datatable2').DataTable({
-                bLengthChange: false,
-                searching: false,
-                responsive: true
-            });
-
-            // Select2
-            $('.dataTables_length select').select2({
-                minimumResultsForSearch: Infinity
-            });
-
-        });
 
     </script>
 
