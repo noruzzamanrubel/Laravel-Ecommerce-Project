@@ -55,7 +55,7 @@ class ProductController extends Controller
         // $data->hot_new = $request->hot_new;
         // $data->status = 1;
         // $data->save();
-        
+
         Product::insert([
             'product_name' => $request->product_name,
             'product_code' => $request->product_code,
@@ -78,7 +78,11 @@ class ProductController extends Controller
             'status' => 1,
             'image_one' => $image_url,
         ]);
-        return redirect()->back();
+        $notification = array(
+            'messege' => 'Product Successfully Inserted',
+            'alert-type' => 'success',
+        );
+        return Redirect()->back()->with($notification);
     }
 
     public function edit($id)
@@ -92,6 +96,7 @@ class ProductController extends Controller
     public function destroy($id)
     {
         $data = Product::findorfail($id);
+        unlink($data->image_one);
         $data->delete();
         $notification = array(
             'message' => 'Product Successfully Delete',
