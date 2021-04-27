@@ -13,8 +13,7 @@ class Subcategory extends Model
         'subcategory_name',
     ];
 
-    // public function category()
-    // {
-    //     return $this->hasOne(Category::class, 'category_name');
-    // }
+    public function category(){
+    	return $this->belongsTo(Category::class);
+    }
 }

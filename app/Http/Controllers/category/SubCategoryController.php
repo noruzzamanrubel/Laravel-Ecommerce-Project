@@ -6,17 +6,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin\Subcategory;
 use App\Models\Admin\Category;
-use DB;
 
 class SubCategoryController extends Controller
 {
     public function index()
     {
-        $category= DB::table('categories')->get();
-        $subcat= DB::table('subcategories')
-            ->join('categories', 'subcategories.category_id', 'categories.id')
-            ->select('subcategories.*','categories.category_name')
-            ->get();
+        $category= Category::all();
+        $subcat = SubCategory::ALL();
 
         return view('admin.subcategory.subcategory', compact('category','subcat'));
     }
@@ -42,12 +38,9 @@ class SubCategoryController extends Controller
 
     public function edit($id)
     {
-        // $subcat = Subcategory::find($id);
-        // $edit_cat = Category::find($id);
-        // return view('admin.subcategory.edit',compact('subcat','edit_cat'));
-        $subcat = DB::table('subcategories')->where('id',$id)->first();
-        $edit_cat = DB::table('categories')->get();
-        return view('admin.subcategory.edit',compact('subcat','edit_cat'));
+    	$edit_cat = Category::all();
+    	$subcat = SubCategory::findOrFail($id);
+        return view('admin.subcategory.edit',compact('edit_cat','subcat'));
     }
 
     public function destroy($id)

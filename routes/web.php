@@ -61,7 +61,7 @@ Route::get('/delete/category/{id}', [CategoryController::class, 'destroy']);
 Route::get('/edit/category/{category}', [CategoryController::class, 'edit']);
 Route::post('/update/category/{category}', [CategoryController::class, 'update'])->name('category.update');
 
-// All Category Route
+// All Brand Route
 Route::get('/admin/brand', [BrandController::class, 'index'])->name('brand');
 Route::post('/admin/store/brand', [BrandController::class, 'store'])->name('brand.store');
 Route::get('/edit/brand/{id}', [BrandController::class, 'edit']);
@@ -88,8 +88,11 @@ Route::post('/admin/store/newsletter', [NewsletterController::class, 'store'])->
 Route::get('/delete/newsletter/{id}', [NewsletterController::class, 'destroy']);
 
 // All Product Route
-Route::get('/admin/product/all', [ProductController::class, 'index'])->name('all.product');
-Route::get('/admin/product/add', [ProductController::class, 'create'])->name('add.product');
+Route::get('/admin/all/product', [ProductController::class, 'index'])->name('all.product');
+Route::get('/admin/add/product', [ProductController::class, 'create'])->name('add.product');
+Route::post('/admin/store/product', [ProductController::class, 'store'])->name('store.product');
+Route::get('/admin/edit/product/{id}', [ProductController::class, 'edit'])->name('edit.product');
+Route::get('/admin/delete/product/{id}', [ProductController::class, 'destroy'])->name('delete.product');
 
 // Category
 // Route::group([

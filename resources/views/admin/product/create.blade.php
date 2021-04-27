@@ -3,10 +3,12 @@
 @section('admin')
 
     <div class="card pd-20 pd-sm-40">
-        <h6 class="card-body-title">New Product ADD</h6>
+        <h6 class="card-body-title">New Product ADD
+            <a href="{{route('all.product')}}" class="btn btn-info btn-sm float-right">All Product</a>
+        </h6>
         <p class="mg-b-20 mg-sm-b-30">New Product Add Form</p>
 
-        <form method="POST" action="" enctype="multipart/form-data">
+        <form method="POST" action="{{route('store.product')}}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-layout">
@@ -86,13 +88,13 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-control-label">Product Details: <span class="tx-danger">*</span></label>
-                            <input class="form-control" name="	product_details" id="summernote">
+                            <textarea class="form-control" name="product_details" id="summernote" ></textarea>
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-control-label">Video Link: <span class="tx-danger">*</span></label>
-                            <input class="form-control" name="	video_link" placeholder="Video Link">
+                            <input class="form-control" name="video_link" placeholder="Video Link">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
@@ -195,7 +197,7 @@
                 <br><br>
 
                 <div class="form-layout-footer">
-                    <button class="btn btn-info mg-r-5">Submit Form</button>
+                    <button type="submit" class="btn btn-info mg-r-5">Submit Form</button>
                     <button class="btn btn-secondary">Cancel</button>
                 </div><!-- form-layout-footer -->
             </div><!-- form-layout -->
