@@ -22,8 +22,8 @@
                             <tr>
                                 <th class="wd-15p">Product Code</th>
                                 <th class="wd-15p">Product Name</th>
+                                <th class="wd-15p">Image</th>
                                 <th class="wd-15p">Category</th>
-                                <th class="wd-15p">Sub Category</th>
                                 <th class="wd-15p">Brand</th>
                                 <th class="wd-15p">Quantity</th>
                                 <th class="wd-15p">Status</th>
@@ -36,6 +36,7 @@
                             <tr>
                                 <td>{{ $row->product_code }}</td>
                                 <td>{{ $row->product_name }}</td>
+                                <td><img src="{{URL::to($row->image_one)}}" width="80px" height="70px"></td>
                                 <td>{{ $row->category->category_name }}</td>
                                 <td>{{ $row->subcategory->subcategory_name }}</td>
                                 <td>{{ $row->brand->brand_name }}</td>
