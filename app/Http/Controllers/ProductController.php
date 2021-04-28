@@ -129,11 +129,12 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $category = Category::findorfail($id);
-        $subcat = Subcategory::findorfail($id);
-        $brand = Brand::findorfail($id);
-        $product= Product::findorfail($id);
-        return view('admin.product.edit', compact('category', 'subcat', 'brand','product'));
+        $product =Product::findorfail($id);
+        return view('admin.product.edit', compact('product'));
+    }
+
+    public function update(Request $request, $id){
+        
     }
 
     public function show($id)

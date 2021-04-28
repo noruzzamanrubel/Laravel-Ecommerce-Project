@@ -45,7 +45,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ URL::to('admin/edit/product/' . $row->id) }} "
+                                    <a href="{{ URL::to('/admin/edit/product/' . $row->id) }} "
                                         class="btn btn-sm btn-info" title="edit"><i class="fa fa-edit"></i></a>
                                         
                                     @if ($row->status == 1)
