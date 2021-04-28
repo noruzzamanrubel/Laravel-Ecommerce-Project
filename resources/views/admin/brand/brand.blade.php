@@ -1,7 +1,6 @@
 @extends('admin.admin_master')
 
 @section('admin')
-    <div class="sl-mainpanel">
 
 
         <div class="sl-pagebody">

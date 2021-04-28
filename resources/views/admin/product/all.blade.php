@@ -1,9 +1,6 @@
 @extends('admin.admin_master')
 
 @section('admin')
-    <div class="sl-mainpanel">
-
-
         <div class="sl-pagebody">
             <div class="sl-page-title">
                 <h5>All Product</h5>
