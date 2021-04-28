@@ -3,12 +3,12 @@
 @section('admin')
 
     <div class="card pd-20 pd-sm-40">
-        <h6 class="card-body-title">New Product ADD
+        <h6 class="card-body-title">Update Product
             <a href="{{route('all.product')}}" class="btn btn-info btn-sm float-right">All Product</a>
         </h6>
-        <p class="mg-b-20 mg-sm-b-30">New Product Add Form</p>
+        <p class="mg-b-20 mg-sm-b-30">Update Product Form</p>
 
-        <form method="POST" action="{{route('store.product')}}" enctype="multipart/form-data">
+        <form method="POST" action="" enctype="multipart/form-data">
             @csrf
 
             <div class="form-layout">
@@ -16,20 +16,20 @@
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Product Name: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text" name="product_name" placeholder="Enter Product Name">
+                            <input class="form-control" type="text" name="product_name" value="{{$Product->product_name}}">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Product Code: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text" name="product_code" placeholder="Enter Product Code">
+                            <input class="form-control" type="text" name="product_code" value="{{$Product->product_code}}">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Quantity: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" name="product_quantity"
-                                placeholder="Enter Product Quantity">
+                            value="{{$Product->product_quantity}}">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
@@ -69,20 +69,20 @@
                         <div class="form-group">
                             <label class="form-control-label">Product Size: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" name="product_size" id="size" data-role="tagsinput"
-                                placeholder="Enter Product Size">
+                            value="{{$Product->product_size}}">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Product Color: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" name="product_color" id="color" data-role="tagsinput"
-                                placeholder="Enter Product Color">
+                            value="{{$Product->product_color}}">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
                         <div class="form-group">
                             <label class="form-control-label">Selling Price: <span class="tx-danger">*</span></label>
-                            <input class="form-control" type="text" name="selling_price" placeholder="Enter Product Price">
+                            <input class="form-control" type="text" name="selling_price" value="{{$Product->selling_price}}">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-12">
@@ -94,7 +94,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-control-label">Video Link: <span class="tx-danger">*</span></label>
-                            <input class="form-control" name="video_link" placeholder="Video Link">
+                            <input class="form-control" name="video_link" value="{{$Product->video_link}}">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">

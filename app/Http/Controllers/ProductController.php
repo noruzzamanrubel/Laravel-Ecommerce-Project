@@ -8,6 +8,7 @@ use App\Models\Admin\Category;
 use App\Models\Admin\Subcategory;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Image;
 
 class ProductController extends Controller
 {
@@ -27,13 +28,52 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
-        $image = $request->file('image_one');
-        $image_name = hexdec(uniqid());
-        $ext = strtolower($image->getClientOriginalExtension());
-        $image_full_name = $image_name . '.' . $ext;
-        $upload_path = 'upload/product_images/';
-        $image_url = $upload_path . $image_full_name;
-        $image->move($upload_path, $image_full_name);
+        // $image = $request->file('image_one');
+        // $image_name = hexdec(uniqid());
+        // $ext = strtolower($image->getClientOriginalExtension());
+        // $image_full_name = $image_name . '.' . $ext;
+        // $upload_path = 'upload/product_images/';
+        // $image_url = $upload_path . $image_full_name;
+        // $image->move($upload_path, $image_full_name);
+
+        //image upload and resize by Intervention Package
+
+        if ($request->file('image_one')) {
+            $image = $request->file('image_one');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(115, 115)->save('upload/product_images/' . $name_gen);
+            $save_url = 'upload/product_images/' . $name_gen;
+        }
+
+        if ($request->file('image_two')) {
+            $image2 = $request->file('image_two');
+            $name_gen2 = hexdec(uniqid()) . '.' . $image2->getClientOriginalExtension();
+            Image::make($image2)->resize(115, 115)->save('upload/product_images/' . $name_gen2);
+            $save_url2 = 'upload/product_images/' . $name_gen2;
+        }
+
+        if ($request->file('image_three')) {
+            $image3 = $request->file('image_three');
+            $name_gen3 = hexdec(uniqid()) . '.' . $image3->getClientOriginalExtension();
+            Image::make($image3)->resize(115, 115)->save('upload/product_images/' . $name_gen3);
+            $save_url3 = 'upload/product_images/' . $name_gen3;
+        }
+
+        // $image2 = $request->file('image_two');
+        // $image_name2 = hexdec(uniqid());
+        // $ext = strtolower($image2->getClientOriginalExtension());
+        // $image_full_name2 = $image_name2 . '.' . $ext;
+        // $upload_path2 = 'upload/product_images/';
+        // $image_url2 = $upload_path2 . $image_full_name2;
+        // $image2->move($upload_path2, $image_full_name2);
+
+        // $image3 = $request->file('image_three');
+        // $image_name3 = hexdec(uniqid());
+        // $ext = strtolower($image3->getClientOriginalExtension());
+        // $image_full_name2 = $image_name3 . '.' . $ext;
+        // $upload_path3 = 'upload/product_images/';
+        // $image_url3 = $upload_path3 . $image_full_name3;
+        // $image3->move($upload_path3, $image_full_name3);
 
         // $data = new Product();
         // $data->product_name = $request->product_name;
@@ -76,27 +116,39 @@ class ProductController extends Controller
             'mid_slider' => $request->mid_slider,
             'hot_new' => $request->hot_new,
             'status' => 1,
-            'image_one' => $image_url,
+            'image_one' => $save_url,
+            'image_two' => $save_url2,
+            'image_three' => $save_url3,
         ]);
         $notification = array(
             'messege' => 'Product Successfully Inserted',
             'alert-type' => 'success',
         );
-        return Redirect()->back()->with($notification);
+        return Redirect()->route('all.product')->with($notification);
     }
 
     public function edit($id)
     {
-        $category = Category::all();
-        $subcat = Subcategory::all();
-        $brand = Brand::all();
-        return view('admin.product.edit', compact('category', 'subcat', 'brand'));
+        $category = Category::findorfail($id);
+        $subcat = Subcategory::findorfail($id);
+        $brand = Brand::findorfail($id);
+        $product= Product::findorfail($id);
+        return view('admin.product.edit', compact('category', 'subcat', 'brand','product'));
+    }
+
+    public function show($id)
+    {
+        $show = Product::findorfail($id);
+
+        return view('admin.product.show', compact('show'));
     }
 
     public function destroy($id)
     {
         $data = Product::findorfail($id);
         unlink($data->image_one);
+        unlink($data->image_two);
+        unlink($data->image_three);
         $data->delete();
         $notification = array(
             'message' => 'Product Successfully Delete',
@@ -107,7 +159,7 @@ class ProductController extends Controller
 
     public function active($id)
     {
-        $data = Product::where('id', $id)->update(['status'=> 1]);
+        $data = Product::where('id', $id)->update(['status' => 1]);
         $notification = array(
             'message' => 'Product Successfully Active',
             'alert-type' => 'success',
@@ -117,7 +169,7 @@ class ProductController extends Controller
 
     public function inactive($id)
     {
-        $data = Product::where('id', $id)->update(['status'=> 0]);
+        $data = Product::where('id', $id)->update(['status' => 0]);
         $notification = array(
             'message' => 'Product Successfully Inactive',
             'alert-type' => 'success',

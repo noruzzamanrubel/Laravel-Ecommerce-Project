@@ -114,7 +114,7 @@
                             <label class="form-control-label custom-file">Image Two: <span
                                     class="tx-danger">*</span></label>
                             <label class="custom-file">
-                                <input type="file" id="file2" class="custom-file-input" name="	image_two"
+                                <input type="file" id="file2" class="custom-file-input" name="image_two"
                                     onchange="readURL2(this);" required="">
                                 <span class="custom-file-control"></span>
                                 <img src="#" id="two">
@@ -126,7 +126,7 @@
                             <label class="form-control-label custom-file">Image Three: <span
                                     class="tx-danger">*</span></label>
                             <label class="custom-file">
-                                <input type="file" id="file3" class="custom-file-input" name="	image_three"
+                                <input type="file" id="file3" class="custom-file-input" name="image_three"
                                     onchange="readURL3(this);" required="">
                                 <span class="custom-file-control"></span>
                                 <img src="#" id="three">

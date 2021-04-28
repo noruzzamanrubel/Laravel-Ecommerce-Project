@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{ $row->product_code }}</td>
                                 <td>{{ $row->product_name }}</td>
-                                <td><img src="{{ URL::to($row->image_one) }}" width="115px" height="115px"></td>
+                                <td><img src="{{ URL::to($row->image_one) }}"></td>
                                 <td>{{ $row->category->category_name }}</td>
                                 <td>{{ $row->brand->brand_name }}</td>
                                 <td>{{ $row->product_quantity }}</td>
@@ -56,7 +56,7 @@
                                             class="btn btn-sm btn-success" title="active"><i class="fa fa-thumbs-up"></i></a>
                                     @endif
 
-                                    <a href="{{ URL::to('/admin/show/product/' . $row->id) }}"
+                                    <a href="{{ URL::to('/admin/view/product/' . $row->id) }}"
                                         class="btn btn-sm btn-warning" title="show"><i class="fa fa-eye"></i></a>
 
                                     <a href="{{ URL::to('/admin/delete/product/' . $row->id) }}"
