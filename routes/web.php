@@ -93,6 +93,8 @@ Route::get('/admin/add/product', [ProductController::class, 'create'])->name('ad
 Route::post('/admin/store/product', [ProductController::class, 'store'])->name('store.product');
 Route::get('/admin/edit/product/{id}', [ProductController::class, 'edit'])->name('edit.product');
 Route::get('/admin/delete/product/{id}', [ProductController::class, 'destroy'])->name('delete.product');
+Route::get('/active/product/{id}', [ProductController::class, 'active']);
+Route::get('/inactive/product/{id}', [ProductController::class, 'inactive']);
 
 // Category
 // Route::group([
