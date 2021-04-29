@@ -33,7 +33,7 @@
                             <tr>
                                 <td>{{ $row->product_code }}</td>
                                 <td>{{ $row->product_name }}</td>
-                                <td><img src="{{ URL::to($row->image_one) }}"></td>
+                                <td><img src="{{ URL::to($row->image_one) }}" width="115px" height="115px"></td>
                                 <td>{{ $row->category->category_name }}</td>
                                 <td>{{ $row->brand->brand_name }}</td>
                                 <td>{{ $row->product_quantity }}</td>

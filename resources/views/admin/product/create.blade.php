@@ -103,7 +103,7 @@
                                     class="tx-danger">*</span></label>
                             <label class="custom-file">
                                 <input type="file" id="file1" class="custom-file-input" name="image_one"
-                                    onchange="readURL1(this);" required="">
+                                    onchange="readURL1(this);">
                                 <span class="custom-file-control"></span>
                                 <img src="#" id="one">
                             </label>
@@ -115,7 +115,7 @@
                                     class="tx-danger">*</span></label>
                             <label class="custom-file">
                                 <input type="file" id="file2" class="custom-file-input" name="image_two"
-                                    onchange="readURL2(this);" required="">
+                                    onchange="readURL2(this);">
                                 <span class="custom-file-control"></span>
                                 <img src="#" id="two">
                             </label>
@@ -127,7 +127,7 @@
                                     class="tx-danger">*</span></label>
                             <label class="custom-file">
                                 <input type="file" id="file3" class="custom-file-input" name="image_three"
-                                    onchange="readURL3(this);" required="">
+                                    onchange="readURL3(this);">
                                 <span class="custom-file-control"></span>
                                 <img src="#" id="three">
                             </label>

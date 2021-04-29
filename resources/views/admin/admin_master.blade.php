@@ -66,7 +66,7 @@
     <!-- ########## START: MAIN PANEL ########## -->
     <div class="sl-mainpanel">
         <nav class="breadcrumb sl-breadcrumb">
-            <a class="breadcrumb-item" href="{{URL::to('/admin/dashboard')}}">Starlight</a>
+            <a class="breadcrumb-item" href="{{ URL::to('/admin/dashboard') }}">Starlight</a>
             <span class="breadcrumb-item active">Dashboard</span>
         </nav>
 
@@ -130,6 +130,22 @@
             break;
             }
         @endif
+
+    </script>
+
+    <script>
+        $(function($) {
+            'use strict';
+
+            $('#datatable1').DataTable({
+                responsive: true,
+                language: {
+                    searchPlaceholder: 'Search...',
+                    sSearch: '',
+                    lengthMenu: '_MENU_ items/page',
+                }
+            });
+        });
 
     </script>
 

@@ -41,21 +41,21 @@ class ProductController extends Controller
         if ($request->file('image_one')) {
             $image = $request->file('image_one');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(115, 115)->save('upload/product_images/' . $name_gen);
+            Image::make($image)->resize(1024, 1024)->save('upload/product_images/' . $name_gen);
             $save_url = 'upload/product_images/' . $name_gen;
         }
 
         if ($request->file('image_two')) {
             $image2 = $request->file('image_two');
             $name_gen2 = hexdec(uniqid()) . '.' . $image2->getClientOriginalExtension();
-            Image::make($image2)->resize(115, 115)->save('upload/product_images/' . $name_gen2);
+            Image::make($image2)->resize(1024, 1024)->save('upload/product_images/' . $name_gen2);
             $save_url2 = 'upload/product_images/' . $name_gen2;
         }
 
         if ($request->file('image_three')) {
             $image3 = $request->file('image_three');
             $name_gen3 = hexdec(uniqid()) . '.' . $image3->getClientOriginalExtension();
-            Image::make($image3)->resize(115, 115)->save('upload/product_images/' . $name_gen3);
+            Image::make($image3)->resize(1024, 1024)->save('upload/product_images/' . $name_gen3);
             $save_url3 = 'upload/product_images/' . $name_gen3;
         }
 
@@ -222,7 +222,7 @@ class ProductController extends Controller
             unlink($old_one);
             $image = $request->file('image_one');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
-            Image::make($image)->resize(115, 115)->save('upload/product_images/' . $name_gen);
+            Image::make($image)->resize(1024, 1024)->save('upload/product_images/' . $name_gen);
             $save_url = 'upload/product_images/' . $name_gen;
 
             Product::find($id)->update([
@@ -241,7 +241,7 @@ class ProductController extends Controller
             unlink($old_two);
             $image2 = $request->file('image_two');
             $name_gen2 = hexdec(uniqid()) . '.' . $image2->getClientOriginalExtension();
-            Image::make($image2)->resize(115, 115)->save('upload/product_images/' . $name_gen2);
+            Image::make($image2)->resize(1024, 1024)->save('upload/product_images/' . $name_gen2);
             $save_url2 = 'upload/product_images/' . $name_gen2;
 
             Product::find($id)->update([
@@ -261,7 +261,7 @@ class ProductController extends Controller
             unlink($old_three);
             $image3 = $request->file('image_three');
             $name_gen3 = hexdec(uniqid()) . '.' . $image3->getClientOriginalExtension();
-            Image::make($image3)->resize(115, 115)->save('upload/product_images/' . $name_gen3);
+            Image::make($image3)->resize(1024, 1024)->save('upload/product_images/' . $name_gen3);
             $save_url3 = 'upload/product_images/' . $name_gen3;
 
             Product::find($id)->update([
