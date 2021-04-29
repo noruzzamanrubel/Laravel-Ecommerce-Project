@@ -18,7 +18,7 @@
             </h6>
             <p class="mg-b-20 mg-sm-b-30">Update Product Form</p>
 
-            <form method="POST" action="{{ url('/update/product/withoutphoto/', $product->id) }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('/update/product/withoutphoto', $product->id) }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="form-layout">
