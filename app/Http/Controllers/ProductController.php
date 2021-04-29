@@ -129,12 +129,8 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        $product =Product::findorfail($id);
+        $product = Product::findorfail($id);
         return view('admin.product.edit', compact('product'));
-    }
-
-    public function update(Request $request, $id){
-        
     }
 
     public function show($id)
@@ -176,6 +172,108 @@ class ProductController extends Controller
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
+    }
+
+    public function UpdateProductWithoutPhoto(Request $request, $id)
+    {
+
+        Product::find($id)->update([
+            'product_name' => $request->product_name,
+            'product_code' => $request->product_code,
+            'product_quantity' => $request->product_quantity,
+            'discount_price' => $request->discount_price,
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'brand_id' => $request->brand_id,
+            'product_size' => $request->product_size,
+            'product_color' => $request->product_color,
+            'selling_price' => $request->selling_price,
+            'product_details' => $request->product_details,
+            'video_link' => $request->video_link,
+            'main_slider' => $request->main_slider,
+            'product_details' => $request->product_details,
+            'hot_deal' => $request->hot_deal,
+            'best_rated' => $request->best_rated,
+            'trend' => $request->trend,
+            'mid_slider' => $request->mid_slider,
+            'hot_new' => $request->hot_new,
+        ]);
+
+        $notification = array(
+            'messege' => 'Product Successfully Updated',
+            'alert-type' => 'success',
+        );
+        return Redirect()->route('all.product')->with($notification);
+    }
+
+    public function UpdateProductPhoto(Request $request, $id)
+    {
+
+        $old_one = $request->old_one;
+        $old_two = $request->old_two;
+        $old_three = $request->old_three;
+
+        $image_one = $request->file('image_one');
+        $image_two = $request->file('image_two');
+        $image_three = $request->file('image_three');
+
+        if ($image_one) {
+
+            unlink($old_one);
+            $image = $request->file('image_one');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(115, 115)->save('upload/product_images/' . $name_gen);
+            $save_url = 'upload/product_images/' . $name_gen;
+
+            Product::find($id)->update([
+                'image_one' => $save_url,
+            ]);
+
+            $notification = array(
+                'messege' => 'Image One Updated Successfully',
+                'alert-type' => 'success',
+            );
+            return Redirect()->route('all.product')->with($notification);
+        }
+
+        if ($image_two) {
+
+            unlink($old_two);
+            $image2 = $request->file('image_two');
+            $name_gen2 = hexdec(uniqid()) . '.' . $image2->getClientOriginalExtension();
+            Image::make($image2)->resize(115, 115)->save('upload/product_images/' . $name_gen2);
+            $save_url2 = 'upload/product_images/' . $name_gen2;
+
+            Product::find($id)->update([
+                'image_two' => $save_url2,
+            ]);
+
+            $notification = array(
+                'messege' => 'Image Two Updated Successfully',
+                'alert-type' => 'success',
+            );
+            return Redirect()->route('all.product')->with($notification);
+
+        }
+
+        if ($image_three) {
+
+            unlink($old_three);
+            $image3 = $request->file('image_three');
+            $name_gen3 = hexdec(uniqid()) . '.' . $image3->getClientOriginalExtension();
+            Image::make($image3)->resize(115, 115)->save('upload/product_images/' . $name_gen3);
+            $save_url3 = 'upload/product_images/' . $name_gen3;
+
+            Product::find($id)->update([
+                'image_three' => $save_url3,
+            ]);
+
+            $notification = array(
+                'messege' => 'Image Three Updated Successfully',
+                'alert-type' => 'success',
+            );
+            return Redirect()->route('all.product')->with($notification);
+        }
     }
 
 }
