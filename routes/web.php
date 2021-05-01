@@ -7,6 +7,8 @@ use App\Http\Controllers\category\CategoryController;
 use App\Http\Controllers\category\BrandController;
 use App\Http\Controllers\category\SubCategoryController;
 use App\Http\Controllers\category\CouponController;
+use App\Http\Controllers\post\PostCategoryController;
+use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -98,6 +100,23 @@ Route::post('/update/product/withoutphoto/{id}', [ProductController::class, 'Upd
 Route::post('/update/product/photo/{id}', [ProductController::class, 'UpdateProductPhoto']);
 Route::get('/active/product/{id}', [ProductController::class, 'active']);
 Route::get('/inactive/product/{id}', [ProductController::class, 'inactive']);
+
+// All Post Category Route
+Route::get('/all/post/category', [PostCategoryController::class, 'index'])->name('all.post.category');
+Route::post('/post/category/store', [PostCategoryController::class, 'store'])->name('post.category.store');
+Route::get('/edit/post/category/{id}', [PostCategoryController::class, 'edit']);
+Route::get('/delete/post/category/{id}', [PostCategoryController::class, 'destroy']);
+Route::post('/update/post/category/{id}', [PostCategoryController::class, 'update'])->name('post.category.update');
+
+//All Post Route
+Route::get('/admin/all/post', [PostController::class, 'index'])->name('all.post');
+Route::post('/admin/store/post', [PostController::class, 'store'])->name('store.post');
+Route::get('/admin/add/post', [PostController::class, 'create'])->name('add.post');
+Route::get('/admin/edit/post/{id}', [PostController::class, 'edit']);
+Route::get('/admin/view/post/{id}', [PostController::class, 'show'])->name('view.post');
+Route::get('/admin/delete/post/{id}', [PostController::class, 'destroy']);
+Route::post('/update/post/withoutphoto/{id}', [PostController::class, 'UpdatepostWithoutPhoto']);
+Route::post('/update/post/photo/{id}', [PostController::class, 'UpdatepostPhoto']);
 
 
 // Category

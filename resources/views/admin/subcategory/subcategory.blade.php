@@ -31,7 +31,7 @@
                             <tr>
                                 <td>{{ $key +1 }}</td>
                                 <td>{{ $row->subcategory_name }}</td>
-                                <td>{{ $row->category_name }}</td>
+                                <td>{{ $row->category->category_name }}</td>
                                 <td>
                                     <a href="{{ URL::to('edit/subcategory/' . $row->id) }} "
                                         class="btn btn-sm btn-info">Edit</a>

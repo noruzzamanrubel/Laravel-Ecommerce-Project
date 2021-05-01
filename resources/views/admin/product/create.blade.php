@@ -4,32 +4,39 @@
 
     <div class="card pd-20 pd-sm-40">
         <h6 class="card-body-title">New Product ADD
-            <a href="{{route('all.product')}}" class="btn btn-info btn-sm float-right">All Product</a>
+            <a href="{{ route('all.product') }}" class="btn btn-info btn-sm float-right">All Product</a>
         </h6>
         <p class="mg-b-20 mg-sm-b-30">New Product Add Form</p>
 
-        <form method="POST" action="{{route('store.product')}}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('store.product') }}" enctype="multipart/form-data">
             @csrf
 
             <div class="form-layout">
                 <div class="row mg-b-25">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label">Product Name: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" name="product_name" placeholder="Enter Product Name">
                         </div>
                     </div><!-- col-4 -->
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label">Product Code: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" name="product_code" placeholder="Enter Product Code">
                         </div>
                     </div><!-- col-4 -->
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="form-group">
                             <label class="form-control-label">Quantity: <span class="tx-danger">*</span></label>
                             <input class="form-control" type="text" name="product_quantity"
                                 placeholder="Enter Product Quantity">
+                        </div>
+                    </div><!-- col-4 -->
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label class="form-control-label">Discount Price: <span class="tx-danger">*</span></label>
+                            <input class="form-control" type="text" name="discount_price"
+                                placeholder="Enter Product Discount Price">
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-4">
@@ -88,7 +95,7 @@
                     <div class="col-lg-12">
                         <div class="form-group">
                             <label class="form-control-label">Product Details: <span class="tx-danger">*</span></label>
-                            <textarea class="form-control" name="product_details" id="summernote" ></textarea>
+                            <textarea class="form-control" name="product_details" id="summernote"></textarea>
                         </div>
                     </div><!-- col-4 -->
                     <div class="col-lg-12">

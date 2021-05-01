@@ -32,6 +32,13 @@
                     </div>
                 </div><!-- col-4 -->
                 <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="form-control-label">Product Discount Price: <span class="tx-danger">*</span></label>
+                        <br>
+                        <strong>{{ $show->discount_price }}</strong>
+                    </div>
+                </div><!-- col-4 -->
+                <div class="col-lg-4">
                     <div class="form-group mg-b-10-force">
                         <label class="form-control-label">Category: <span class="tx-danger">*</span></label>
                         <br>
@@ -92,7 +99,7 @@
                         <label class="form-control-label custom-file">Image One (Main Thumbnail): <span
                                 class="tx-danger">*</span></label>
                         <label class="custom-file">
-                            <img src="{{ URL::to($show->image_one) }}">
+                            <img src="{{ URL::to($show->image_one) }}" width="115px" height="115px">
                         </label>
                     </div>
                 </div><!-- col-4 -->
@@ -100,7 +107,7 @@
                     <div class="form-group">
                         <label class="form-control-label custom-file">Image Two: <span class="tx-danger">*</span></label>
                         <label class="custom-file">
-                            <img src="{{ URL::to($show->image_two) }}">
+                            <img src="{{ URL::to($show->image_two) }}"  width="115px" height="115px">
                         </label>
                     </div>
                 </div><!-- col-4 -->
@@ -108,7 +115,7 @@
                     <div class="form-group">
                         <label class="form-control-label custom-file">Image Three: <span class="tx-danger">*</span></label>
                         <label class="custom-file">
-                            <img src="{{ URL::to($show->image_three) }}">
+                            <img src="{{ URL::to($show->image_three) }}"  width="115px" height="115px">
                         </label>
                     </div>
                 </div><!-- col-4 -->

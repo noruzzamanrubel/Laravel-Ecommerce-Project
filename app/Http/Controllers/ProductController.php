@@ -100,6 +100,7 @@ class ProductController extends Controller
             'product_name' => $request->product_name,
             'product_code' => $request->product_code,
             'product_quantity' => $request->product_quantity,
+            'discount_price' => $request->discount_price,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
             'brand_id' => $request->brand_id,

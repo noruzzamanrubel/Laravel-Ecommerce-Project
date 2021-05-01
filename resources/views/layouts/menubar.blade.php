@@ -206,7 +206,7 @@
 	
 <!-- Banner -->
 @php
-	$banner= Product::where('main_slider', 1)->orderBy('id', 'DESC')->first();
+	$banner= Product::where('main_slider', 1)->orderBy('id', 'asc')->first();
 @endphp
 
 <div class="banner">
@@ -219,7 +219,7 @@
 					<h1 class="banner_text">{{$banner->product_name}}</h1>
 					<div class="banner_price">
 						@if ($banner->discount_price == NULL)
-						<span>${{$banner->selling_price}}</span>
+						<h4>${{$banner->selling_price}}</h4>
 						@else
 						<span>${{$banner->selling_price}}</span>${{$banner->discount_price}}
 						@endif
