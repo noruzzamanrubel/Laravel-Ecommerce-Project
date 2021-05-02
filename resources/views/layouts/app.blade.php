@@ -74,8 +74,11 @@
                                 <div class="top_bar_user">
                                     <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
                                     </div>
-                                    <div><a href="{{ route('register') }}">Register</a></div>
-                                    <div><a href="{{ route('login') }}">Sign in</a></div>
+                                    @auth
+                                        <div><a href="{{ route('login') }}">User Profile</a></div>
+                                    @else
+                                        <div><a href="{{ route('login') }}">Sign in/Register</a></div>
+                                    @endauth
                                 </div>
                             </div>
                         </div>
