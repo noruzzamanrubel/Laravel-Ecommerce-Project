@@ -116,6 +116,7 @@ class ProductController extends Controller
             'trend' => $request->trend,
             'mid_slider' => $request->mid_slider,
             'hot_new' => $request->hot_new,
+            'buyone_getone' => $request->buyone_getone,
             'status' => 1,
             'image_one' => $save_url,
             'image_two' => $save_url2,
@@ -198,6 +199,7 @@ class ProductController extends Controller
             'trend' => $request->trend,
             'mid_slider' => $request->mid_slider,
             'hot_new' => $request->hot_new,
+            'buyone_getone' => $request->buyone_getone,
         ]);
 
         $notification = array(
