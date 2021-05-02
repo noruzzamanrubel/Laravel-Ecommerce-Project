@@ -61,21 +61,25 @@
                                                 <li><a href="#">Japanese</a></li>
                                             </ul>
                                         </li>
-                                        <li>
-                                            <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">EUR Euro</a></li>
-                                                <li><a href="#">GBP British Pound</a></li>
-                                                <li><a href="#">JPY Japanese Yen</a></li>
-                                            </ul>
-                                        </li>
                                     </ul>
                                 </div>
                                 <div class="top_bar_user">
                                     <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
                                     </div>
                                     @auth
-                                        <div><a href="{{ route('login') }}">User Profile</a></div>
+                                        <div>
+                                            <ul class="standard_dropdown top_bar_dropdown">
+                                                <li>
+                                                    <a href="{{ route('login') }}">User Profile<i
+                                                            class="fas fa-chevron-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">Wishlist</a></li>
+                                                        <li><a href="#">Cart</a></li>
+                                                        <li><a href="#">Checkout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     @else
                                         <div><a href="{{ route('login') }}">Sign in/Register</a></div>
                                     @endauth

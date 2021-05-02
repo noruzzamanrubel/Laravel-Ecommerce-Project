@@ -19,14 +19,14 @@ class MainUserController extends Controller
     {
         $id = Auth::user()->id;
         $user = User::find($id);
-        return view('user.profile.view_profile', compact('user'));
+        return view('user.dashboard', compact('user'));
     }
 
     public function UserProfileEdit()
     {
         $id = Auth::user()->id;
         $editdata = User::find($id);
-        return view('user.profile.view_profile_edit', compact('editdata'));
+        return view('user.edit_profile', compact('editdata'));
     }
     public function UserProfileStore(Request $request)
     {
@@ -55,7 +55,7 @@ class MainUserController extends Controller
 
     public function UserPasswordEdit()
     {
-        return view('user.password.edit_password');
+        return view('user.password_change');
     }
 
     public function UserPasswordUpdate(Request $request)

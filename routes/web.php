@@ -38,7 +38,7 @@ Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', f
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
-    return view('user.index');
+    return view('user.dashboard');
 })->name('dashboard');
 
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
@@ -50,10 +50,10 @@ Route::post('/admin/password/update', [MainAdminController::class, 'AdminPasswor
 
 //User All Route
 Route::get('/user/logout', [MainUserController::class, 'Logout'])->name('user.logout');
-Route::get('/user/profile', [MainUserController::class, 'UserProfile'])->name('user.profile');
-Route::get('/user/profile/edit', [MainUserController::class, 'UserProfileEdit'])->name('profile.edit');
+Route::get('/dashboard', [MainUserController::class, 'UserProfile'])->name('user.profile');
+Route::get('/user/dashboard/edit', [MainUserController::class, 'UserProfileEdit'])->name('profile.edit');
 Route::post('/user/profile/store', [MainUserController::class, 'UserProfileStore'])->name('profile.store');
-Route::get('/user/password/edit', [MainUserController::class, 'UserPasswordEdit'])->name('user.password.edit');
+Route::get('/user/dashboard/password/edit', [MainUserController::class, 'UserPasswordEdit'])->name('user.password.edit');
 Route::post('/user/password/update', [MainUserController::class, 'UserPasswordUpdate'])->name('password.update');
 
 // All Category Route
