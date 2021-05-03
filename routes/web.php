@@ -11,6 +11,7 @@ use App\Http\Controllers\post\PostCategoryController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -117,6 +118,10 @@ Route::get('/admin/view/post/{id}', [PostController::class, 'show'])->name('view
 Route::get('/admin/delete/post/{id}', [PostController::class, 'destroy']);
 Route::post('/update/post/withoutphoto/{id}', [PostController::class, 'UpdatepostWithoutPhoto']);
 Route::post('/update/post/photo/{id}', [PostController::class, 'UpdatepostPhoto']);
+
+
+//Add Wishlist
+Route::get('add/wishlist/{id}',[WishlistController::class, 'addwishlist']);
 
 
 // Category
