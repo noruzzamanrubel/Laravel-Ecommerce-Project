@@ -12,6 +12,7 @@ use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\AddToCartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -122,6 +123,9 @@ Route::post('/update/post/photo/{id}', [PostController::class, 'UpdatepostPhoto'
 
 //Add Wishlist
 Route::get('add/wishlist/{id}',[WishlistController::class, 'addwishlist']);
+
+//Add To Cart
+Route::get('add/to/cart/{id}',[AddToCartController::class, 'addcart']);
 
 
 // Category

@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Auth;
-use DB;
+use App\Models\Wishlist;
 
 class WishlistController extends Controller
 {
@@ -15,14 +14,15 @@ class WishlistController extends Controller
             'product_id' => $id,
         );
 
-        $check = DB::table('wishlists')->where('user_id', $userid)->where('product_id', $id)->first();
+        $check = Wishlist::where('user_id', $userid)->where('product_id', $id)->first();
 
         if (Auth::Check()) {
 
             if ($check) {
                 return \Response::json(['error' => 'Product Allready has on your Wishlist']);
             } else {
-                DB::table('wishlists')->insert($data);
+                Wishlist::insert($data);
+
                 return \Response::json(['success' => 'Product Added On Wishlist']);
             }
 
