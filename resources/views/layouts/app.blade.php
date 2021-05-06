@@ -19,6 +19,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_responsive.css') }}">
 
     <!-- Toastr css -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
@@ -162,11 +164,11 @@
                                     <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                         <div class="cart_icon">
                                             <img src="{{ asset('frontend/images/cart.png') }}" alt="">
-                                            <div class="cart_count"><span>10</span></div>
+                                            <div class="cart_count"><span>{{ Cart::count() }}</span></div>
                                         </div>
                                         <div class="cart_content">
-                                            <div class="cart_text"><a href="#">Cart</a></div>
-                                            <div class="cart_price">$85</div>
+                                            <div class="cart_text"><a href="{{route('show.cart')}}">Cart</a></div>
+                                            <div class="cart_price">{{ Cart::subtotal() }}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -308,6 +310,7 @@
     <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
     <script src="{{ asset('frontend/js/product_custom.js') }}"></script>
+    <script src="{{ asset('frontend/js/cart_custom.js') }}"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 

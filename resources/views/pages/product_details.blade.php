@@ -40,33 +40,43 @@
                                 <div class="form-row">
 
                                     <!-- Product Quantity -->
-                                    <div class="form-group col-lg-12">
-                                        <label for="inputEmail4">Quantity</label>
-                                        <input class="form-control" id="quantity_input" type="number" pattern="[0-9]*" value="1">
+                                    <div class="form-group col-lg-12 product_quantity clearfix">
+                                        <span>Quantity: </span>
+                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                        <div class="quantity_buttons">
+                                            <div id="quantity_inc_button" class="quantity_inc quantity_control"><i
+                                                    class="fas fa-chevron-up"></i></div>
+                                            <div id="quantity_dec_button" class="quantity_dec quantity_control"><i
+                                                    class="fas fa-chevron-down"></i></div>
+                                        </div>
                                     </div>
 
                                     <!-- Product Color -->
-                                    <div class="form-group col-lg-12">
-                                        <label for="exampleFormControlSelect1">Color</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
+                                    @if ($product->product_color == null)
 
-                                    <div class="form-group col-lg-12">
-                                        <label for="exampleFormControlSelect2">Size</label>
-                                        <select class="form-control">
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                        </select>
-                                    </div>
+                                    @else
+                                        <div class="form-group col-lg-12 p-0">
+                                            <label for="exampleFormControlSelect1">Color</label>
+                                            <select class="form-control ml-0" name="color">
+                                                @foreach ($product_color as $color)
+                                                    <option value="{{ $color }}">{{ $color }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
+                                    <!-- Product Size -->
+                                    @if ($product->product_size == null)
+
+                                    @else
+                                        <div class="form-group col-lg-12 p-0">
+                                            <label for="exampleFormControlSelect2">Size</label>
+                                            <select class="form-control ml-0" name="size">
+                                                @foreach ($product_size as $size)
+                                                    <option value="{{ $size }}">{{ $size }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    @endif
                                 </div>
 
                                 @if ($product->discount_price == null)
