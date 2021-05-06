@@ -37,6 +37,7 @@ class ComposerStaticInit2d891285672303e8c94f5bcbb78d474f
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
         '40275907c8566c390185147049ef6e5d' => __DIR__ . '/..' . '/livewire/livewire/src/helpers.php',
+        '17d016dc52a631c1e74d2eb8fdd57342' => __DIR__ . '/..' . '/laravel/helpers/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -582,12 +583,15 @@ class ComposerStaticInit2d891285672303e8c94f5bcbb78d474f
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Guards\\AdminStatefulGuard' => __DIR__ . '/../..' . '/app/Guards/AdminStatefulGuard.php',
+        'App\\Http\\Controllers\\AddToCartController' => __DIR__ . '/../..' . '/app/Http/Controllers/AddToCartController.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\MainAdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainAdminController.php',
         'App\\Http\\Controllers\\MainUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/MainUserController.php',
         'App\\Http\\Controllers\\NewsletterController' => __DIR__ . '/../..' . '/app/Http/Controllers/NewsletterController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
+        'App\\Http\\Controllers\\ProductDetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductDetailsController.php',
+        'App\\Http\\Controllers\\WishlistController' => __DIR__ . '/../..' . '/app/Http/Controllers/WishlistController.php',
         'App\\Http\\Controllers\\category\\BrandController' => __DIR__ . '/../..' . '/app/Http/Controllers/category/BrandController.php',
         'App\\Http\\Controllers\\category\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/category/CategoryController.php',
         'App\\Http\\Controllers\\category\\CouponController' => __DIR__ . '/../..' . '/app/Http/Controllers/category/CouponController.php',
@@ -616,6 +620,7 @@ class ComposerStaticInit2d891285672303e8c94f5bcbb78d474f
         'App\\Models\\PostCategory' => __DIR__ . '/../..' . '/app/Models/PostCategory.php',
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Models\\Wishlist' => __DIR__ . '/../..' . '/app/Models/Wishlist.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

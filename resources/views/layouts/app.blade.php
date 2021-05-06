@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/plugins/slick-1.8.0/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_responsive.css') }}">
 
     <!-- Toastr css -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
@@ -27,6 +29,7 @@
 
     @php
         use App\Models\Admin\Category;
+        use App\Models\Wishlist;
         $category = Category::all();
     @endphp
 
@@ -137,14 +140,22 @@
                         <!-- Wishlist -->
                         <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                             <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-                                <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                                    <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}"
-                                            alt=""></div>
-                                    <div class="wishlist_content">
-                                        <div class="wishlist_text"><a href="#">Wishlist</a></div>
-                                        <div class="wishlist_count">115</div>
+                                @auth
+                                    @php
+                                        $wishlist = Wishlist::where('user_id', Auth::id())->get();
+                                    @endphp
+                                    <div class="wishlist d-flex flex-row align-items-center justify-content-end">
+                                        <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}"
+                                                alt=""></div>
+                                        <div class="wishlist_content">
+                                            <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                                            <div class="wishlist_count">{{ count($wishlist) }}</div>
+                                        </div>
                                     </div>
-                                </div>
+                                @else
+
+                                @endauth
+
 
                                 <!-- Cart -->
                                 <div class="cart">
@@ -296,6 +307,7 @@
     <script src="{{ asset('frontend/plugins/slick-1.8.0/slick.js') }}"></script>
     <script src="{{ asset('frontend/plugins/easing/easing.js') }}"></script>
     <script src="{{ asset('frontend/js/custom.js') }}"></script>
+    <script src="{{ asset('frontend/js/product_custom.js') }}"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 

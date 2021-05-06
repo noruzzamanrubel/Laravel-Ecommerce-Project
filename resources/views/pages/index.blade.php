@@ -199,7 +199,9 @@
                                                     @endif
 
                                                     <div class="product_name">
-                                                        <div><a href="product.html">{{ $row->product_name }}</a></div>
+                                                        <div><a
+                                                                href="{{ url('product/details/' . $row->id . '/' . $row->product_name) }}">{{ $row->product_name }}</a>
+                                                        </div>
                                                     </div>
                                                     <div class="product_extras">
                                                         <div class="product_color">
@@ -502,7 +504,8 @@
                                                                 <input type="radio" name="product_color"
                                                                     style="background:#999999">
                                                             </div>
-                                                            <button class="product_cart_button">Add to Cart</button>
+                                                            <button class="product_cart_button addcart"
+                                                                data-id="{{ $row->id }}">Add to Cart</button>
                                                         </div>
                                                     </div>
 
@@ -598,7 +601,8 @@
                                                                         <input type="radio" name="product_color"
                                                                             style="background:#999999">
                                                                     </div>
-                                                                    <button class="product_cart_button">Add to Cart</button>
+                                                                    <button class="product_cart_button addcart"
+                                                                        data-id="{{ $row->id }}">Add to Cart</button>
                                                                 </div>
                                                             </div>
 
@@ -1809,7 +1813,8 @@
                                                                         ${{ $row->discount_price }}<span>${{ $row->selling_price }}</span>
                                                                     </div>
                                                                 @endif
-                                                                <button class="btn btn-danger btn-sm">Add to Cart</button>
+                                                                <button class="btn btn-danger btn-sm addcart"
+                                                                    data-id="{{ $row->id }}">Add to Cart</button>
                                                             </div>
                                                         </div>
                                                         <ul class="trends_marks">
@@ -1981,7 +1986,8 @@
                                                 <div class="review d-flex flex-row align-items-start justify-content-start">
                                                     <div>
                                                         <div class="review_image"><img
-                                                                src="{{ asset('frontend/images/review_3.jpg') }}" alt="">
+                                                                src="{{ asset('frontend/images/review_3.jpg') }}"
+                                                                alt="">
                                                         </div>
                                                     </div>
                                                     <div class="review_content">
@@ -2143,105 +2149,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Brands -->
-
-                    <div class="brands">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="brands_slider_container">
-
-                                        <!-- Brands Slider -->
-
-                                        <div class="owl-carousel owl-theme brands_slider">
-
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_1.jpg') }}" alt=""></div>
-                                            </div>
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_2.jpg') }}" alt=""></div>
-                                            </div>
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_3.jpg') }}" alt=""></div>
-                                            </div>
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_4.jpg') }}" alt=""></div>
-                                            </div>
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_5.jpg') }}" alt=""></div>
-                                            </div>
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_6.jpg') }}" alt=""></div>
-                                            </div>
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_7.jpg') }}" alt=""></div>
-                                            </div>
-                                            <div class="owl-item">
-                                                <div class="brands_item d-flex flex-column justify-content-center"><img
-                                                        src="{{ asset('frontend/images/brands_8.jpg') }}" alt=""></div>
-                                            </div>
-
-                                        </div>
-
-                                        <!-- Brands Slider Navigation -->
-                                        <div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-                                        <div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Newsletter -->
-
-                    <div class="newsletter">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <div
-                                        class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
-                                        <div class="newsletter_title_container">
-                                            <div class="newsletter_icon"><img
-                                                    src="{{ asset('frontend/images/send.png') }}" alt="">
-                                            </div>
-                                            <div class="newsletter_title">Sign up for Newsletter</div>
-                                            <div class="newsletter_text">
-                                                <p>...and receive %20 coupon for first shopping.</p>
-                                            </div>
-                                        </div>
-                                        <div class="newsletter_content clearfix">
-                                            @if ($errors->any())
-                                                <div class="alert alert-danger">
-                                                    <ul>
-                                                        @foreach ($errors->all() as $error)
-                                                            <li>{{ $error }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            @endif
-                                            <form method="POST" action="{{ route('newsletter.store') }}"
-                                                class="newsletter_form">
-                                                @csrf
-                                                <input type="email" class="newsletter_input" required="required"
-                                                    placeholder="Enter your email address" name="email">
-                                                <button type="submit" class="newsletter_button">Subscribe</button>
-                                            </form>
-                                            <div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -2252,7 +2159,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.addcart').on('click', function() {
-                
+
                 var id = $(this).data('id');
                 if (id) {
                     $.ajax({
