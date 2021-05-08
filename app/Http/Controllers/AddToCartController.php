@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\Product;
 use Cart;
 
@@ -46,5 +46,15 @@ class AddToCartController extends Controller
     {
         $cart = Cart::content();
         return view('pages.cart', compact('cart'));
+    }
+
+    public function removecart($rowId)
+    {
+        Cart::remove($rowId);
+        $notification = array(
+            'message' => 'Successfully remove Cart',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }

@@ -49,7 +49,7 @@
                                                 <div class="cart_item_text">${{ $row->price * $row->qty }}</div>
                                             </div>
                                             <div class="cart_item_total cart_info_col">
-                                                <div class="cart_item_title">Action</div><br><br>
+                                                <div class="cart_item_title">Action</div><br>
                                                 <a href="{{ url('remove/cart/' . $row->rowId) }}"
                                                     class="btn btn-sm btn-danger">X</a>
                                             </div>

@@ -129,6 +129,7 @@ Route::get('add/wishlist/{id}',[WishlistController::class, 'addwishlist']);
 Route::get('add/to/cart/{id}',[AddToCartController::class, 'addcart']);
 Route::get('check',[AddToCartController::class, 'check']);
 Route::get('product/cart',[AddToCartController::class, 'ShowCart'])->name('show.cart');
+Route::get('remove/cart/{rowId}',[AddToCartController::class, 'removecart']);
 
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
