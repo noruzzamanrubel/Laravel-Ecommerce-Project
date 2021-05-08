@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AddToCartController;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -130,6 +131,10 @@ Route::get('add/to/cart/{id}',[AddToCartController::class, 'addcart']);
 Route::get('check',[AddToCartController::class, 'check']);
 Route::get('product/cart',[AddToCartController::class, 'ShowCart'])->name('show.cart');
 Route::get('remove/cart/{rowId}',[AddToCartController::class, 'removecart']);
+Route::post('update/cart/',[AddToCartController::class, 'updatecart'])->name('cart.update');
+
+//Checkout controller
+Route::get('user/checkout', [CheckoutController::class, 'checkout'])->name('user.checkout');
 
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);

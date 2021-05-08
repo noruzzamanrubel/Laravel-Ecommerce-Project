@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use App\Models\Product;
 use Cart;
+use Illuminate\Http\Request;
 
 class AddToCartController extends Controller
 {
@@ -57,4 +58,18 @@ class AddToCartController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    public function updatecart(Request $request)
+    {
+        $rowId = $request->cartid;
+        $qty = $request->qty;
+        Cart::update($rowId, $qty);
+        $notification = array(
+            'message' => 'Successfully Update Cart',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    
 }

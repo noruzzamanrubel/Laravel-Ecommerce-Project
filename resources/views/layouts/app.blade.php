@@ -77,8 +77,8 @@
                                                             class="fas fa-chevron-down"></i></a>
                                                     <ul>
                                                         <li><a href="#">Wishlist</a></li>
-                                                        <li><a href="#">Cart</a></li>
-                                                        <li><a href="#">Checkout</a></li>
+                                                        <li><a href="{{route('show.cart')}}">Cart</a></li>
+                                                        <li><a href="{{route('user.checkout')}}">Checkout</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>
