@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    @php
+    $setting = DB::table('settings')->first();
+    $chrage = $setting->shipping_chrage;
+    $vat = $setting->vat;
+    @endphp
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_responsive.css') }}">
 
@@ -71,24 +76,50 @@
                         <div class="row">
                             <div class="col-lg-4 col-12">
                                 <div class="coupon_section">
-                                    <h5>Apply Coupon</h5>
-                                    <form class="form-inline" method="POST" action="{{route('apply.coupon')}}">
-                                        @csrf
-                                        <label class="sr-only" for="inlineFormInputName2">Name</label>
-                                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" name="coupon"
-                                            placeholder="Enter Your Coupon">
-                                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
-                                    </form>
+                                    @if (Session::has('coupon'))
+
+                                    @else
+                                        <h5>Apply Coupon</h5>
+                                        <form class="form-inline" method="POST" action="{{ route('apply.coupon') }}">
+                                            @csrf
+                                            <label class="sr-only" for="inlineFormInputName2">Name</label>
+                                            <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+                                                name="coupon" placeholder="Enter Your Coupon">
+                                            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                        </form>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-lg-6 offset-lg-2 col-12">
                                 <div class="product_info">
                                     <ul class="list-group">
-                                        <li class="list-group-item">SubTotal <span class="float-right">{{Cart::subtotal()}}</span></li>
-                                        <li class="list-group-item">Coupon<span class="float-right">550</span></li>
-                                        <li class="list-group-item">Shipping Chrage<span class="float-right">550</span></li>
-                                        <li class="list-group-item">Vat<span class="float-right">550</span></li>
-                                        <li class="list-group-item">Total<span class="float-right">550</span></li>
+                                        @if (Session::has('coupon'))
+                                            <li class="list-group-item">SubTotal <span
+                                                    class="float-right">${{ Session::get('coupon')['balance'] }}</span>
+                                            </li>
+                                            <li class="list-group-item">Coupon:({{ Session::get('coupon')['name'] }})
+                                                <a href="" class="btn btn-danger btn-sm">X</a>
+                                                <span class="float-right">${{ Session::get('coupon')['discount'] }}
+                                                </span>
+                                            </li>
+                                        @else
+                                            <li class="list-group-item">SubTotal <span
+                                                    class="float-right">${{ Cart::Sabtotal() }}</span>
+                                            </li>
+                                        @endif
+
+                                        <li class="list-group-item">Shipping Chrage<span
+                                                class="float-right">${{ $chrage }}</span></li>
+                                        <li class="list-group-item">Vat<span
+                                                class="float-right">${{ $vat }}</span></li>
+                                        @if (Session::has('coupon'))
+                                            <li class="list-group-item">Total<span
+                                                    class="float-right">${{ Session::get('coupon')['balance'] + $chrage + $vat }}</span>
+                                            </li>
+                                        @else
+                                        <li class="list-group-item">Total<span class="float-right">{{Cart::Sabtotal() + $chrage + $vat }}</span></li>
+                                        @endif
+                                        
                                     </ul>
                                 </div>
                             </div>
