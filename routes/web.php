@@ -132,7 +132,7 @@ Route::get('product/cart',[AddToCartController::class, 'ShowCart'])->name('show.
 
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
-Route::post('product/addto/cart/{id}',[ProductDetailsController::class, 'addtocart']);
+Route::post('cart/product/add/{id}',[ProductDetailsController::class, 'addtocart']);
 
 
 // Category

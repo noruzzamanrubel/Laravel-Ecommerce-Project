@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Cart;
 
 class ProductDetailsController extends Controller
 {
@@ -34,9 +35,12 @@ class ProductDetailsController extends Controller
             $data['options']['color'] = $request->product_color;
             $data['options']['size'] = $request->product_size;
             Cart::add($data);
-           return redirect()->back();
-        } 
-        else {
+            $notification = array(
+                'message' => 'Successfully Add On Your Cart',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
+        } else {
             $data['id'] = $product->id;
             $data['name'] = $product->product_name;
             $data['qty'] = $request->qty;
@@ -46,7 +50,11 @@ class ProductDetailsController extends Controller
             $data['options']['color'] = $request->product_color;
             $data['options']['size'] = $request->product_size;
             Cart::add($data);
-            return redirect()->back();
+            $notification = array(
+                'message' => 'Successfully Add On Your Cart',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
         }
     }
 }
