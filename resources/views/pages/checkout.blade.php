@@ -72,9 +72,10 @@
                             <div class="col-lg-4 col-12">
                                 <div class="coupon_section">
                                     <h5>Apply Coupon</h5>
-                                    <form class="form-inline">
+                                    <form class="form-inline" method="POST" action="{{route('apply.coupon')}}">
+                                        @csrf
                                         <label class="sr-only" for="inlineFormInputName2">Name</label>
-                                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
+                                        <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" name="coupon"
                                             placeholder="Enter Your Coupon">
                                         <button type="submit" class="btn btn-primary mb-2">Submit</button>
                                     </form>
@@ -83,7 +84,7 @@
                             <div class="col-lg-6 offset-lg-2 col-12">
                                 <div class="product_info">
                                     <ul class="list-group">
-                                        <li class="list-group-item">SubTotal <span class="float-right">550</span></li>
+                                        <li class="list-group-item">SubTotal <span class="float-right">{{Cart::subtotal()}}</span></li>
                                         <li class="list-group-item">Coupon<span class="float-right">550</span></li>
                                         <li class="list-group-item">Shipping Chrage<span class="float-right">550</span></li>
                                         <li class="list-group-item">Vat<span class="float-right">550</span></li>

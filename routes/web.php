@@ -136,6 +136,7 @@ Route::post('update/cart/',[AddToCartController::class, 'updatecart'])->name('ca
 
 //Checkout controller
 Route::get('user/checkout', [CheckoutController::class, 'checkout'])->name('user.checkout');
+Route::post('user/apply/coupon', [CheckoutController::class, 'applycoupon'])->name('apply.coupon');
 
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
