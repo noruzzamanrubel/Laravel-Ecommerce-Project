@@ -76,7 +76,7 @@
                                                     <a href="{{ route('login') }}">User Profile<i
                                                             class="fas fa-chevron-down"></i></a>
                                                     <ul>
-                                                        <li><a href="#">Wishlist</a></li>
+                                                        <li><a href="{{route('user.wishlist')}}">Wishlist</a></li>
                                                         <li><a href="{{route('show.cart')}}">Cart</a></li>
                                                         <li><a href="{{route('user.checkout')}}">Checkout</a></li>
                                                     </ul>

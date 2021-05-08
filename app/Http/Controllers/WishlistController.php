@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
+
 use App\Models\Wishlist;
+use Auth;
 
 class WishlistController extends Controller
 {
@@ -29,5 +30,12 @@ class WishlistController extends Controller
         } else {
             return \Response::json(['error' => 'At first login your account']);
         }
+    }
+
+    public function wishlist()
+    {
+        $userid = Auth::id();
+        $product = Wishlist::where('user_id', $userid);
+        return response()->json($product);
     }
 }

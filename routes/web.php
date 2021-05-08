@@ -125,6 +125,7 @@ Route::post('/update/post/photo/{id}', [PostController::class, 'UpdatepostPhoto'
 
 //Add Wishlist
 Route::get('add/wishlist/{id}',[WishlistController::class, 'addwishlist']);
+Route::get('user/wishlist', [WishlistController::class, 'wishlist'])->name('user.wishlist');
 
 //Add To Cart
 Route::get('add/to/cart/{id}',[AddToCartController::class, 'addcart']);

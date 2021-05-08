@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\Brand;
 use App\Models\Admin\Category;
 use App\Models\Admin\Subcategory;
+use App\Models\Admin\Wishlist;
 
 class Product extends Model
 {
@@ -24,5 +25,9 @@ class Product extends Model
 
     public function brand(){
     	return $this->belongsTo(Brand::class,'brand_id','id');
+    }
+
+    public function wishlist(){
+    	return $this->belongsTo(Wishlist::class,'product_id','id');
     }
 }
