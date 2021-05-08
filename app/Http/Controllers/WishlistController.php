@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Wishlist;
 use Auth;
+use DB;
 
 class WishlistController extends Controller
 {
@@ -35,7 +36,11 @@ class WishlistController extends Controller
     public function wishlist()
     {
         $userid = Auth::id();
-        $product = Wishlist::where('user_id', $userid);
-        return response()->json($product);
+        $product = DB::table('wishlists')
+                    ->join('products', 'wishlists.product_id','products.id')
+                    ->select('products.*', 'wishlists.user_id')
+                    ->where('wishlists.user_id',$userid)
+                    ->get();
+        return view('pages.wishlist', compact('product'));
     }
 }
