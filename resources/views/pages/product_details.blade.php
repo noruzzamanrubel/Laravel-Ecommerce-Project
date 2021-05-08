@@ -2,6 +2,8 @@
 
 @section('content')
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_styles.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_responsive.css') }}">
     <!-- Single Product -->
 
     <div class="single_product">
@@ -36,13 +38,14 @@
                             {!! str_limit($product->product_details, $limit = 300) !!}
                         </div>
                         <div class="order_info d-flex flex-row">
-                            <form action="#">
+                            <form action="{{ url('product/addto/cart/ .$product->id') }}" method="POST">
+                                @csrf
                                 <div class="form-row">
 
                                     <!-- Product Quantity -->
                                     <div class="form-group col-lg-12 product_quantity clearfix">
                                         <span>Quantity: </span>
-                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+                                        <input id="quantity_input" type="text" pattern="[0-9]*" value="1" name="qty">
                                         <div class="quantity_buttons">
                                             <div id="quantity_inc_button" class="quantity_inc quantity_control"><i
                                                     class="fas fa-chevron-up"></i></div>
@@ -91,7 +94,7 @@
 
                                 {{-- <div class="product_price">$2000</div> --}}
                                 <div class="button_container">
-                                    <button type="button" class="button cart_button">Add to Cart</button>
+                                    <button type="submit" class="button cart_button">Add to Cart</button>
                                     <div class="product_fav"><i class="fas fa-heart"></i></div>
                                 </div>
 
