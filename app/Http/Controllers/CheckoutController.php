@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use Cart;
 use DB;
-use Session;
 use Illuminate\Http\Request;
+use Session;
 
 class CheckoutController extends Controller
 {
@@ -29,7 +29,7 @@ class CheckoutController extends Controller
         $coupon = $request->coupon;
         $check = DB::table('coupons')->where('coupon', $coupon)->first();
         if ($check) {
-            Session::put('coupon',[
+            Session::put('coupon', [
                 'name' => $check->coupon,
                 'discount' => $check->discount,
                 'balance' => Cart::Subtotal() - $check->discount,
@@ -46,5 +46,15 @@ class CheckoutController extends Controller
             );
             return redirect()->back()->with($notification);
         }
+    }
+
+    public function couponremove()
+    {
+        Session::forget('coupon');
+        $notification = array(
+            'message' => 'Coupon Remove Successfully',
+            'alert-type' => 'error',
+        );
+        return redirect()->back()->with($notification);
     }
 }

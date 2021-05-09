@@ -98,13 +98,13 @@
                                                     class="float-right">${{ Session::get('coupon')['balance'] }}</span>
                                             </li>
                                             <li class="list-group-item">Coupon:({{ Session::get('coupon')['name'] }})
-                                                <a href="" class="btn btn-danger btn-sm">X</a>
+                                                <a href="{{route('coupon.remove')}}" class="btn btn-danger btn-sm">X</a>
                                                 <span class="float-right">${{ Session::get('coupon')['discount'] }}
                                                 </span>
                                             </li>
                                         @else
                                             <li class="list-group-item">SubTotal <span
-                                                    class="float-right">${{ Cart::Sabtotal() }}</span>
+                                                    class="float-right">${{ Cart::Subtotal() }}</span>
                                             </li>
                                         @endif
 
@@ -117,7 +117,7 @@
                                                     class="float-right">${{ Session::get('coupon')['balance'] + $chrage + $vat }}</span>
                                             </li>
                                         @else
-                                        <li class="list-group-item">Total<span class="float-right">{{Cart::Sabtotal() + $chrage + $vat }}</span></li>
+                                        <li class="list-group-item">Total<span class="float-right">{{Cart::total() + $chrage + $vat }}</span></li>
                                         @endif
                                         
                                     </ul>
