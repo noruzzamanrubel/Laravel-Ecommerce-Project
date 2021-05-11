@@ -62,4 +62,5 @@ class CheckoutController extends Controller
         $cart= Cart::Content();
         return view('pages.payment', compact('cart'));
     }
+
 }

@@ -15,6 +15,7 @@ use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -139,6 +140,9 @@ Route::get('user/checkout', [CheckoutController::class, 'checkout'])->name('user
 Route::post('user/apply/coupon', [CheckoutController::class, 'applycoupon'])->name('apply.coupon');
 Route::get('user/coupon/remove', [CheckoutController::class, 'couponremove'])->name('coupon.remove');
 Route::get('user/payment/page', [CheckoutController::class, 'paymentpage'])->name('payment.stap');
+
+//Payment Controller
+Route::post('user/payment/process', [PaymentController::class, 'payment'])->name('payment.process');
 
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
