@@ -117,7 +117,7 @@
                                                     class="float-right">${{ Session::get('coupon')['balance'] + $chrage + $vat }}</span>
                                             </li>
                                         @else
-                                        <li class="list-group-item">Total<span class="float-right">{{Cart::total() + $chrage + $vat }}</span></li>
+                                        <li class="list-group-item">Total<span class="float-right">${{Cart::total() + $chrage + $vat }}</span></li>
                                         @endif
                                         
                                     </ul>
@@ -126,7 +126,7 @@
                         </div>
 
                         <div class="cart_buttons">
-                            <a href="{{ route('user.checkout') }}" class="button cart_button_checkout">Checkout</a>
+                            <a href="{{route('payment.stap')}}" class="button cart_button_checkout">Final Stap</a>
                         </div>
                     </div>
                 </div>

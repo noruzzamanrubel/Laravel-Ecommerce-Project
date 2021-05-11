@@ -57,4 +57,9 @@ class CheckoutController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+
+    public function paymentpage (){
+        $cart= Cart::Content();
+        return view('pages.payment', compact('cart'));
+    }
 }

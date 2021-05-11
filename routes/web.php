@@ -138,6 +138,7 @@ Route::post('update/cart/',[AddToCartController::class, 'updatecart'])->name('ca
 Route::get('user/checkout', [CheckoutController::class, 'checkout'])->name('user.checkout');
 Route::post('user/apply/coupon', [CheckoutController::class, 'applycoupon'])->name('apply.coupon');
 Route::get('user/coupon/remove', [CheckoutController::class, 'couponremove'])->name('coupon.remove');
+Route::get('user/payment/page', [CheckoutController::class, 'paymentpage'])->name('payment.stap');
 
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
