@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @include('layouts.menubar')
     @php
     $setting = DB::table('settings')->first();
     $chrage = $setting->shipping_chrage;
@@ -104,7 +104,7 @@
                     <div class="contact_form_container">
                         <div class="contact_form_title text-center">Shipping Address</div>
 
-                        <form method="POST" action="{{route('payment.process')}}">
+                        <form method="POST" action="{{ route('payment.process') }}">
                             @csrf
 
                             <div class="form-group">
@@ -137,8 +137,12 @@
                             </div>
                             <div class="form-group">
                                 <ul class="logos_list text-center">
-                                    <li><input type="radio" name="payment" class="mr-2" value="paypal"><img src="{{asset('frontend/images/paypal.png')}}" width="100px" height="60px"  alt=""></li>
-                                    <li><input type="radio" name="payment" class="mr-2" value="mastercard"><img src="{{asset('frontend/images/mastercard.jpg')}}" width="100px" height="60px"  alt=""></li>
+                                    <li><input type="radio" name="payment" class="mr-2" value="paypal"><img
+                                            src="{{ asset('frontend/images/paypal.png') }}" width="100px" height="60px"
+                                            alt=""></li>
+                                    <li><input type="radio" name="payment" class="mr-2" value="mastercard"><img
+                                            src="{{ asset('frontend/images/mastercard.jpg') }}" width="100px" height="60px"
+                                            alt=""></li>
                                 </ul>
                             </div>
                             <div class="contact_form_button text-center">

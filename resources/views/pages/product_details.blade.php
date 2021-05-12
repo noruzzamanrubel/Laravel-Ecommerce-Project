@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+    @include('layouts.menubar')
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/product_responsive.css') }}">
     <!-- Single Product -->
@@ -38,7 +38,7 @@
                             {!! str_limit($product->product_details, $limit = 300) !!}
                         </div>
                         <div class="order_info d-flex flex-row">
-                            <form action="{{ url('cart/product/add/'.$product->id) }}" method="POST">
+                            <form action="{{ url('cart/product/add/' . $product->id) }}" method="POST">
                                 @csrf
                                 <div class="form-row">
 

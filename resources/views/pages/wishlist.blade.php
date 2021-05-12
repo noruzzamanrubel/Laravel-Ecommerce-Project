@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.menubar')
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_responsive.css') }}">
 
@@ -38,8 +39,7 @@
                                             @endif
                                             <div class="cart_item_total cart_info_col">
                                                 <div class="cart_item_title">Action</div><br>
-                                                <a href="#"
-                                                    class="btn btn-sm btn-danger">X</a>
+                                                <a href="#" class="btn btn-sm btn-danger">X</a>
                                             </div>
                                         </div>
                                     </li>

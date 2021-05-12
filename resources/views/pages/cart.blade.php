@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.menubar')
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/cart_responsive.css') }}">
 
@@ -75,7 +76,7 @@
                         </div>
 
                         <div class="cart_buttons">
-                            <a href="{{route('user.checkout')}}" class="button cart_button_checkout">Checkout</a>
+                            <a href="{{ route('user.checkout') }}" class="button cart_button_checkout">Checkout</a>
                         </div>
                     </div>
                 </div>

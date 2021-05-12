@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('layouts.menubar')
     @php
     $setting = DB::table('settings')->first();
     $chrage = $setting->shipping_chrage;
@@ -98,7 +99,7 @@
                                                     class="float-right">${{ Session::get('coupon')['balance'] }}</span>
                                             </li>
                                             <li class="list-group-item">Coupon:({{ Session::get('coupon')['name'] }})
-                                                <a href="{{route('coupon.remove')}}" class="btn btn-danger btn-sm">X</a>
+                                                <a href="{{ route('coupon.remove') }}" class="btn btn-danger btn-sm">X</a>
                                                 <span class="float-right">${{ Session::get('coupon')['discount'] }}
                                                 </span>
                                             </li>
@@ -117,16 +118,17 @@
                                                     class="float-right">${{ Session::get('coupon')['balance'] + $chrage + $vat }}</span>
                                             </li>
                                         @else
-                                        <li class="list-group-item">Total<span class="float-right">${{Cart::total() + $chrage + $vat }}</span></li>
+                                            <li class="list-group-item">Total<span
+                                                    class="float-right">${{ Cart::total() + $chrage + $vat }}</span></li>
                                         @endif
-                                        
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
                         <div class="cart_buttons">
-                            <a href="{{route('payment.stap')}}" class="button cart_button_checkout">Final Stap</a>
+                            <a href="{{ route('payment.stap') }}" class="button cart_button_checkout">Final Stap</a>
                         </div>
                     </div>
                 </div>

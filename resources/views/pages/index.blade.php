@@ -3,6 +3,7 @@
 @section('content')
     <!-- Characteristics -->
     @include('layouts.menubar')
+    @include('layouts.slider')
     @php
     use App\Models\Admin\Category;
     use App\Models\Admin\Subcategory;

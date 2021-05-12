@@ -282,7 +282,14 @@ class ProductController extends Controller
     public function productsview($id)
     {
         $product = Product::where('subcategory_id', $id)->paginate();
-        return view('pages.all_products', compact('product'));
+        $category = Category::all();
+        $brands = Product::where('subcategory_id', $id)->select('brand_id')->groupBy('brand_id')->get();
+        return view('pages.all_products', compact('product', 'category', 'brands'));
+    }
+
+    public function allcategory($id){
+        $all_category = Product::where('category_id', $id)->paginate();
+        return view('pages.all_category', compact('all_category'));
     }
 
 }
