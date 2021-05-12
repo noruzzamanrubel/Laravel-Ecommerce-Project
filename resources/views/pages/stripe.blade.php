@@ -6,6 +6,7 @@
     $setting = DB::table('settings')->first();
     $chrage = $setting->shipping_chrage;
     $vat = $setting->vat;
+    $cart = Cart::content();
     @endphp
 
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/contact_styles.css') }}">
@@ -103,53 +104,7 @@
                 <div class="col-lg-4" style="border: 1px solid grey; padding:20px; Border-radius:10px">
                     <div class="contact_form_container">
                         <div class="contact_form_title text-center">Shipping Address</div>
-
-                        <form method="POST" action="{{ route('payment.process') }}">
-                            @csrf
-
-                            <div class="form-group">
-                                <label for="name">Full name</label>
-                                <input type="text" id="name" name="name" class="form-control" aria-describedby="emailHelp"
-                                    required=" " placeholder="Enter Your Full name">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Phone</label>
-                                <input type="text" name="phone" class="form-control" aria-describedby="emailHelp"
-                                    required=" " placeholder="Enter Your Phone Number">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Email</label>
-                                <input type="email" name="email" class="form-control" aria-describedby="emailHelp"
-                                    required=" " placeholder="Enter Your Email">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">City</label>
-                                <input type="text" name="city" class="form-control" aria-describedby="emailHelp"
-                                    required=" " placeholder="Enter Your City">
-                            </div>
-                            <div class="form-group">
-                                <label for="name">Address</label>
-                                <input type="text" name="address" class="form-control" aria-describedby="emailHelp"
-                                    required=" " placeholder="Enter Your Address">
-                            </div>
-                            <div class="contact_form_tiitle text-center">
-                                <h4>Payment By</h4>
-                            </div>
-                            <div class="form-group">
-                                <ul class="logos_list text-center">
-                                    <li><input type="radio" name="payment" class="mr-2" value="stripe"><img
-                                        src="{{ asset('frontend/images/mastercard.jpg') }}" width="100px" height="60px"
-                                        alt=""></li>
-                                    <li><input type="radio" name="payment" class="mr-2" value="paypal"><img
-                                            src="{{ asset('frontend/images/paypal.png') }}" width="100px" height="60px"
-                                            alt=""></li>
-                                </ul>
-                            </div>
-                            <div class="contact_form_button text-center">
-                                <button type="submit" class="btn btn-info">Pay Now</button>
-                            </div>
-                        </form>
-
+                        
                     </div>
                 </div>
             </div>

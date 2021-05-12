@@ -14,6 +14,7 @@
         </div>
         <div class="home_overlay"></div>
         <div class="home_content d-flex flex-column align-items-center justify-content-center">
+            php
             <h2 class="home_title">SubCategory Name</h2>
         </div>
     </div>
