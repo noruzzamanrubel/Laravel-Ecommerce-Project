@@ -105,6 +105,7 @@ Route::post('/update/product/withoutphoto/{id}', [ProductController::class, 'Upd
 Route::post('/update/product/photo/{id}', [ProductController::class, 'UpdateProductPhoto']);
 Route::get('/active/product/{id}', [ProductController::class, 'active']);
 Route::get('/inactive/product/{id}', [ProductController::class, 'inactive']);
+Route::get('/products/{id}', [ProductController::class, 'productsview']);
 
 // All Post Category Route
 Route::get('/all/post/category', [PostCategoryController::class, 'index'])->name('all.post.category');

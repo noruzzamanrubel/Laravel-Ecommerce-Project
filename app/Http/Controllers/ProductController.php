@@ -279,4 +279,10 @@ class ProductController extends Controller
         }
     }
 
+    public function productsview($id)
+    {
+        $product = Product::where('subcategory_id', $id)->paginate();
+        return view('pages.all_products', compact('product'));
+    }
+
 }

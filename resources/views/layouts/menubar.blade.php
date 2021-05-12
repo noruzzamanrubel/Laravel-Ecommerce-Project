@@ -36,7 +36,7 @@
 								<ul>
 									@foreach ($subcat as $item)
 										<li class="hassubs">
-											<a href="#">{{ $item->subcategory_name }}</a>
+											<a href="{{url('products/' .$row->id)}}">{{ $item->subcategory_name }}</a>
 										</li>
 									@endforeach
 								</ul>
