@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
+use Auth;
+use Cart;
+use Session;
 
 class PaymentController extends Controller
 {
@@ -27,8 +31,9 @@ class PaymentController extends Controller
 
     }
 
-    public function stripechrage()
+    public function stripechrage(Request $request)
     {
+        $total = $request->total;
         // Set your secret key. Remember to switch to your live secret key in production.
         // See your keys here: https://dashboard.stripe.com/apikeys
         \Stripe\Stripe::setApiKey('sk_test_51IqLTZGLh2TdVfNt0lvc9RtoHlCVDLcG2WPfdwdJt8t7uiuMncsdyfAiVZhUt8IhsJcL4oWYI2JXStBoYsgBhMeI00e2FfoAHw');
@@ -38,12 +43,13 @@ class PaymentController extends Controller
         $token = $_POST['stripeToken'];
 
         $charge = \Stripe\Charge::create([
-            'amount' => 999*100,
+            'amount' => $total*100,
             'currency' => 'usd',
             'description' => 'Product Purchase Details',
             'source' => $token,
             'metadata' => ['order_id' => uniqid()],
         ]);
-        dd($charge);
+        
+        
     }
 }
