@@ -136,7 +136,7 @@
                 <div class="col-lg-4" style="border: 1px solid grey; padding:20px; Border-radius:10px">
                     <div class="contact_form_container">
                         <div class="contact_form_title text-center">Payment Method</div>
-                        <form action="{{route(stripe.chrage)}}" method="post" id="payment-form">
+                        <form action="{{route('stripe.chrage')}}" method="post" id="payment-form">
                             @csrf
                             <div class="form-row">
                                 <label for="card-element">

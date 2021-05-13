@@ -38,11 +38,12 @@ class PaymentController extends Controller
         $token = $_POST['stripeToken'];
 
         $charge = \Stripe\Charge::create([
-            'amount' => 999,
+            'amount' => 999*100,
             'currency' => 'usd',
-            'description' => 'Example charge',
+            'description' => 'Product Purchase Details',
             'source' => $token,
-            'metadata' => ['order_id' => '6735'],
+            'metadata' => ['order_id' => uniqid()],
         ]);
+        dd($charge);
     }
 }
