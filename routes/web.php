@@ -145,6 +145,7 @@ Route::get('user/payment/page', [CheckoutController::class, 'paymentpage'])->nam
 
 //Payment Controller
 Route::post('user/payment/process', [PaymentController::class, 'payment'])->name('payment.process');
+Route::post('user/stripe/chrage', [PaymentController::class, 'stripechrage'])->name('stripe.chrage');
 
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
