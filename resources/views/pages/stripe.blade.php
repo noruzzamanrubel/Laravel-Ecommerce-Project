@@ -150,7 +150,9 @@
                                 <div id="card-errors" role="alert"></div>
                             </div>
                             <br>
-
+                            <input type="hidden" name="shipping" value="{{$chrage}}">
+                            <input type="hidden" name="vat" value="{{$vat}}">
+                            <input type="hidden" name="total" value="{{Cart::subtotal() + $chrage + $vat}}">
                             <button class="btn btn-info">Pay Now</button>
                         </form>
                     </div>
