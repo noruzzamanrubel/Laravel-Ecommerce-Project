@@ -85,9 +85,17 @@ class PaymentController extends Controller
         DB::table('shipping')->insert($shipping);
 
         //order details
-        $content= Cart::content();
-        $details= array();
-        $details['']
+        $content = Cart::content();
+        $details = array();
+        foreach ($content as $row) {
+            $order_id['order_id']= $order_id;
+            $order_id['product_id']= $row->id;
+            $order_id['product_name']= $row->name;
+            $order_id['size']= $row->options->name;
+            $order_id['quantity']= $order_id;
+            $order_id['singleprice']= $order_id;
+            $order_id['totalprice']= $order_id;
+        }
 
     }
 }
