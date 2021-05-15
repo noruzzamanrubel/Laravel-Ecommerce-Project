@@ -16,6 +16,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\OrderColtroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -150,6 +151,11 @@ Route::post('user/stripe/chrage', [PaymentController::class, 'stripechrage'])->n
 //Product details
 Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
 Route::post('cart/product/add/{id}',[ProductDetailsController::class, 'addtocart']);
+
+//order Controller
+Route::get('admin/painding/order',[OrderColtroller::class, 'neworder'])->name('new.order');
+
+
 
 
 // Category
