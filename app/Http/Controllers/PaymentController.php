@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Cart;
 use DB;
 use Illuminate\Http\Request;
 use Session;
@@ -49,7 +50,6 @@ class PaymentController extends Controller
             'source' => $token,
             'metadata' => ['order_id' => uniqid()],
         ]);
-        // dd($charge);
 
         $data = array();
         $data['user_id'] = Auth::id();
@@ -57,9 +57,10 @@ class PaymentController extends Controller
         $data['paying_amount'] = $charge->amount;
         $data['blnc_transection'] = $charge->balance_transaction;
         $data['stripe_order_id'] = $charge->metadata->order_id;
-        $data['shipping'] = $charge->shipping;
-        $data['vat'] = $charge->vat;
-        $data['total'] = $charge->total;
+        $data['shipping'] = $request->shipping;
+        $data['vat'] = $request->vat;
+        $data['total'] = $request->total;
+        $data['payment_type'] = $request->payment_type;
 
         if (Session::has('coupon')) {
             $data['subtotal'] = Session::get('coupon')['balance'];
@@ -77,25 +78,38 @@ class PaymentController extends Controller
         //shipping table
         $shipping = array();
         $shipping['order_id'] = $order_id;
-        $shipping['ship_name'] = $ship_name;
-        $shipping['ship_phone'] = $ship_phone;
-        $shipping['ship_email'] = $ship_email;
-        $shipping['ship_address'] = $ship_address;
-        $shipping['ship_city'] = $ship_city;
+        $shipping['ship_name'] = $request->ship_name;
+        $shipping['ship_phone'] = $request->ship_phone;
+        $shipping['ship_email'] = $request->ship_email;
+        $shipping['ship_address'] = $request->ship_address;
+        $shipping['ship_city'] = $request->ship_city;
         DB::table('shipping')->insert($shipping);
 
         //order details
         $content = Cart::content();
         $details = array();
         foreach ($content as $row) {
-            $order_id['order_id']= $order_id;
-            $order_id['product_id']= $row->id;
-            $order_id['product_name']= $row->name;
-            $order_id['size']= $row->options->name;
-            $order_id['quantity']= $order_id;
-            $order_id['singleprice']= $order_id;
-            $order_id['totalprice']= $order_id;
+            $details['order_id'] = $order_id;
+            $details['product_id'] = $row->id;
+            $details['product_name'] = $row->name;
+            $details['color'] = $row->options->color;
+            $details['size'] = $row->options->size;
+            $details['quantity'] = $row->qty;
+            $details['singleprice'] = $row->price;
+            $details['totalprice'] = $row->qty * $row->price;
+            DB::table('orders_details')->insert($details);
         }
+
+        Cart::destroy();
+        if (Session::has('coupon')) {
+            Session::forget('coupon');
+        }
+        $notification = array(
+            'message' => 'Order Process Successfully Done',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->to('/')->with($notification);
 
     }
 }
