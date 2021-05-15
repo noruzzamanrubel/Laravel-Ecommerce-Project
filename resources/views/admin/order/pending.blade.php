@@ -18,6 +18,7 @@
                                 <th class="wd-15p">Transection Id</th>
                                 <th class="wd-15p">Subtotal</th>
                                 <th class="wd-15p">Shipping</th>
+                                <th class="wd-15p">Vat</th>
                                 <th class="wd-15p">Total</th>
                                 <th class="wd-15p">Date</th>
                                 <th class="wd-15p">Status</th>
@@ -32,6 +33,7 @@
                                 <td>{{ $row->blnc_transection }}</td>
                                 <td>{{ $row->subtotal }}</td>
                                 <td>{{ $row->shipping }}</td>
+                                <td>{{ $row->vat }}</td>
                                 <td>{{ $row->total }}</td>
                                 <td>{{ $row->date }}</td>
                                 <td><span class="badge badge-warning">Painding</span></td>
