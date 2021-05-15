@@ -153,6 +153,13 @@
                             <input type="hidden" name="shipping" value="{{$chrage}}">
                             <input type="hidden" name="vat" value="{{$vat}}">
                             <input type="hidden" name="total" value="{{Cart::subtotal() + $chrage + $vat}}">
+
+                            <input type="hidden" name="ship_name" value="{{$data('name')}}">
+                            <input type="hidden" name="ship_phone" value="{{$data('phone')}}">
+                            <input type="hidden" name="ship_email" value="{{$data('email')}}">
+                            <input type="hidden" name="ship_address" value="{{$data('address')}}">
+                            <input type="hidden" name="ship_city" value="{{$data('city')}}">
+
                             <button class="btn btn-info">Pay Now</button>
                         </form>
                     </div>
