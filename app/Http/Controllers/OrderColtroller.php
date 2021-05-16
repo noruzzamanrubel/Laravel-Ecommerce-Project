@@ -24,10 +24,32 @@ class OrderColtroller extends Controller
 
         $details = DB::table('orders_details')
             ->join('products', 'orders_details.product_id', 'products.id')
-            ->select('orders_details.*', 'products.product_code', 'products.image_one')
+            ->select('orders_details.*', 'products.*')
             ->where('orders_details.order_id', $id)
             ->get();
 
         return view('admin.order.view_order', compact('order', 'shipping', 'details'));
+    }
+
+    public function paymentaccept($id)
+    {
+        DB::table('orders')->where('id', $id)->update(['status' => 1]);
+        $notification = array(
+            'message' => 'Payment Accept Done',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('new.order')->with($notification);
+    }
+
+    public function paymentcancel($id)
+    {
+        DB::table('orders')->where('id', $id)->update(['status' => 4]);
+        $notification = array(
+            'message' => 'Order Cancel',
+            'alert-type' => 'error',
+        );
+
+        return redirect()->route('new.order')->with($notification);
     }
 }

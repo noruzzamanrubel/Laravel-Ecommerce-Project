@@ -154,6 +154,8 @@ Route::post('cart/product/add/{id}', [ProductDetailsController::class, 'addtocar
 //order Controller
 Route::get('admin/painding/order', [OrderColtroller::class, 'neworder'])->name('new.order');
 Route::get('admin/view/order/{id}', [OrderColtroller::class, 'vieworder']);
+Route::get('admin/payment/accept/{id}', [OrderColtroller::class, 'paymentaccept']);
+Route::get('admin/payment/cancel/{id}', [OrderColtroller::class, 'paymentcancel']);
 
 // Category
 // Route::group([

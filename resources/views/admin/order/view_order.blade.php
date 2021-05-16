@@ -86,7 +86,7 @@
                                             @elseif($order->status==3)
                                                 <span class="badge badge-success">Delivered</span>
                                             @else
-                                                <span class="badge badge-danger">Cancle</span>
+                                                <span class="badge badge-danger">cancel</span>
                                             @endif
                                         </th>
                                     </tr>
@@ -97,46 +97,53 @@
                 </div>
 
             </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Product</strong> Details
+                        </div>
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="wd-15p">Product Id</th>
+                                        <th class="wd-15p">Product Name</th>
+                                        <th class="wd-15p">Image</th>
+                                        <th class="wd-15p">Color</th>
+                                        <th class="wd-15p">Size</th>
+                                        <th class="wd-15p">Quantity</th>
+                                        <th class="wd-15p">Single Price</th>
+                                        <th class="wd-15p">Total Price</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($details as $row)
+                                        <tr>
+                                            <td>{{ $row->product_id }}</td>
+                                            <td>{{ $row->product_name }}</td>
+                                            <td><img src="{{ URL::to($row->image_one) }}" width="115px" height="115px">
+                                            </td>
+                                            <td>{{ $row->product_color }}</td>
+                                            <td>{{ $row->product_size }}</td>
+                                            <td>{{ $row->quantity }}</td>
+                                            <td>{{ $row->singleprice }}</td>
+                                            <td>{{ $row->totalprice }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <a href="{{ url('admin/payment/accept/' . $order->id) }}" class="btn btn-info">Payment Accept</a>
+            <a href="{{ url('admin/payment/cancel/' . $order->id) }}" class="btn btn-danger float-right">Order Cancel</a>
 
         </div><!-- sl-page-title -->
-        <div class="row">
-            <div class="card pd-20 pd-sm-40">
-                <h6 class="card-body-title">Product Details</h6>
-
-
-                <div class="table-wrapper">
-                    <table id="datatable1" class="table display responsive nowrap">
-                        <thead>
-                            <tr>
-                                <th class="wd-15p">Product Id</th>
-                                <th class="wd-15p">Product Name</th>
-                                <th class="wd-15p">Image</th>
-                                <th class="wd-15p">Color</th>
-                                <th class="wd-15p">Size</th>
-                                <th class="wd-15p">Quantity</th>
-                                <th class="wd-15p">Single Price</th>
-                                <th class="wd-15p">Total Price</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($details as $row)
-                                <tr>
-                                    <td>{{ $row->product_id }}</td>
-                                    <td>{{ $row->product_name }}</td>
-                                    <td><img src="{{ URL::to($row->image_one) }}" width="115px" height="115px"></td>
-                                    <td>{{ $row->color }}</td>
-                                    <td>{{ $row->size }}</td>
-                                    <td>{{ $row->quantity }}</td>
-                                    <td>{{ $row->singleprice }}</td>
-                                    <td>{{ $row->totalprice }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div><!-- table-wrapper -->
-            </div><!-- card -->
-        </div>
 
     </div><!-- sl-mainpanel -->
 @endsection
