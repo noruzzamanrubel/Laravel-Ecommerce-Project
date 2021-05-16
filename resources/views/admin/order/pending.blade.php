@@ -31,14 +31,14 @@
                             <tr>
                                 <td>{{ $row->payment_type }}</td>
                                 <td>{{ $row->blnc_transection }}</td>
-                                <td>{{ $row->subtotal }}</td>
-                                <td>{{ $row->shipping }}</td>
-                                <td>{{ $row->vat }}</td>
-                                <td>{{ $row->total }}</td>
+                                <td>${{ $row->subtotal }}</td>
+                                <td>${{ $row->shipping }}</td>
+                                <td>${{ $row->vat }}</td>
+                                <td>${{ $row->total }}</td>
                                 <td>{{ $row->date }}</td>
                                 <td><span class="badge badge-warning">Painding</span></td>
                                 <td>
-                                    <a href="{{ URL::to('edit/coupon/' . $row->id) }} "
+                                    <a href="{{ URL::to('admin/view/order/' . $row->id) }} "
                                         class="btn btn-sm btn-info">View</a>
                                 </td>
                             </tr>

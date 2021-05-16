@@ -1,22 +1,22 @@
 <?php
 
+use App\Http\Controllers\AddToCartController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\category\BrandController;
+use App\Http\Controllers\category\CategoryController;
+use App\Http\Controllers\category\CouponController;
+use App\Http\Controllers\category\SubCategoryController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MainAdminController;
 use App\Http\Controllers\MainUserController;
-use App\Http\Controllers\category\CategoryController;
-use App\Http\Controllers\category\BrandController;
-use App\Http\Controllers\category\SubCategoryController;
-use App\Http\Controllers\category\CouponController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\OrderColtroller;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\post\PostCategoryController;
 use App\Http\Controllers\post\PostController;
-use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\AddToCartController;
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\OrderColtroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -126,17 +126,16 @@ Route::get('/admin/delete/post/{id}', [PostController::class, 'destroy']);
 Route::post('/update/post/withoutphoto/{id}', [PostController::class, 'UpdatepostWithoutPhoto']);
 Route::post('/update/post/photo/{id}', [PostController::class, 'UpdatepostPhoto']);
 
-
 //Add Wishlist
-Route::get('add/wishlist/{id}',[WishlistController::class, 'addwishlist']);
+Route::get('add/wishlist/{id}', [WishlistController::class, 'addwishlist']);
 Route::get('user/wishlist', [WishlistController::class, 'wishlist'])->name('user.wishlist');
 
 //Add To Cart
-Route::get('add/to/cart/{id}',[AddToCartController::class, 'addcart']);
-Route::get('check',[AddToCartController::class, 'check']);
-Route::get('product/cart',[AddToCartController::class, 'ShowCart'])->name('show.cart');
-Route::get('remove/cart/{rowId}',[AddToCartController::class, 'removecart']);
-Route::post('update/cart/',[AddToCartController::class, 'updatecart'])->name('cart.update');
+Route::get('add/to/cart/{id}', [AddToCartController::class, 'addcart']);
+Route::get('check', [AddToCartController::class, 'check']);
+Route::get('product/cart', [AddToCartController::class, 'ShowCart'])->name('show.cart');
+Route::get('remove/cart/{rowId}', [AddToCartController::class, 'removecart']);
+Route::post('update/cart/', [AddToCartController::class, 'updatecart'])->name('cart.update');
 
 //Checkout controller
 Route::get('user/checkout', [CheckoutController::class, 'checkout'])->name('user.checkout');
@@ -149,14 +148,12 @@ Route::post('user/payment/process', [PaymentController::class, 'payment'])->name
 Route::post('user/stripe/chrage', [PaymentController::class, 'stripechrage'])->name('stripe.chrage');
 
 //Product details
-Route::get('product/details/{id}/{product_name}',[ProductDetailsController::class, 'ProductdView']);
-Route::post('cart/product/add/{id}',[ProductDetailsController::class, 'addtocart']);
+Route::get('product/details/{id}/{product_name}', [ProductDetailsController::class, 'ProductdView']);
+Route::post('cart/product/add/{id}', [ProductDetailsController::class, 'addtocart']);
 
 //order Controller
-Route::get('admin/painding/order',[OrderColtroller::class, 'neworder'])->name('new.order');
-
-
-
+Route::get('admin/painding/order', [OrderColtroller::class, 'neworder'])->name('new.order');
+Route::get('admin/view/order/{id}', [OrderColtroller::class, 'vieworder']);
 
 // Category
 // Route::group([
