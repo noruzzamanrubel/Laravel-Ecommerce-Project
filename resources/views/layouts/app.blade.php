@@ -54,18 +54,17 @@
                                 </div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a>
                             </div>
                             <div class="top_bar_content ml-auto">
-                                <div class="top_bar_menu">
-                                    <ul class="standard_dropdown top_bar_dropdown">
-                                        <li>
-                                            <a href="#">English<i class="fas fa-chevron-down"></i></a>
-                                            <ul>
-                                                <li><a href="#">Italian</a></li>
-                                                <li><a href="#">Spanish</a></li>
-                                                <li><a href="#">Japanese</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
+                                @auth
+                                    <div class="top_bar_menu">
+                                        <ul class="standard_dropdown top_bar_dropdown">
+                                            <li>
+                                                <a href="" data-toggle="modal" data-target="#exampleModal">My Order
+                                                    Tracking</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                @endauth
+
                                 <div class="top_bar_user">
                                     <div class="user_icon"><img src="{{ asset('frontend/images/user.svg') }}" alt="">
                                     </div>
@@ -148,7 +147,8 @@
                                         <div class="wishlist_icon"><img src="{{ asset('frontend/images/heart.png') }}"
                                                 alt=""></div>
                                         <div class="wishlist_content">
-                                            <div class="wishlist_text"><a href="{{ route('user.wishlist') }}">Wishlist</a>
+                                            <div class="wishlist_text"><a
+                                                    href="{{ route('user.wishlist') }}">Wishlist</a>
                                             </div>
                                             <div class="wishlist_count">{{ count($wishlist) }}</div>
                                         </div>
@@ -336,6 +336,32 @@
                     </div>
                 </div>
             </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('order.tracking') }}">
+                        @csrf
+                        <div class="model-body">
+                            <label for="">Status Code</label>
+                            <input type="text" name="code" required="" class="form-control"
+                                placeholder="Your Order Status Code">
+                        </div>
+                        <button class="btn btn-danger mt-3" type="submit">Track Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>

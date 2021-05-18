@@ -36,8 +36,7 @@
                                 <th scope="col">Payment ID</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Date</th>
-                                <th scope="col">Month</th>
-                                <th scope="col">Year</th>
+                                <th scope="col">Status Code</th>
 
                             </tr>
                         </thead>
@@ -48,8 +47,7 @@
                                     <td scope="col">{{$row->payment_id}}</td>
                                     <td scope="col">${{$row->total}}</td>
                                     <td scope="col">{{$row->date}}</td>
-                                    <td scope="col">{{$row->month}}</td>
-                                    <td scope="col">{{$row->year}}</td>
+                                    <td scope="col">{{$row->status_code}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

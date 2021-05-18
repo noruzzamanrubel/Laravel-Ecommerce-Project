@@ -163,6 +163,8 @@ Route::get('admin/delivery/order', [OrderColtroller::class, 'deliveryorder'])->n
 Route::get('admin/process/delivery/{id}', [OrderColtroller::class, 'processdelivery']);
 Route::get('admin/delivery/done/{id}', [OrderColtroller::class, 'deliverydone']);
 
+Route::post('order/tracking', [OrderColtroller::class, 'ordertracking'])->name('order.tracking');
+
 // Category
 // Route::group([
 //     'prefix' => 'categories',

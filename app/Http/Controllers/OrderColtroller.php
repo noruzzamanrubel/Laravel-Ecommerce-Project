@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use DB;
+use Illuminate\Http\Request;
 
 class OrderColtroller extends Controller
 {
@@ -97,5 +98,23 @@ class OrderColtroller extends Controller
         );
 
         return redirect()->route('admin.delivery.order')->with($notification);
+    }
+
+    public function ordertracking(Request $request)
+    {
+        $code = $request->code;
+        $track = DB::table('orders')->where('status_code', $code)->first();
+
+        if ($track) {
+            return view('pages.tracking', compact('track'));
+        } else {
+            $notification = array(
+                'message' => 'Status code is invaild',
+                'alert-type' => 'error',
+            );
+
+            return redirect()->back()->with($notification);
+        }
+
     }
 }
