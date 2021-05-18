@@ -17,6 +17,7 @@ use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -162,8 +163,10 @@ Route::get('admin/process/order', [OrderColtroller::class, 'processorder'])->nam
 Route::get('admin/delivery/order', [OrderColtroller::class, 'deliveryorder'])->name('admin.delivery.order');
 Route::get('admin/process/delivery/{id}', [OrderColtroller::class, 'processdelivery']);
 Route::get('admin/delivery/done/{id}', [OrderColtroller::class, 'deliverydone']);
-
 Route::post('order/tracking', [OrderColtroller::class, 'ordertracking'])->name('order.tracking');
+
+Route::get('admin/today/order', [ReportController::class, 'todayorder'])->name('today.order');
+Route::get('admin/today/deliver', [ReportController::class, 'todaydeliver'])->name('today.deliver');
 
 // Category
 // Route::group([

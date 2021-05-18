@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Auth;
 use Cart;
 use DB;
+use App\Models\Order;
+use App\Models\Order_detail;
+use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Session;
 
@@ -74,7 +77,7 @@ class PaymentController extends Controller
         $data['month'] = date('F');
         $data['year'] = date('Y');
 
-        $order_id = DB::table('orders')->insertGetId($data);
+        $order_id = Order::insertGetId($data);
 
         //shipping table
         $shipping = array();

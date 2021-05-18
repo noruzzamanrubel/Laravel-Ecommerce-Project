@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use DB;
 use Illuminate\Http\Request;
+use App\Models\Order;
+use DB;
 
 class OrderColtroller extends Controller
 {
     public function neworder()
     {
-        $order = DB::table('orders')->where('status', 0)->get();
+        $order = Order::where('status', 0)->get();
         return view('admin.order.pending', compact('order'));
     }
 
@@ -34,7 +35,7 @@ class OrderColtroller extends Controller
 
     public function paymentaccept($id)
     {
-        DB::table('orders')->where('id', $id)->update(['status' => 1]);
+        Order::where('id', $id)->update(['status' => 1]);
         $notification = array(
             'message' => 'Payment Accept Done',
             'alert-type' => 'success',
@@ -45,7 +46,7 @@ class OrderColtroller extends Controller
 
     public function paymentcancel($id)
     {
-        DB::table('orders')->where('id', $id)->update(['status' => 4]);
+        Order::where('id', $id)->update(['status' => 4]);
         $notification = array(
             'message' => 'Order Cancel',
             'alert-type' => 'error',
@@ -56,31 +57,31 @@ class OrderColtroller extends Controller
 
     public function acceptorder()
     {
-        $order = DB::table('orders')->where('status', 1)->get();
+        $order = Order::where('status', 1)->get();
         return view('admin.order.pending', compact('order'));
     }
 
     public function cancelorder()
     {
-        $order = DB::table('orders')->where('status', 4)->get();
+        $order = Order::where('status', 4)->get();
         return view('admin.order.pending', compact('order'));
     }
 
     public function processorder()
     {
-        $order = DB::table('orders')->where('status', 2)->get();
+        $order = Order::where('status', 2)->get();
         return view('admin.order.pending', compact('order'));
     }
 
     public function deliveryorder()
     {
-        $order = DB::table('orders')->where('status', 3)->get();
+        $order = Order::where('status', 3)->get();
         return view('admin.order.pending', compact('order'));
     }
 
     public function processdelivery($id)
     {
-        DB::table('orders')->where('id', $id)->update(['status' => 2]);
+        Order::where('id', $id)->update(['status' => 2]);
         $notification = array(
             'message' => 'Sent to Process Delivery',
             'alert-type' => 'success',
@@ -91,7 +92,7 @@ class OrderColtroller extends Controller
 
     public function deliverydone($id)
     {
-        DB::table('orders')->where('id', $id)->update(['status' => 3]);
+        Order::where('id', $id)->update(['status' => 3]);
         $notification = array(
             'message' => 'Product Delivery Done',
             'alert-type' => 'success',
@@ -103,7 +104,7 @@ class OrderColtroller extends Controller
     public function ordertracking(Request $request)
     {
         $code = $request->code;
-        $track = DB::table('orders')->where('status_code', $code)->first();
+        $track = Order::where('status_code', $code)->first();
 
         if ($track) {
             return view('pages.tracking', compact('track'));
