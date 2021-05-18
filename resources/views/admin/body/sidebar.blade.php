@@ -62,7 +62,10 @@
             </a><!-- sl-menu-link -->
             <ul class="sl-menu-sub nav flex-column">
                 <li class="nav-item"><a href="{{route('new.order')}}" class="nav-link">New Order</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">Others</a></li>
+                <li class="nav-item"><a href="{{route('admin.accept.order')}}" class="nav-link">Accept Order</a></li>
+                <li class="nav-item"><a href="{{route('admin.cancel.order')}}" class="nav-link">Cancel Order</a></li>
+                <li class="nav-item"><a href="{{route('admin.process.order')}}" class="nav-link">Process Delivery</a></li>
+                <li class="nav-item"><a href="{{route('admin.delivery.order')}}" class="nav-link">Delivery Success</a></li>
             </ul>
 
             <a href="#" class="sl-menu-link">

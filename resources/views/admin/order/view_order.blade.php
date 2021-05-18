@@ -140,8 +140,19 @@
                 </div>
             </div>
             <br>
-            <a href="{{ url('admin/payment/accept/' . $order->id) }}" class="btn btn-info">Payment Accept</a>
-            <a href="{{ url('admin/payment/cancel/' . $order->id) }}" class="btn btn-danger float-right">Order Cancel</a>
+            @if ($order->status == 0)
+                <a href="{{ url('admin/payment/accept/' . $order->id) }}" class="btn btn-info">Payment Accept</a>
+                <a href="{{ url('admin/payment/cancel/' . $order->id) }}" class="btn btn-danger float-right">Order
+                    Cancel</a>
+            @elseif($order->status == 1)
+                <a href="{{ url('admin/process/delivery/' . $order->id) }}" class="btn btn-info">Process Delivery</a>
+            @elseif($order->status == 2)
+                <a href="{{ url('admin/delivery/done/' . $order->id) }}" class="btn btn-success">Delivery Done</a>
+            @elseif($order->status == 4)
+            <strong class="text-danger text-center">This Product is Successfully Cancel</strong>
+            @else
+                <strong class="text-success text-center">This Product is Successfully Delivered</strong>
+            @endif
 
         </div><!-- sl-page-title -->
 

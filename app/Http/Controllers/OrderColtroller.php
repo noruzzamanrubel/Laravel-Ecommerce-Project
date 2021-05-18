@@ -52,4 +52,50 @@ class OrderColtroller extends Controller
 
         return redirect()->route('new.order')->with($notification);
     }
+
+    public function acceptorder()
+    {
+        $order = DB::table('orders')->where('status', 1)->get();
+        return view('admin.order.pending', compact('order'));
+    }
+
+    public function cancelorder()
+    {
+        $order = DB::table('orders')->where('status', 4)->get();
+        return view('admin.order.pending', compact('order'));
+    }
+
+    public function processorder()
+    {
+        $order = DB::table('orders')->where('status', 2)->get();
+        return view('admin.order.pending', compact('order'));
+    }
+
+    public function deliveryorder()
+    {
+        $order = DB::table('orders')->where('status', 3)->get();
+        return view('admin.order.pending', compact('order'));
+    }
+
+    public function processdelivery($id)
+    {
+        DB::table('orders')->where('id', $id)->update(['status' => 2]);
+        $notification = array(
+            'message' => 'Sent to Process Delivery',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('admin.accept.order')->with($notification);
+    }
+
+    public function deliverydone($id)
+    {
+        DB::table('orders')->where('id', $id)->update(['status' => 3]);
+        $notification = array(
+            'message' => 'Product Delivery Done',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('admin.delivery.order')->with($notification);
+    }
 }

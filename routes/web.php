@@ -156,6 +156,12 @@ Route::get('admin/painding/order', [OrderColtroller::class, 'neworder'])->name('
 Route::get('admin/view/order/{id}', [OrderColtroller::class, 'vieworder']);
 Route::get('admin/payment/accept/{id}', [OrderColtroller::class, 'paymentaccept']);
 Route::get('admin/payment/cancel/{id}', [OrderColtroller::class, 'paymentcancel']);
+Route::get('admin/accept/order', [OrderColtroller::class, 'acceptorder'])->name('admin.accept.order');
+Route::get('admin/cancel/order', [OrderColtroller::class, 'cancelorder'])->name('admin.cancel.order');
+Route::get('admin/process/order', [OrderColtroller::class, 'processorder'])->name('admin.process.order');
+Route::get('admin/delivery/order', [OrderColtroller::class, 'deliveryorder'])->name('admin.delivery.order');
+Route::get('admin/process/delivery/{id}', [OrderColtroller::class, 'processdelivery']);
+Route::get('admin/delivery/done/{id}', [OrderColtroller::class, 'deliverydone']);
 
 // Category
 // Route::group([
