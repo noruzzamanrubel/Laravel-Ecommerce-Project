@@ -38,7 +38,6 @@
                                 <th scope="col">Date</th>
                                 <th scope="col">Month</th>
                                 <th scope="col">Year</th>
-                                <th scope="col">View</th>
 
                             </tr>
                         </thead>
@@ -51,7 +50,6 @@
                                     <td scope="col">{{$row->date}}</td>
                                     <td scope="col">{{$row->month}}</td>
                                     <td scope="col">{{$row->year}}</td>
-                                    <td scope="col"><a href="#" class="btn btn-info btn-sm">View</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
