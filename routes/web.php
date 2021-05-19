@@ -169,6 +169,9 @@ Route::get('admin/today/order', [ReportController::class, 'todayorder'])->name('
 Route::get('admin/today/deliver', [ReportController::class, 'todaydeliver'])->name('today.deliver');
 Route::get('admin/this/month', [ReportController::class, 'thismonth'])->name('this.month');
 Route::get('admin/search/report', [ReportController::class, 'search'])->name('search.report');
+Route::post('admin/search/by/date', [ReportController::class, 'searchByDate'])->name('search.by.date');
+Route::post('admin/search/by/month', [ReportController::class, 'searchByMonth'])->name('search.by.month');
+Route::post('admin/search/by/year', [ReportController::class, 'searchByYear'])->name('search.by.year');
 
 // Category
 // Route::group([

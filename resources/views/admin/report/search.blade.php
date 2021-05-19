@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-4 col-12">
                 <div class="card pd-20 pd-sm-40">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('search.by.date')}}">
                         <div class="modal-body pd-20">
                             @csrf
                             <div class="form-group">
@@ -25,7 +25,7 @@
             </div>
             <div class="col-lg-4 col-12">
                 <div class="card pd-20 pd-sm-40">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('search.by.month')}}">
                         <div class="modal-body pd-20">
                             @csrf
                             <div class="form-group">
@@ -54,7 +54,7 @@
             </div>
             <div class="col-lg-4 col-12">
                 <div class="card pd-20 pd-sm-40">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('search.by.year')}}">
                         <div class="modal-body pd-20">
                             @csrf
                             <div class="form-group">
