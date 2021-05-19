@@ -20,10 +20,16 @@ class ReportController extends Controller
         return view('admin.report.today_delivery', compact('order'));
     }
 
-    public function thismonth(){
+    public function thismonth()
+    {
 
         $month = date('F');
         $order = Order::where('status', 3)->where('month', $month)->get();
         return view('admin.report.this_month', compact('order'));
+    }
+
+    public function search()
+    {
+        return view('admin.report.search');
     }
 }
