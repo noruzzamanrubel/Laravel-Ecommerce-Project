@@ -19,4 +19,11 @@ class ReportController extends Controller
         $order = Order::where('status', 3)->where('date', $today)->get();
         return view('admin.report.today_delivery', compact('order'));
     }
+
+    public function thismonth(){
+
+        $month = date('F');
+        $order = Order::where('status', 3)->where('month', $month)->get();
+        return view('admin.report.this_month', compact('order'));
+    }
 }

@@ -4,12 +4,12 @@
 
     <div class="sl-pagebody">
         <div class="sl-page-title">
-            <h5>Today Order Reports</h5>
+            <h5>Monthly Order Reports</h5>
 
         </div><!-- sl-page-title -->
 
         <div class="card pd-20 pd-sm-40">
-            <h6 class="card-body-title">Today Order List</h6>
+            <h6 class="card-body-title">Monthly Order List</h6>
             <div class="table-wrapper">
                 <table id="datatable1" class="table display responsive nowrap">
                     <thead>

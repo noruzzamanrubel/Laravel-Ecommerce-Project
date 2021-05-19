@@ -167,6 +167,7 @@ Route::post('order/tracking', [OrderColtroller::class, 'ordertracking'])->name('
 
 Route::get('admin/today/order', [ReportController::class, 'todayorder'])->name('today.order');
 Route::get('admin/today/deliver', [ReportController::class, 'todaydeliver'])->name('today.deliver');
+Route::get('admin/this/month', [ReportController::class, 'thismonth'])->name('this.month');
 
 // Category
 // Route::group([
