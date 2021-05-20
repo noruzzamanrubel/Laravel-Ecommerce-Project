@@ -16,8 +16,9 @@ use App\Http\Controllers\post\PostCategoryController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailsController;
-use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\UserRoleController;
+use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -172,6 +173,8 @@ Route::get('admin/search/report', [ReportController::class, 'search'])->name('se
 Route::post('admin/search/by/date', [ReportController::class, 'searchByDate'])->name('search.by.date');
 Route::post('admin/search/by/month', [ReportController::class, 'searchByMonth'])->name('search.by.month');
 Route::post('admin/search/by/year', [ReportController::class, 'searchByYear'])->name('search.by.year');
+
+Route::get('admin/all/user', [UserRoleController::class, 'UserRole'])->name('admin.all.user');
 
 // Category
 // Route::group([
