@@ -58,6 +58,7 @@
                     </tbody>
                 </table>
             </div><!-- table-wrapper -->
+            <a href="{{ URL::to('admin/download/report') }} " class="btn btn-primary btn-sm float-right ">Download Reports</a>
         </div><!-- card -->
     </div><!-- sl-mainpanel -->
 @endsection

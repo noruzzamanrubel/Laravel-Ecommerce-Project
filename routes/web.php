@@ -173,6 +173,7 @@ Route::get('admin/search/report', [ReportController::class, 'search'])->name('se
 Route::post('admin/search/by/date', [ReportController::class, 'searchByDate'])->name('search.by.date');
 Route::post('admin/search/by/month', [ReportController::class, 'searchByMonth'])->name('search.by.month');
 Route::post('admin/search/by/year', [ReportController::class, 'searchByYear'])->name('search.by.year');
+Route::get('admin/download/report', [ReportController::class, 'downloadreport']);
 
 Route::get('admin/all/user', [UserRoleController::class, 'UserRole'])->name('admin.all.user');
 

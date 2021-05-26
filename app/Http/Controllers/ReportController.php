@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Order_detail;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use DB;
 
 class ReportController extends Controller
 {
@@ -57,5 +60,17 @@ class ReportController extends Controller
         $total = Order::where('status', 3)->where('year', $year)->sum('total');
         $order = Order::where('status', 3)->where('year', $year)->get();
         return view('admin.report.search_year', compact('order', 'total'));
+    }
+
+    public function downloadreport()
+    {
+        $order = Order::where('status', 3)->first();
+
+        $details = DB::table('orders_details')
+            ->join('products', 'orders_details.product_id', 'products.id')
+            ->select('orders_details.*', 'products.*')
+            ->get();
+
+        return view('admin.report.download_report', compact('order', 'details'));
     }
 }
