@@ -13,7 +13,7 @@ class CreateOrdersDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders_details', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id();
             $table->integer('order_id');
             $table->string('product_id')->nullable();
@@ -34,6 +34,6 @@ class CreateOrdersDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders_details');
+        Schema::dropIfExists('order_details');
     }
 }

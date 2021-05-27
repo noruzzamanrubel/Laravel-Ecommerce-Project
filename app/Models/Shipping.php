@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Shipping extends Model
 {
     use HasFactory;
+    
+    protected $guarded = [];
+
     public function orders()
     {
         return $this->belongsTo(Order::class, 'order_id', 'id');

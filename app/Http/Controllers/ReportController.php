@@ -65,7 +65,6 @@ class ReportController extends Controller
     public function downloadreport()
     {
         $order = Order::where('status', 3)->first();
-
         $details = DB::table('orders_details')
             ->join('products', 'orders_details.product_id', 'products.id')
             ->select('orders_details.*', 'products.*')

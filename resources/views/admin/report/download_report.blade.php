@@ -88,14 +88,15 @@
   <table width="100%">
     <thead style="background-color: green; color:#FFFFFF;">
       <tr class="font">
-        <th>Sub Total</th>
+        <th>Product Name</th>
         <th>Total </th>
       </tr>
     </thead>
     <tbody>
-     @foreach($order as $row)
+     @foreach($details as $row)
       <tr class="font">
-        <td align="center">{{$row->total}}</td>
+        <td align="center">{{$row->product_name}}</td> 
+        <td align="center">{{$row->totalprice}}</td> 
         <td align="center"></td>
       </tr>
       @endforeach
@@ -106,8 +107,8 @@
   <table width="100%" style=" padding:0 10px 0 10px;">
     <tr>
         <td align="right" >
-            <h2><span style="color: green;">Subtotal:</span>$</h2>
-            <h2><span style="color: green;">Total:</span> $</h2>
+            <h2><span style="color: green;">Subtotal:</span>${{$order->subtotal}}</h2>
+            <h2><span style="color: green;">Total:</span> ${{$order->total}}</h2>
             {{-- <h2><span style="color: green;">Full Payment PAID</h2> --}}
         </td>
     </tr>
