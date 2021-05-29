@@ -178,6 +178,9 @@ Route::get('admin/download/report', [ReportController::class, 'downloadreport'])
 Route::get('admin/all/user', [UserRoleController::class, 'UserRole'])->name('admin.all.user');
 Route::get('admin/create/admin', [UserRoleController::class, 'UserCreate'])->name('create.admin');
 Route::post('admin/store/admin', [UserRoleController::class, 'UserStore'])->name('store.admin');
+Route::get('delete/admin/{id}', [UserRoleController::class, 'Userdelete']);
+Route::get('edit/admin/{id}', [UserRoleController::class, 'Useredit']);
+Route::post('update/admin/{id}', [UserRoleController::class, 'UserUpdate'])->name('update.admin');
 
 // Category
 // Route::group([
