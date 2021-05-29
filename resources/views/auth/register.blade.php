@@ -1,111 +1,60 @@
-@extends('layouts.app')
+<x-guest-layout>
+    <x-jet-authentication-card>
+        <x-slot name="logo">
+            <x-jet-authentication-card-logo />
+        </x-slot>
 
-@section('content')
+        <x-jet-validation-errors class="mb-4" />
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/contact_styles.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/contact_responsive.css') }}">
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
-    <div class="contact_form">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 offset-lg-1" style="border: 1px solid grey; padding:20px; Border-radius:10px">
-                    <div class="contact_form_container">
-                        <div class="contact_form_title text-center">Sign In</div>
-
-                        <form method="POST" action="{{ isset($guard) ? url($guard . '/login') : route('login') }}">
-                            @csrf
-
-                            <div class="form-group">
-                                <label for="email">Email Adress</label>
-                                <input id="email" type="email" name="email" class="form-control"
-                                    aria-describedby="emailHelp" required=" ">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control" name="password">
-                            </div>
-                            <div class="form-group">
-                                <a href="{{ route('password.request') }}" class="forgot-password pull-right">Forgot your
-                                    Password?</a>
-                            </div>
-                            <div class="contact_form_button">
-                                <button type="submit" class="btn btn-info">Login</button>
-                            </div>
-                        </form>
-                        <br><br>
-                        <button type="submit" class="btn btn-primary btn-block"><i class="fab fa-facebook-square"></i> Login
-                            With Facebook</button>
-                        <button type="submit" class="btn btn-danger btn-block"><i class="fab fa-google"></i> Login With
-                            Google</button>
-
-                    </div>
-                </div>
-                <div class="col-lg-5 offset-lg-1" style="border: 1px solid grey; padding:20px; Border-radius:10px">
-                    <div class="contact_form_container">
-                        <div class="contact_form_title text-center">Sign Up</div>
-
-                        <form method="POST" action="{{ route('register') }}">
-                            @csrf
-
-                            <div class="form-group">
-                                <label for="name">Full name</label>
-                                <input type="text" id="name" name="name" class="form-control" aria-describedby="emailHelp"
-                                    required=" " placeholder="Enter Your Full name">
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control"
-                                    aria-describedby="emailHelp" required=" " placeholder="Enter Your Email">
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone</label>
-                                <input type="text" id="phone" name="phone" class="form-control" aria-describedby="emailHelp"
-                                    required=" " placeholder="Enter Your Phone">
-                                @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" class="form-control" name="password"
-                                    placeholder="Enter Your Password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label for="password_confirmation">Confirm Password</label>
-                                <input type="password" id="password_confirmation" name="password_confirmation"
-                                    class="form-control" placeholder="Re-Type Password">
-                                @error('password_confirmation')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="contact_form_button">
-                                <button type="submit" class="btn btn-info">Sign Up</button>
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
+            <div>
+                <x-jet-label for="name" value="{{ __('Name') }}" />
+                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
-        </div>
-        <div class="panel"></div>
-    </div>
-@endsection
+
+            <div class="mt-4">
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            </div>
+
+            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                <div class="mt-4">
+                    <x-jet-label for="terms">
+                        <div class="flex items-center">
+                            <x-jet-checkbox name="terms" id="terms"/>
+
+                            <div class="ml-2">
+                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+                                ]) !!}
+                            </div>
+                        </div>
+                    </x-jet-label>
+                </div>
+            @endif
+
+            <div class="flex items-center justify-end mt-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                    {{ __('Already registered?') }}
+                </a>
+
+                <x-jet-button class="ml-4">
+                    {{ __('Register') }}
+                </x-jet-button>
+            </div>
+        </form>
+    </x-jet-authentication-card>
+</x-guest-layout>
