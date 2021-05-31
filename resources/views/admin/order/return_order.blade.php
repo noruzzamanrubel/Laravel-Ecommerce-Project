@@ -27,7 +27,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Payment Type</th>
-                                <th scope="col">Payment ID</th>
+                                <th scope="col">Return</th>
                                 <th scope="col">Amount</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
@@ -39,16 +39,39 @@
                             @foreach ($order as $row)
                                 <tr>
                                     <td scope="col">{{ $row->payment_type }}</td>
-                                    <td scope="col">{{ $row->payment_id }}</td>
+                                    <td scope="col">
+                                        @if ($row->return_order == 0)
+                                            <span class="badge badge-warning">No request</span>
+                                        @elseif($row->return_order==1)
+                                            <span class="badge badge-info">Pending</span>
+                                        @elseif($row->return_order==2)
+                                            <span class="badge badge-success">Success</span>
+                                        @endif
+                                    </td>
                                     <td scope="col">${{ $row->total }}</td>
                                     <td scope="col">{{ $row->date }}</td>
                                     <td scope="col">
-                                        @if ($row->status == 3)
+                                        @if ($row->status == 0)
+                                            <span class="badge badge-warning">pending</span>
+                                        @elseif($row->status==1)
+                                            <span class="badge badge-info">Accept</span>
+                                        @elseif($row->status==2)
+                                            <span class="badge badge-info">Progress</span>
+                                        @elseif($row->status==3)
                                             <span class="badge badge-success">Delivered</span>
+                                        @else
+                                            <span class="badge badge-danger">cancel</span>
                                         @endif
                                     </td>
                                     <td scope="col">
-                                        <a href="" class="btn btn-sm btn-danger">Return</a>
+                                        @if ($row->return_order == 0)
+                                            <a href="{{ url('request/return/' . $row->id) }}"
+                                                class="btn btn-sm btn-danger" id="return">Return</a>
+                                        @elseif($row->return_order==1)
+                                            <span class="badge badge-info">Pending</span>
+                                        @elseif($row->return_order==2)
+                                            <span class="badge badge-success">Success</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

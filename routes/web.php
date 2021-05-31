@@ -20,6 +20,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\ReturnController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -169,6 +170,7 @@ Route::post('order/tracking', [OrderColtroller::class, 'ordertracking'])->name('
 
 //return order
 Route::get('user/return/order', [OrderColtroller::class, 'ReturnOrder'])->name('success.order');
+Route::get('request/return/{id}', [OrderColtroller::class, 'RequestReturn']);
 
 Route::get('admin/today/order', [ReportController::class, 'todayorder'])->name('today.order');
 Route::get('admin/today/deliver', [ReportController::class, 'todaydeliver'])->name('today.deliver');
@@ -193,3 +195,13 @@ Route::group([
     Route::get('/', [SettingController::class, 'SiteSetting'])->name('admin.sitesetting');
     Route::post('/update', [SettingController::class, 'UpdateSiteSetting'])->name('update.sitesetting');
 });
+
+//admin return 
+Route::group([
+    'prefix' => 'admin',
+], function () {
+    Route::get('/return/request', [ReturnController::class, 'ReturnRequest'])->name('admin.return.request');
+    Route::get('/approve/return/{id}', [ReturnController::class, 'ApprovedReturn']);
+    Route::get('/all/request', [ReturnController::class, 'AllRequest'])->name('admin.all.request');
+});
+

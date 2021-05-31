@@ -18,8 +18,6 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/main_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/responsive.css') }}">
 
-
-
     <!-- Toastr css -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
     <script src="https://js.stripe.com/v3/"></script>
@@ -32,7 +30,7 @@
         use App\Models\Wishlist;
         use App\Models\SiteSetting;
         $category = Category::all();
-        $setting= SiteSetting::first();
+        $setting = SiteSetting::first();
     @endphp
 
     <div class="super_container">
@@ -49,11 +47,11 @@
                         <div class="col d-flex flex-row">
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="{{ asset('frontend/images/phone.png') }}" alt="">
-                                </div>{{$setting->phone_one}}
+                                </div>{{ $setting->phone_one }}
                             </div>
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="{{ asset('frontend/images/mail.png') }}" alt="">
-                                </div><a href="mailto:fastsales@gmail.com">{{$setting->email}}</a>
+                                </div><a href="mailto:info@boomdevs.com">{{ $setting->email }}</a>
                             </div>
                             <div class="top_bar_content ml-auto">
                                 @auth
@@ -104,7 +102,8 @@
                         <div class="col-lg-2 col-sm-3 col-3 order-1">
                             <div class="logo_container">
                                 <div class="logo"><a href="{{ url('/') }}"><img
-                                            src="{{ asset('frontend/images/logo.png') }}" width="120px" height="120px" alt=""></a></div>
+                                            src="{{ asset('frontend/images/logo.png') }}" width="120px"
+                                            height="120px" alt=""></a></div>
                             </div>
                         </div>
 
@@ -236,17 +235,18 @@
                                     <div class="logo"><a href="{{ url('/') }}"><img
                                                 src="{{ asset('frontend/images/logo.png') }}" alt=""></a></div>
                                 </div>
-                                <div class="footer_title">{{$setting->company_info}}</div>
-                                <div class="footer_phone">{{$setting->phone_two}}</div>
+                                <div class="footer_title">{{ $setting->company_info }}</div>
+                                <div class="footer_phone">{{ $setting->phone_two }}</div>
                                 <div class="footer_contact_text">
-                                    <p>{{$setting->company_address}}</p>
+                                    <p>{{ $setting->company_address }}</p>
                                 </div>
                                 <div class="footer_social">
                                     <ul>
-                                        <li><a href="{{$setting->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="{{$setting->youtube}}"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="{{$setting->instagram}}"><i class="fab fa-youtube"></i></a></li>
-                                        <li><a href="{{$setting->twitter}}"><i class="fab fa-google"></i></a></li>
+                                        <li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a>
+                                        </li>
+                                        <li><a href="{{ $setting->youtube }}"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="{{ $setting->instagram }}"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="{{ $setting->twitter }}"><i class="fab fa-google"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -381,7 +381,7 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+ <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 
     <script>
         @if (Session::has('message'))
@@ -401,6 +401,28 @@
             break;
             }
         @endif
+
+    </script>
+
+    <script>
+        $(document).on("click", "#return", function(e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+            swal({
+                    title: "Are you Want to Return?",
+                    text: "Once Return, This will return your money!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location.href = link;
+                    } else {
+                        swal("Cancel!");
+                    }
+                });
+        });
 
     </script>
 

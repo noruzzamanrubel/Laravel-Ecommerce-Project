@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Order;
+use App\Models\User;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -127,5 +127,15 @@ class OrderColtroller extends Controller
         $user = User::find($id);
         $order = Order::where('status', 3)->orderBy('id', 'DESC')->get();
         return view('admin.order.return_order', compact('user', 'order'));
+    }
+
+    public function RequestReturn($id)
+    {
+        Order::where('id', $id)->update(['return_order' => 1]);
+        $notification = array(
+            'message' => 'Order Request Done',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }
