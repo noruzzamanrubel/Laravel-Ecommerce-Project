@@ -2,13 +2,6 @@
 
 @section('content')
 
-    @php
-    $order = DB::table('orders')
-        ->where('user_id', Auth::id())
-        ->orderBy('id', 'desc')
-        ->get();
-    @endphp
-
     <div class="contact_form">
         <div class="container">
             <div class="row">
@@ -38,7 +31,7 @@
                                 <th scope="col">Amount</th>
                                 <th scope="col">Date</th>
                                 <th scope="col">Status</th>
-                                <th scope="col">Status Code</th>
+                                <th scope="col">Action</th>
 
                             </tr>
                         </thead>
@@ -50,19 +43,13 @@
                                     <td scope="col">${{ $row->total }}</td>
                                     <td scope="col">{{ $row->date }}</td>
                                     <td scope="col">
-                                        @if ($row->status == 0)
-                                            <span class="badge badge-warning">pending</span>
-                                        @elseif($row->status==1)
-                                            <span class="badge badge-info">Accept</span>
-                                        @elseif($row->status==2)
-                                            <span class="badge badge-info">Progress</span>
-                                        @elseif($row->status==3)
+                                        @if ($row->status == 3)
                                             <span class="badge badge-success">Delivered</span>
-                                        @else
-                                            <span class="badge badge-danger">cancel</span>
                                         @endif
                                     </td>
-                                    <td scope="col">{{ $row->status_code }}</td>
+                                    <td scope="col">
+                                        <a href="" class="btn btn-sm btn-danger">Return</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

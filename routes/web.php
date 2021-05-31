@@ -167,6 +167,9 @@ Route::get('admin/process/delivery/{id}', [OrderColtroller::class, 'processdeliv
 Route::get('admin/delivery/done/{id}', [OrderColtroller::class, 'deliverydone']);
 Route::post('order/tracking', [OrderColtroller::class, 'ordertracking'])->name('order.tracking');
 
+//return order
+Route::get('user/return/order', [OrderColtroller::class, 'ReturnOrder'])->name('success.order');
+
 Route::get('admin/today/order', [ReportController::class, 'todayorder'])->name('today.order');
 Route::get('admin/today/deliver', [ReportController::class, 'todaydeliver'])->name('today.deliver');
 Route::get('admin/this/month', [ReportController::class, 'thismonth'])->name('this.month');

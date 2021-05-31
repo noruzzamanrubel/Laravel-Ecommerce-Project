@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Order;
+use Auth;
 use DB;
+use Illuminate\Http\Request;
 
 class OrderColtroller extends Controller
 {
@@ -117,5 +119,13 @@ class OrderColtroller extends Controller
             return redirect()->back()->with($notification);
         }
 
+    }
+
+    public function ReturnOrder()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $order = Order::where('status', 3)->orderBy('id', 'DESC')->get();
+        return view('admin.order.return_order', compact('user', 'order'));
     }
 }
