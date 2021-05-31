@@ -19,6 +19,7 @@ use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -182,13 +183,10 @@ Route::get('delete/admin/{id}', [UserRoleController::class, 'Userdelete']);
 Route::get('edit/admin/{id}', [UserRoleController::class, 'Useredit']);
 Route::post('update/admin/{id}', [UserRoleController::class, 'UserUpdate'])->name('update.admin');
 
-// Category
-// Route::group([
-//     'prefix' => 'categories',
-// ], function () {
-//     Route::post('/', [CategoryController::class, 'index'])->name('categories.index');
-//     Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
-//     Route::get('/{category}', [CategoryController::class, 'show'])->name('categories.show');
-//     Route::post('/{category}', [CategoryController::class, 'update'])->name('categories.update');
-//     Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
-// });
+//site setting
+Route::group([
+    'prefix' => 'admin/sitesetting',
+], function () {
+    Route::get('/', [SettingController::class, 'SiteSetting'])->name('admin.sitesetting');
+    Route::post('/update', [SettingController::class, 'UpdateSiteSetting'])->name('update.sitesetting');
+});

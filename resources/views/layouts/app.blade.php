@@ -30,7 +30,9 @@
     @php
         use App\Models\Admin\Category;
         use App\Models\Wishlist;
+        use App\Models\SiteSetting;
         $category = Category::all();
+        $setting= SiteSetting::first();
     @endphp
 
     <div class="super_container">
@@ -47,11 +49,11 @@
                         <div class="col d-flex flex-row">
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="{{ asset('frontend/images/phone.png') }}" alt="">
-                                </div>+38 068 005 3570
+                                </div>{{$setting->phone_one}}
                             </div>
                             <div class="top_bar_contact_item">
                                 <div class="top_bar_icon"><img src="{{ asset('frontend/images/mail.png') }}" alt="">
-                                </div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a>
+                                </div><a href="mailto:fastsales@gmail.com">{{$setting->email}}</a>
                             </div>
                             <div class="top_bar_content ml-auto">
                                 @auth
@@ -102,7 +104,7 @@
                         <div class="col-lg-2 col-sm-3 col-3 order-1">
                             <div class="logo_container">
                                 <div class="logo"><a href="{{ url('/') }}"><img
-                                            src="{{ asset('frontend/images/logo.png') }}" alt=""></a></div>
+                                            src="{{ asset('frontend/images/logo.png') }}" width="120px" height="120px" alt=""></a></div>
                             </div>
                         </div>
 
@@ -234,19 +236,17 @@
                                     <div class="logo"><a href="{{ url('/') }}"><img
                                                 src="{{ asset('frontend/images/logo.png') }}" alt=""></a></div>
                                 </div>
-                                <div class="footer_title">Got Question? Call Us 24/7</div>
-                                <div class="footer_phone">+38 068 005 3570</div>
+                                <div class="footer_title">{{$setting->company_info}}</div>
+                                <div class="footer_phone">{{$setting->phone_two}}</div>
                                 <div class="footer_contact_text">
-                                    <p>17 Princess Road, London</p>
-                                    <p>Grester London NW18JR, UK</p>
+                                    <p>{{$setting->company_address}}</p>
                                 </div>
                                 <div class="footer_social">
                                     <ul>
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-google"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+                                        <li><a href="{{$setting->facebook}}"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="{{$setting->youtube}}"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="{{$setting->instagram}}"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="{{$setting->twitter}}"><i class="fab fa-google"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
