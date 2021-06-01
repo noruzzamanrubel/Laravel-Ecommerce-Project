@@ -22,6 +22,7 @@ use App\Http\Controllers\ReturnController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -212,4 +213,13 @@ Route::group([
     'prefix' => 'admin/product',
 ], function () {
     Route::get('/stock', [ProductStockController::class, 'ProductStock'])->name('admin.product.stock');
+});
+
+//Contact Page
+Route::group([
+    'prefix' => 'contact',
+], function () {
+    Route::get('/page', [ContactController::class, 'Contact'])->name('contact.page');
+    Route::post('/form', [ContactController::class, 'ContactForm'])->name('contact.form');
+    Route::get('/page', [ContactController::class, 'Contact'])->name('contact.page');
 });
