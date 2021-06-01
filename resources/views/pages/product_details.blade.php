@@ -92,11 +92,14 @@
                                     </div>
                                 @endif
 
-                                {{-- <div class="product_price">$2000</div> --}}
                                 <div class="button_container">
                                     <button type="submit" class="button cart_button">Add to Cart</button>
                                     <div class="product_fav"><i class="fas fa-heart"></i></div>
                                 </div>
+                                <br>
+                                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                                <div class="addthis_inline_share_toolbox"></div>
+
 
                             </form>
                         </div>
@@ -132,9 +135,8 @@
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             {{ $product->video_link }}</div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            <div class="fb-comments"
-                                data-href="{{Request::url()}}" data-width=""
-                                data-numposts="5"></div>
+                            <div class="fb-comments" data-href="{{ Request::url() }}" data-width="" data-numposts="5">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -331,4 +333,12 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0"
         nonce="hiAr34yr"></script>
+
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60b5beec897e55c3"></script>
+
+
+
+
 @endsection
