@@ -38,6 +38,7 @@ class UserRoleController extends Controller
         $data['contact'] = $request->contact;
         $data['comment'] = $request->comment;
         $data['setting'] = $request->setting;
+        $data['stock'] = $request->stock;
         $data['type'] = 2;
 
         Admin::insert($data);
@@ -83,6 +84,7 @@ class UserRoleController extends Controller
         $data['contact'] = $request->contact;
         $data['comment'] = $request->comment;
         $data['setting'] = $request->setting;
+        $data['stock'] = $request->stock;
 
         Admin::where('id', $id)->update($data);
         $notification = array(
@@ -91,4 +93,5 @@ class UserRoleController extends Controller
         );
         return redirect()->route('admin.all.user')->with($notification);
     }
+
 }

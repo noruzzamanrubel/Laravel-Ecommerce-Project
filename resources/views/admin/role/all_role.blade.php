@@ -91,6 +91,11 @@
                                     <span class="badge btn btn-warning">setting</span>
                                     @else
                                     @endif
+
+                                    @if ($row->stock==1)
+                                    <span class="badge btn btn-primary">stock</span>
+                                    @else
+                                    @endif
                                 </td>
                                 <td>
                                     <a href="{{ URL::to('edit/admin/' . $row->id) }} "

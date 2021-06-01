@@ -16,11 +16,12 @@ use App\Http\Controllers\post\PostCategoryController;
 use App\Http\Controllers\post\PostController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductDetailsController;
+use App\Http\Controllers\ProductStockController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ReturnController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\WishlistController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\ReturnController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -181,6 +182,7 @@ Route::post('admin/search/by/month', [ReportController::class, 'searchByMonth'])
 Route::post('admin/search/by/year', [ReportController::class, 'searchByYear'])->name('search.by.year');
 Route::get('admin/download/report', [ReportController::class, 'downloadreport']);
 
+//User Role
 Route::get('admin/all/user', [UserRoleController::class, 'UserRole'])->name('admin.all.user');
 Route::get('admin/create/admin', [UserRoleController::class, 'UserCreate'])->name('create.admin');
 Route::post('admin/store/admin', [UserRoleController::class, 'UserStore'])->name('store.admin');
@@ -196,7 +198,7 @@ Route::group([
     Route::post('/update', [SettingController::class, 'UpdateSiteSetting'])->name('update.sitesetting');
 });
 
-//admin return 
+//admin return
 Route::group([
     'prefix' => 'admin',
 ], function () {
@@ -205,3 +207,9 @@ Route::group([
     Route::get('/all/request', [ReturnController::class, 'AllRequest'])->name('admin.all.request');
 });
 
+//Product Stock
+Route::group([
+    'prefix' => 'admin/product',
+], function () {
+    Route::get('/stock', [ProductStockController::class, 'ProductStock'])->name('admin.product.stock');
+});
