@@ -132,7 +132,10 @@
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             {{ $product->video_link }}</div>
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            {!! $product->product_details !!}</div>
+                            <div class="fb-comments"
+                                data-href="{{Request::url()}}" data-width=""
+                                data-numposts="5"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -325,5 +328,7 @@
         </div>
     </div>
 
-
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0"
+        nonce="hiAr34yr"></script>
 @endsection
