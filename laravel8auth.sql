@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 06:03 AM
+-- Generation Time: Jun 01, 2021 at 06:24 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -198,7 +198,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (51, '2021_05_08_085745_create_settings_table', 14),
 (52, '2021_05_13_060347_create_orders_table', 14),
 (53, '2021_05_13_060519_create_orders_details_table', 14),
-(54, '2021_05_13_060551_create_shipping_table', 14);
+(54, '2021_05_13_060551_create_shipping_table', 14),
+(55, '2021_05_31_042704_create_sitesettings_table', 15);
 
 -- --------------------------------------------------------
 
@@ -324,6 +325,7 @@ CREATE TABLE `orders` (
   `vat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `total` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
+  `return_order` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '0',
   `month` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `year` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -336,8 +338,13 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `payment_type`, `payment_id`, `paying_amount`, `blnc_transection`, `stripe_order_id`, `subtotal`, `shipping`, `vat`, `total`, `status`, `month`, `date`, `year`, `status_code`, `created_at`, `updated_at`) VALUES
-(1, '4', 'stripe', 'card_1IwM8cGLh2TdVfNtBXqr35jX', '48500', 'txn_1IwM8eGLh2TdVfNtQG1zCTrt', '60b1e6441ce6c', '460.00', '10', '15', '485', '3', 'May', '29-05-21', '2021', '603661', NULL, '2021-05-29 00:59:58');
+INSERT INTO `orders` (`id`, `user_id`, `payment_type`, `payment_id`, `paying_amount`, `blnc_transection`, `stripe_order_id`, `subtotal`, `shipping`, `vat`, `total`, `status`, `return_order`, `month`, `date`, `year`, `status_code`, `created_at`, `updated_at`) VALUES
+(1, '4', 'stripe', 'card_1IwM8cGLh2TdVfNtBXqr35jX', '48500', 'txn_1IwM8eGLh2TdVfNtQG1zCTrt', '60b1e6441ce6c', '460.00', '10', '15', '485', '3', '2', 'May', '29-05-21', '2021', '603661', NULL, '2021-05-31 07:28:14'),
+(2, '4', 'stripe', 'card_1Ix5KLGLh2TdVfNt7oEGexFz', '22500', 'txn_1Ix5KMGLh2TdVfNtMN5eLH8A', '60b48ccdedc49', '200.00', '10', '15', '225', '2', '0', 'May', '31-05-21', '2021', '723245', NULL, '2021-05-31 01:15:14'),
+(3, '4', 'stripe', 'card_1Ix5M5GLh2TdVfNtMVHYZDdQ', '72500', 'txn_1Ix5M6GLh2TdVfNtmSwQ5fHv', '60b48d397f2aa', '700.00', '10', '15', '725', '0', '0', 'May', '31-05-21', '2021', '371451', NULL, NULL),
+(4, '4', 'stripe', 'card_1Ix5MaGLh2TdVfNt57b4mQ4N', '25000', 'txn_1Ix5MbGLh2TdVfNtzQTB4wke', '60b48d58ccb0e', '225.00', '10', '15', '250', '1', '0', 'May', '31-05-21', '2021', '143184', NULL, '2021-05-31 01:17:33'),
+(5, '4', 'stripe', 'card_1Ix5N5GLh2TdVfNtVPDSGvcC', '38500', 'txn_1Ix5N6GLh2TdVfNtZHEMlTdB', '60b48d77f0f72', '360.00', '10', '15', '385', '4', '0', 'May', '31-05-21', '2021', '456735', NULL, '2021-05-31 01:17:26'),
+(6, '4', 'stripe', 'card_1Ix5R6GLh2TdVfNtmOaJdxHP', '92500', 'txn_1Ix5R7GLh2TdVfNtUTZnWFog', '60b48e711340a', '900.00', '10', '15', '925', '0', '0', 'May', '31-05-21', '2021', '205091', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -366,7 +373,12 @@ CREATE TABLE `orders_details` (
 INSERT INTO `orders_details` (`id`, `order_id`, `product_id`, `product_name`, `color`, `size`, `quantity`, `singleprice`, `totalprice`, `created_at`, `updated_at`) VALUES
 (25, 21, '16', 'NEW ERA OF SMARTPHONES', '', '', '1', '450', '450', NULL, NULL),
 (26, 22, '14', 'Canon STM Kit', '', '', '1', '550', '550', NULL, NULL),
-(27, 1, '1', 'NEW ERA OF SMARTPHONES', '', '', '1', '460', '460', NULL, NULL);
+(27, 1, '1', 'NEW ERA OF SMARTPHONES', '', '', '1', '460', '460', NULL, NULL),
+(28, 2, '4', 'Sony MDRZX310W', '', '', '1', '200', '200', NULL, NULL),
+(29, 3, '6', 'Canon IXUS 175', '', '', '1', '700', '700', NULL, NULL),
+(30, 4, '9', 'Rapoo 7100p Gray', '', '', '1', '225', '225', NULL, NULL),
+(31, 5, '7', 'Astro M2 Black', '', '', '1', '360', '360', NULL, NULL),
+(32, 6, '5', 'LUNA Smartphone', '', '', '2', '450', '900', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -542,9 +554,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('D2FV56jVR1Kjjckc39odW4ueMcjPXioYDs1aFj9A', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidEFZRFc1RUo0U2tDSHk4cWpkcGJzbGowc0FEWFo2aDBTc1hBRUJtTCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1622289882),
-('Ivlb1Wzqeaf6C1spNfJ5d4GjuTnQZAp8UNyTOkUf', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiYnJpMnIwR0FYWEpnTjhzcnB3QWhrR0lNODRNejZqZGdjdnQ2NVRGUSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkdlAyMVdKTHdZY21wRzk1M3pjZjduZUZqWHdLWG5NZzkuaUpsSTA1dFVLak9OS1pRQzIxem0iO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJHZQMjFXSkx3WWNtcEc5NTN6Y2Y3bmVGalh3S1huTWc5LmlKbEkwNXRVS2pPTktaUUMyMXptIjt9', 1622285958),
-('TI3E2Z4i5x4iFd7AokMKLPMbz8H31dmvayVqX2M1', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiWkZvVEpDUmQ4eFFDT2l6a2NuTzlHaHY5VHEwZmVVeHMyOGhvQWlRMiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1622283650);
+('eFst1hoo9pcKGsWolo7HHusqtc3Yxu2aHyR6aW35', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiNnpDYmtaYXNMQXR5SlBJT1NiUzJtTnBBUjlPZllEdVJIaHpLVTl5YiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3JldHVybi9vcmRlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCR2UDIxV0pMd1ljbXBHOTUzemNmN25lRmpYd0tYbk1nOS5pSmxJMDV0VUtqT05LWlFDMjF6bSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkdlAyMVdKTHdZY21wRzk1M3pjZjduZUZqWHdLWG5NZzkuaUpsSTA1dFVLak9OS1pRQzIxem0iO3M6NDoiY2FydCI7YToxOntzOjc6ImRlZmF1bHQiO086Mjk6IklsbHVtaW5hdGVcU3VwcG9ydFxDb2xsZWN0aW9uIjoxOntzOjg6IgAqAGl0ZW1zIjthOjA6e319fX0=', 1622468117);
 
 -- --------------------------------------------------------
 
@@ -594,7 +604,41 @@ CREATE TABLE `shipping` (
 --
 
 INSERT INTO `shipping` (`id`, `order_id`, `ship_name`, `ship_phone`, `ship_email`, `ship_address`, `ship_city`, `created_at`, `updated_at`) VALUES
-(1, '1', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL);
+(1, '1', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
+(2, '2', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
+(3, '3', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
+(4, '4', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
+(5, '5', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
+(6, '6', 'Shahed Islam', '12345678', 's@gmail.com', 'bogura', 'Bogura', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sitesetting`
+--
+
+CREATE TABLE `sitesetting` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `phone_one` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone_two` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company_info` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `youtube` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sitesetting`
+--
+
+INSERT INTO `sitesetting` (`id`, `phone_one`, `phone_two`, `email`, `company_name`, `company_address`, `company_info`, `facebook`, `youtube`, `instagram`, `twitter`, `created_at`, `updated_at`) VALUES
+(1, '01737779430', '01304171739', 'info@boomdevs.com', 'Boom Devs', 'Uposhohor Rd, Bogura 5800', 'Got Question? Call Us 24/7', 'https://www.facebook.com/boomdevs/', 'https://www.youtube.com/channel/UCvTvtnRwsH4lBDUIxzQCuOw', 'https://www.instagram.com/boom.dev/', 'https://www.twitch.tv/boomdev', NULL, '2021-05-31 00:52:42');
 
 -- --------------------------------------------------------
 
@@ -832,6 +876,12 @@ ALTER TABLE `shipping`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sitesetting`
+--
+ALTER TABLE `sitesetting`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `subcategories`
 --
 ALTER TABLE `subcategories`
@@ -888,7 +938,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `multipics`
@@ -918,13 +968,13 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `orders_details`
 --
 ALTER TABLE `orders_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `order_details`
@@ -972,6 +1022,12 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `shipping`
 --
 ALTER TABLE `shipping`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `sitesetting`
+--
+ALTER TABLE `sitesetting`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
