@@ -3,7 +3,11 @@
 @section('content')
     @include('layouts.menubar')
     @php
+    use App\Models\Admin\Category;
     use App\Models\Admin\Brand;
+    use App\Models\Product;
+    $brand = Brand::all();
+    $category = Category::all();
     @endphp
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/shop_styles.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('frontend/styles/shop_responsive.css') }}">
@@ -14,7 +18,7 @@
         </div>
         <div class="home_overlay"></div>
         <div class="home_content d-flex flex-column align-items-center justify-content-center">
-            <h2 class="home_title">SubCategory Name</h2>
+            <h2 class="home_title">Search Product</h2>
         </div>
     </div>
 
@@ -30,8 +34,9 @@
                         <div class="sidebar_section">
                             <div class="sidebar_title">Categories</div>
                             <ul class="sidebar_categories">
+
                                 @foreach ($category as $row)
-                                    <li><a href="#">{{ $row->category_name }}</a></li>
+                                    <li><a href="{{ url('allcategory/' . $row->id) }}">{{ $row->category_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -48,11 +53,8 @@
                         <div class="sidebar_section">
                             <div class="sidebar_subtitle brands_subtitle">Brands</div>
                             <ul class="brands_list">
-                                @foreach ($brands as $row)
-                                    @php
-                                        $brand = Brand::where('id', $row->brand_id)->first();
-                                    @endphp
-                                    <li class="brand"><a href="#">{{ $brand->brand_name }}</a></li>
+                                @foreach ($brand as $row)
+                                    <li class="brand"><a href="#">{{ $row->brand_name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -66,7 +68,7 @@
 
                     <div class="shop_content">
                         <div class="shop_bar clearfix">
-                            <div class="shop_product_count"><span>186</span> products found</div>
+                            <div class="shop_product_count"><span>{{count($product)}}</span> products found</div>
                             <div class="shop_sorting">
                                 <span>Sort by:</span>
                                 <ul>
@@ -127,7 +129,6 @@
                             @endforeach
 
                         </div>
-
                         <!-- Shop Page Navigation -->
 
                         <div class="shop_page_nav d-flex flex-row">

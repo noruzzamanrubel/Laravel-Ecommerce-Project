@@ -23,6 +23,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -191,6 +192,8 @@ Route::get('delete/admin/{id}', [UserRoleController::class, 'Userdelete']);
 Route::get('edit/admin/{id}', [UserRoleController::class, 'Useredit']);
 Route::post('update/admin/{id}', [UserRoleController::class, 'UserUpdate'])->name('update.admin');
 
+
+
 //site setting
 Route::group([
     'prefix' => 'admin/sitesetting',
@@ -222,4 +225,11 @@ Route::group([
     Route::get('/page', [ContactController::class, 'Contact'])->name('contact.page');
     Route::post('/form', [ContactController::class, 'ContactForm'])->name('contact.form');
     Route::get('/all/message', [ContactController::class, 'AllMessage'])->name('all.message');
+});
+
+// Serach Form
+Route::group([
+    'prefix' => 'search',
+], function () {
+    Route::post('/product', [SearchController::class, 'search'])->name('search.form');
 });
