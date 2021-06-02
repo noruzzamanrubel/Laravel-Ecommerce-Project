@@ -221,5 +221,5 @@ Route::group([
 ], function () {
     Route::get('/page', [ContactController::class, 'Contact'])->name('contact.page');
     Route::post('/form', [ContactController::class, 'ContactForm'])->name('contact.form');
-    Route::get('/page', [ContactController::class, 'Contact'])->name('contact.page');
+    Route::get('/all/message', [ContactController::class, 'AllMessage'])->name('all.message');
 });

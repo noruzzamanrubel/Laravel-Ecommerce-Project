@@ -21,9 +21,15 @@ class ContactController extends Controller
         $data['message'] = $request->message;
         ContactForm::insert($data);
         $notification = array(
-            'message' => 'Your Message Insert Successfully',
+            'message' => 'Your Message Sent Successfully',
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
+    }
+
+    public function AllMessage()
+    {
+        $message = ContactForm::get();
+        return view('admin.contact.all_message', compact('message'));
     }
 }
