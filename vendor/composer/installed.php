@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'a666443b0e9777b3308d9f05641add26380b5da6',
+    'reference' => 'ed83f2067f8ca49e869b5c0b0698402f88a98038',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -553,7 +553,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'a666443b0e9777b3308d9f05641add26380b5da6',
+      'reference' => 'ed83f2067f8ca49e869b5c0b0698402f88a98038',
     ),
     'laravel/passport' => 
     array (
@@ -581,6 +581,15 @@
       array (
       ),
       'reference' => 'dd84a9141012c5509922df0c72866110f45026cb',
+    ),
+    'laravel/socialite' => 
+    array (
+      'pretty_version' => 'v5.2.3',
+      'version' => '5.2.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1960802068f81e44b2ae9793932181cf1cb91b5c',
     ),
     'laravel/tinker' => 
     array (
@@ -644,6 +653,15 @@
       array (
       ),
       'reference' => '3b9dff8aaf7323590c1d2e443db701eb1f9aa0d3',
+    ),
+    'league/oauth1-client' => 
+    array (
+      'pretty_version' => 'v1.9.0',
+      'version' => '1.9.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1e7e6be2dc543bf466236fb171e5b20e1b06aee6',
     ),
     'league/oauth2-server' => 
     array (

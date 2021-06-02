@@ -41,5 +41,6 @@ class NewsletterController extends Controller
         );
         return redirect()->back()->with($notification);
     }
-    
+
+
 }

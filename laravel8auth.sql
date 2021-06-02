@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2021 at 06:24 AM
+-- Generation Time: Jun 02, 2021 at 02:34 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -47,6 +47,7 @@ CREATE TABLE `admins` (
   `contact` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `comment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `setting` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `stock` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `type` int(15) DEFAULT NULL,
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
   `profile_photo_path` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -58,9 +59,9 @@ CREATE TABLE `admins` (
 -- Dumping data for table `admins`
 --
 
-INSERT INTO `admins` (`id`, `name`, `phone`, `email`, `email_verified_at`, `password`, `remember_token`, `category`, `coupon`, `product`, `blog`, `order`, `other`, `report`, `role`, `retuen`, `contact`, `comment`, `setting`, `type`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(1, 'Rubel Ahmed', 1737779430, 'rubel@gmail.com', NULL, '5f4dcc3b5aa765d61d8327deb882cf99', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, NULL, '202105290955noruzzaman.jpg', NULL, '2021-05-29 03:55:51'),
-(5, 'sumon', 12345678, 's@gmail.com', NULL, '$2y$10$mGi/ZUs4pbZPHqNNJms3leZDws.HR5T13/T3c9JHh5D2b3/aD1x.S', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, NULL, '2021-05-29 03:49:49');
+INSERT INTO `admins` (`id`, `name`, `phone`, `email`, `email_verified_at`, `password`, `remember_token`, `category`, `coupon`, `product`, `blog`, `order`, `other`, `report`, `role`, `retuen`, `contact`, `comment`, `setting`, `stock`, `type`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
+(1, 'Rubel Ahmed', 1737779430, 'rubel@gmail.com', NULL, '5f4dcc3b5aa765d61d8327deb882cf99', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 1, NULL, '202105290955noruzzaman.jpg', NULL, '2021-05-29 03:55:51'),
+(5, 'sumon', 12345678, 's@gmail.com', NULL, '$2y$10$mGi/ZUs4pbZPHqNNJms3leZDws.HR5T13/T3c9JHh5D2b3/aD1x.S', NULL, '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', 2, NULL, NULL, NULL, '2021-05-29 03:49:49');
 
 -- --------------------------------------------------------
 
@@ -116,6 +117,31 @@ INSERT INTO `categories` (`id`, `category_name`, `created_at`, `updated_at`) VAL
 (7, 'Car Electronics', '2021-05-29 00:46:53', '2021-05-29 00:46:53'),
 (8, 'Video Games & Consoles', '2021-05-29 00:47:06', '2021-05-29 00:47:06'),
 (9, 'Accessories', '2021-05-29 00:47:16', '2021-05-29 00:47:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_forms`
+--
+
+CREATE TABLE `contact_forms` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `contact_forms`
+--
+
+INSERT INTO `contact_forms` (`id`, `name`, `email`, `phone`, `message`, `created_at`, `updated_at`) VALUES
+(1, 'Rubel Ahmed', 'noruzzamanrubel@gmail.com', '01737779430', 'Lorem Ipsum is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the', NULL, NULL),
+(2, 'Noruzzaman Rubel', 'noruzzamanrubel@gmail.com', '01737779430', 'ffwerrewerere', NULL, NULL),
+(3, 'Shahed Islam', 'shahed@gmail.com', '12345678', 'csdwedfewrwqewqewqewqewqeeeeeeeeeeeeeewqe', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -199,7 +225,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (52, '2021_05_13_060347_create_orders_table', 14),
 (53, '2021_05_13_060519_create_orders_details_table', 14),
 (54, '2021_05_13_060551_create_shipping_table', 14),
-(55, '2021_05_31_042704_create_sitesettings_table', 15);
+(55, '2021_05_31_042704_create_sitesettings_table', 15),
+(56, '2021_06_01_120519_create_contact_forms_table', 16);
 
 -- --------------------------------------------------------
 
@@ -226,6 +253,14 @@ CREATE TABLE `newsletters` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `newsletters`
+--
+
+INSERT INTO `newsletters` (`id`, `email`, `created_at`, `updated_at`) VALUES
+(2, 's@gmail.com', '2021-06-01 22:40:06', '2021-06-01 22:40:06'),
+(3, 'r@gmail.com', '2021-06-01 22:46:32', '2021-06-01 22:46:32');
 
 -- --------------------------------------------------------
 
@@ -340,11 +375,13 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `payment_type`, `payment_id`, `paying_amount`, `blnc_transection`, `stripe_order_id`, `subtotal`, `shipping`, `vat`, `total`, `status`, `return_order`, `month`, `date`, `year`, `status_code`, `created_at`, `updated_at`) VALUES
 (1, '4', 'stripe', 'card_1IwM8cGLh2TdVfNtBXqr35jX', '48500', 'txn_1IwM8eGLh2TdVfNtQG1zCTrt', '60b1e6441ce6c', '460.00', '10', '15', '485', '3', '2', 'May', '29-05-21', '2021', '603661', NULL, '2021-05-31 07:28:14'),
-(2, '4', 'stripe', 'card_1Ix5KLGLh2TdVfNt7oEGexFz', '22500', 'txn_1Ix5KMGLh2TdVfNtMN5eLH8A', '60b48ccdedc49', '200.00', '10', '15', '225', '2', '0', 'May', '31-05-21', '2021', '723245', NULL, '2021-05-31 01:15:14'),
-(3, '4', 'stripe', 'card_1Ix5M5GLh2TdVfNtMVHYZDdQ', '72500', 'txn_1Ix5M6GLh2TdVfNtmSwQ5fHv', '60b48d397f2aa', '700.00', '10', '15', '725', '0', '0', 'May', '31-05-21', '2021', '371451', NULL, NULL),
-(4, '4', 'stripe', 'card_1Ix5MaGLh2TdVfNt57b4mQ4N', '25000', 'txn_1Ix5MbGLh2TdVfNtzQTB4wke', '60b48d58ccb0e', '225.00', '10', '15', '250', '1', '0', 'May', '31-05-21', '2021', '143184', NULL, '2021-05-31 01:17:33'),
+(2, '4', 'stripe', 'card_1Ix5KLGLh2TdVfNt7oEGexFz', '22500', 'txn_1Ix5KMGLh2TdVfNtMN5eLH8A', '60b48ccdedc49', '200.00', '10', '15', '225', '3', '2', 'May', '31-05-21', '2021', '723245', NULL, '2021-06-01 03:29:04'),
+(3, '4', 'stripe', 'card_1Ix5M5GLh2TdVfNtMVHYZDdQ', '72500', 'txn_1Ix5M6GLh2TdVfNtmSwQ5fHv', '60b48d397f2aa', '700.00', '10', '15', '725', '3', '0', 'May', '31-05-21', '2021', '371451', NULL, '2021-06-01 22:44:47'),
+(4, '4', 'stripe', 'card_1Ix5MaGLh2TdVfNt57b4mQ4N', '25000', 'txn_1Ix5MbGLh2TdVfNtzQTB4wke', '60b48d58ccb0e', '225.00', '10', '15', '250', '3', '2', 'May', '31-05-21', '2021', '143184', NULL, '2021-06-01 22:42:32'),
 (5, '4', 'stripe', 'card_1Ix5N5GLh2TdVfNtVPDSGvcC', '38500', 'txn_1Ix5N6GLh2TdVfNtZHEMlTdB', '60b48d77f0f72', '360.00', '10', '15', '385', '4', '0', 'May', '31-05-21', '2021', '456735', NULL, '2021-05-31 01:17:26'),
-(6, '4', 'stripe', 'card_1Ix5R6GLh2TdVfNtmOaJdxHP', '92500', 'txn_1Ix5R7GLh2TdVfNtUTZnWFog', '60b48e711340a', '900.00', '10', '15', '925', '0', '0', 'May', '31-05-21', '2021', '205091', NULL, NULL);
+(6, '4', 'stripe', 'card_1Ix5R6GLh2TdVfNtmOaJdxHP', '92500', 'txn_1Ix5R7GLh2TdVfNtUTZnWFog', '60b48e711340a', '900.00', '10', '15', '925', '0', '0', 'May', '31-05-21', '2021', '205091', NULL, NULL),
+(7, '4', 'stripe', 'card_1IxQkiGLh2TdVfNt9fqYg1Fa', '25000', 'txn_1IxQkjGLh2TdVfNtuQWtaP2c', '60b5ce85abe0f', '225.00', '10', '15', '250', '3', '0', 'June', '01-06-21', '2021', '293616', NULL, '2021-06-01 00:31:15'),
+(8, '4', 'stripe', 'card_1IxTrrGLh2TdVfNtru6AmAJ5', '25000', 'txn_1IxTrsGLh2TdVfNt1rFqXtxx', '60b5fd4be07c8', '225.00', '10', '15', '250', '3', '0', 'June', '01-06-21', '2021', '278762', NULL, '2021-06-01 03:27:25');
 
 -- --------------------------------------------------------
 
@@ -378,7 +415,9 @@ INSERT INTO `orders_details` (`id`, `order_id`, `product_id`, `product_name`, `c
 (29, 3, '6', 'Canon IXUS 175', '', '', '1', '700', '700', NULL, NULL),
 (30, 4, '9', 'Rapoo 7100p Gray', '', '', '1', '225', '225', NULL, NULL),
 (31, 5, '7', 'Astro M2 Black', '', '', '1', '360', '360', NULL, NULL),
-(32, 6, '5', 'LUNA Smartphone', '', '', '2', '450', '900', NULL, NULL);
+(32, 6, '5', 'LUNA Smartphone', '', '', '2', '450', '900', NULL, NULL),
+(33, 7, '10', 'Astro M2 Black', '', '', '1', '225', '225', NULL, NULL),
+(34, 8, '10', 'Astro M2 Black', '', '', '1', '225', '225', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -526,13 +565,13 @@ INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `brand_id`, `prod
 (1, 4, 3, 2, 'NEW ERA OF SMARTPHONES', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply a dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', 'white', 'xl', '530', '460', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701074708936589.png', 'upload/product_images/1701074709154437.png', 'upload/product_images/1701074709277852.png', 1, NULL, '2021-05-29 01:02:58'),
 (2, 4, 3, 3, 'Huawei MediaPad', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '300', '225', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701075366811102.png', 'upload/product_images/1701075366942942.png', 'upload/product_images/1701075367066947.png', 1, NULL, NULL),
 (3, 4, 3, 1, 'Apple iPod shuffle', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '379', NULL, NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701075464009434.png', 'upload/product_images/1701075464135282.png', 'upload/product_images/1701075464258844.png', 1, NULL, NULL),
-(4, 4, 3, 5, 'Sony MDRZX310W', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '225', '200', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701075592103417.png', 'upload/product_images/1701075592227450.png', 'upload/product_images/1701075592348572.png', 1, NULL, '2021-05-29 04:14:29'),
+(4, 4, 3, 5, 'Sony MDRZX310W', '10', '9', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '225', '200', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701075592103417.png', 'upload/product_images/1701075592227450.png', 'upload/product_images/1701075592348572.png', 1, NULL, '2021-05-29 04:14:29'),
 (5, 4, 3, 4, 'LUNA Smartphone', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '500', '450', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701075682855096.png', 'upload/product_images/1701075682977902.png', 'upload/product_images/1701075683096706.png', 1, NULL, NULL),
-(6, 1, 4, 7, 'Canon IXUS 175', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '900', '700', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701075970053491.png', 'upload/product_images/1701075970227008.png', 'upload/product_images/1701075970350695.png', 1, NULL, NULL),
+(6, 1, 4, 7, 'Canon IXUS 175', '10', '9', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '900', '700', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701075970053491.png', 'upload/product_images/1701075970227008.png', 'upload/product_images/1701075970350695.png', 1, NULL, NULL),
 (7, 6, 6, 5, 'Astro M2 Black', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '600', '360', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701076095438274.jpg', 'upload/product_images/1701076095532310.jpg', 'upload/product_images/1701076095623046.jpg', 1, NULL, NULL),
 (8, 2, 1, 1, 'Gembird SPK-103', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '850', '690', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701076228355259.jpg', 'upload/product_images/1701076228451314.jpg', 'upload/product_images/1701076228543104.jpg', 1, NULL, NULL),
-(9, 4, 3, 2, 'Rapoo 7100p Gray', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '300', '225', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701076323272745.jpg', 'upload/product_images/1701076323366373.jpg', 'upload/product_images/1701076323458266.jpg', 1, NULL, NULL),
-(10, 4, 3, 2, 'Astro M2 Black', '10', '10', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '500', '225', NULL, 1, 1, 1, 1, NULL, 1, 1, 'upload/product_images/1701076397647610.jpg', 'upload/product_images/1701076397740093.jpg', 'upload/product_images/1701076397830884.jpg', 1, NULL, NULL);
+(9, 4, 3, 2, 'Rapoo 7100p Gray', '10', '9', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '300', '225', NULL, 1, 1, 1, 1, 1, 1, 1, 'upload/product_images/1701076323272745.jpg', 'upload/product_images/1701076323366373.jpg', 'upload/product_images/1701076323458266.jpg', 1, NULL, NULL),
+(10, 4, 3, 2, 'Astro M2 Black', '10', '9', '<p><strong style=\"margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">Lorem Ipsum</strong><span style=\"font-family: &quot;Open Sans&quot;, Arial, sans-serif; text-align: justify;\">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><br></p>', NULL, NULL, '500', '225', NULL, 1, 1, 1, 1, NULL, 1, 1, 'upload/product_images/1701076397647610.jpg', 'upload/product_images/1701076397740093.jpg', 'upload/product_images/1701076397830884.jpg', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -554,7 +593,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('eFst1hoo9pcKGsWolo7HHusqtc3Yxu2aHyR6aW35', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiNnpDYmtaYXNMQXR5SlBJT1NiUzJtTnBBUjlPZllEdVJIaHpLVTl5YiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzk6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC91c2VyL3JldHVybi9vcmRlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCR2UDIxV0pMd1ljbXBHOTUzemNmN25lRmpYd0tYbk1nOS5pSmxJMDV0VUtqT05LWlFDMjF6bSI7czoyMToicGFzc3dvcmRfaGFzaF9zYW5jdHVtIjtzOjYwOiIkMnkkMTAkdlAyMVdKTHdZY21wRzk1M3pjZjduZUZqWHdLWG5NZzkuaUpsSTA1dFVLak9OS1pRQzIxem0iO3M6NDoiY2FydCI7YToxOntzOjc6ImRlZmF1bHQiO086Mjk6IklsbHVtaW5hdGVcU3VwcG9ydFxDb2xsZWN0aW9uIjoxOntzOjg6IgAqAGl0ZW1zIjthOjA6e319fX0=', 1622468117);
+('KoIagLl6bSYtO1YzatwvKfvXot9Vbgv2r0SwYXkP', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6IkRWZFBRTmlDekt2TzJpdDRheFRGWEZib3IzaGlMRFJsN3kybWkyVlQiO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtOO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7Tjt9', 1622637073);
 
 -- --------------------------------------------------------
 
@@ -609,7 +648,9 @@ INSERT INTO `shipping` (`id`, `order_id`, `ship_name`, `ship_phone`, `ship_email
 (3, '3', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
 (4, '4', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
 (5, '5', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
-(6, '6', 'Shahed Islam', '12345678', 's@gmail.com', 'bogura', 'Bogura', NULL, NULL);
+(6, '6', 'Shahed Islam', '12345678', 's@gmail.com', 'bogura', 'Bogura', NULL, NULL),
+(7, '7', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL),
+(8, '8', 'Rubel Ahmed', '12345678', 'rubel@gmail.com', 'bogura', 'Bogura', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -665,7 +706,8 @@ INSERT INTO `subcategories` (`id`, `category_id`, `subcategory_name`, `created_a
 (4, 2, 'Canon', NULL, NULL),
 (5, 2, 'Nikon', NULL, NULL),
 (6, 2, 'Sony', NULL, NULL),
-(7, 2, 'Panasonic', NULL, NULL);
+(7, 2, 'Panasonic', NULL, NULL),
+(8, 1, 'Gadget', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -679,12 +721,14 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_secret` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `two_factor_recovery_codes` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
   `profile_photo_path` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `provider` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `provider_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -693,9 +737,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`) VALUES
-(3, 'r a', 'r@gmail.com', '12345678', NULL, '25d55ad283aa400af464c76d713c07ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(4, 'Rubel Ahmed', 'rubel@gmail.com', NULL, NULL, '$2y$10$vP21WJLwYcmpG953zcf7neFjXwKXnMg9.iJlI05tUKjONKZQC21zm', NULL, NULL, NULL, NULL, '202105290643noruzzaman.jpg', '2021-05-29 00:39:31', '2021-05-29 00:43:30');
+INSERT INTO `users` (`id`, `name`, `email`, `phone`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `provider`, `provider_id`, `created_at`, `updated_at`) VALUES
+(3, 'r a', 'r@gmail.com', '12345678', NULL, '25d55ad283aa400af464c76d713c07ad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, 'Rubel Ahmed', 'rubel@gmail.com', NULL, NULL, '$2y$10$vP21WJLwYcmpG953zcf7neFjXwKXnMg9.iJlI05tUKjONKZQC21zm', NULL, NULL, NULL, NULL, '202105290643noruzzaman.jpg', NULL, NULL, '2021-05-29 00:39:31', '2021-05-29 00:43:30'),
+(5, 'Noruzzaman Rubel', 'noruzzamanrubel@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'google', '109873335590623397032', '2021-06-02 06:19:25', '2021-06-02 06:19:25'),
+(8, 'Noruzzaman Rubels', 'noruzzaman19@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'google', '111780697036417111732', '2021-06-02 06:22:47', '2021-06-02 06:22:47');
 
 -- --------------------------------------------------------
 
@@ -710,6 +756,18 @@ CREATE TABLE `wishlists` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(1, 4, 10, NULL, NULL),
+(2, 4, 8, NULL, NULL),
+(3, 4, 6, NULL, NULL),
+(4, 4, 4, NULL, NULL),
+(5, 4, 9, NULL, NULL),
+(6, 4, 3, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -732,6 +790,12 @@ ALTER TABLE `brands`
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `contact_forms`
+--
+ALTER TABLE `contact_forms`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -923,6 +987,12 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT for table `contact_forms`
+--
+ALTER TABLE `contact_forms`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `coupons`
 --
 ALTER TABLE `coupons`
@@ -938,7 +1008,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `multipics`
@@ -950,7 +1020,7 @@ ALTER TABLE `multipics`
 -- AUTO_INCREMENT for table `newsletters`
 --
 ALTER TABLE `newsletters`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -968,13 +1038,13 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders_details`
 --
 ALTER TABLE `orders_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `order_details`
@@ -1022,7 +1092,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `shipping`
 --
 ALTER TABLE `shipping`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sitesetting`
@@ -1034,19 +1104,19 @@ ALTER TABLE `sitesetting`
 -- AUTO_INCREMENT for table `subcategories`
 --
 ALTER TABLE `subcategories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

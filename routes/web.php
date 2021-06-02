@@ -24,6 +24,7 @@ use App\Http\Controllers\UserRoleController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -233,3 +234,7 @@ Route::group([
 ], function () {
     Route::post('/product', [SearchController::class, 'search'])->name('search.form');
 });
+
+//Social Controller
+Route::get('/auth/redirect/{provider}', [SocialController::class, 'redirect']);
+Route::get('/callback/{provider}', [SocialController::class, 'callback']);
