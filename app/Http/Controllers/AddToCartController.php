@@ -12,6 +12,7 @@ class AddToCartController extends Controller
     {
         $product = Product::where('id', $id)->first();
         $data = array();
+        
         if ($product->discount_price == null) {
             $data['id'] = $product->id;
             $data['name'] = $product->product_name;
