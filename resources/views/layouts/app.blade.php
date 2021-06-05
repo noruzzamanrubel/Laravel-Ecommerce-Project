@@ -112,10 +112,11 @@
                             <div class="header_search">
                                 <div class="header_search_content">
                                     <div class="header_search_form_container">
-                                        <form method="POST" action="{{route('search.form')}}" class="header_search_form clearfix">
+                                        <form method="POST" action="{{ route('search.form') }}"
+                                            class="header_search_form clearfix">
                                             @csrf
-                                            <input type="search" required="required" class="header_search_input" name="search"
-                                                placeholder="Search for products...">
+                                            <input type="search" required="required" class="header_search_input"
+                                                name="search" placeholder="Search for products...">
                                             <div class="custom_dropdown">
                                                 <div class="custom_dropdown_list">
                                                     <span class="custom_dropdown_placeholder clc">All Categories</span>
@@ -246,7 +247,8 @@
                                         <li><a href="{{ $setting->facebook }}"><i class="fab fa-facebook-f"></i></a>
                                         </li>
                                         <li><a href="{{ $setting->youtube }}"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="{{ $setting->instagram }}"><i class="fab fa-youtube"></i></a></li>
+                                        <li><a href="{{ $setting->instagram }}"><i class="fab fa-youtube"></i></a>
+                                        </li>
                                         <li><a href="{{ $setting->twitter }}"><i class="fab fa-google"></i></a></li>
                                     </ul>
                                 </div>
@@ -382,7 +384,7 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
- <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
+    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
 
     <script>
         @if (Session::has('message'))
@@ -412,6 +414,28 @@
             swal({
                     title: "Are you Want to Return?",
                     text: "Once Return, This will return your money!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        window.location.href = link;
+                    } else {
+                        swal("Cancel!");
+                    }
+                });
+        });
+
+    </script>
+
+    <script>
+        $(document).on("click", "#cart_remove", function(e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+            swal({
+                    title: "Are you Want to Remove?",
+                    text: "Once Remove, This will no longer in your cart page!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,

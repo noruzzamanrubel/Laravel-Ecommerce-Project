@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="cart_item_total cart_info_col">
                                                 <div class="cart_item_title">Action</div><br>
-                                                <a href="{{ url('remove/cart/' . $row->rowId) }}"
+                                                <a id="cart_remove" href="{{ url('remove/cart/' . $row->rowId) }}"
                                                     class="btn btn-sm btn-danger">X</a>
                                             </div>
                                         </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Cart;
 use Illuminate\Http\Request;
+use Response;
 
 class AddToCartController extends Controller
 {
