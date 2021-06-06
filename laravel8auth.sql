@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2021 at 02:34 PM
+-- Generation Time: Jun 06, 2021 at 07:10 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -593,7 +593,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('KoIagLl6bSYtO1YzatwvKfvXot9Vbgv2r0SwYXkP', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6IkRWZFBRTmlDekt2TzJpdDRheFRGWEZib3IzaGlMRFJsN3kybWkyVlQiO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtOO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7Tjt9', 1622637073);
+('6ik5MqzwRQ7NHk9IH1QDEjPDZI8phaAZPyL65qhe', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiMmJRMVI3bEdFN2pIY2MxanRYRVJoZ2NMcEdDeDZnazZNSWJ3Wm1EYyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo0OiJjYXJ0IjthOjE6e3M6NzoiZGVmYXVsdCI7TzoyOToiSWxsdW1pbmF0ZVxTdXBwb3J0XENvbGxlY3Rpb24iOjE6e3M6ODoiACoAaXRlbXMiO2E6MDp7fX19czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjQ7czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCR2UDIxV0pMd1ljbXBHOTUzemNmN25lRmpYd0tYbk1nOS5pSmxJMDV0VUtqT05LWlFDMjF6bSI7fQ==', 1622880179);
 
 -- --------------------------------------------------------
 
@@ -762,12 +762,8 @@ CREATE TABLE `wishlists` (
 --
 
 INSERT INTO `wishlists` (`id`, `user_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(1, 4, 10, NULL, NULL),
-(2, 4, 8, NULL, NULL),
-(3, 4, 6, NULL, NULL),
-(4, 4, 4, NULL, NULL),
-(5, 4, 9, NULL, NULL),
-(6, 4, 3, NULL, NULL);
+(9, 4, 9, NULL, NULL),
+(10, 4, 7, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -1116,7 +1112,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
