@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\PostCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\PostCategory;
 
 class Post extends Model
 {
@@ -18,7 +18,8 @@ class Post extends Model
         'details_in',
     ];
 
-    public function postcategory(){
-    	return $this->belongsTo(PostCategory::class,'category_id','id');
+    public function postcategory()
+    {
+        return $this->belongsTo(PostCategory::class, 'category_id', 'id');
     }
 }
