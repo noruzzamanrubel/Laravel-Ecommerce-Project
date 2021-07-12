@@ -12,8 +12,9 @@ class NotificationController extends Controller
     {
         $user = User::first();
         $notification = [
+            'greeting' => 'Hello From Rubel',
             'body' => 'You receive a new notification',
-            'notificationText' => 'Your are allow to receive notification',
+            'notificationText' => 'Confirm SignUp',
             'url' => url('/'),
             'thankYou' => 'thanks',
         ];

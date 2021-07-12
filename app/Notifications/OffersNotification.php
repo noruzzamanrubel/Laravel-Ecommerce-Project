@@ -41,6 +41,10 @@ class OffersNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+            ->error()
+            ->subject('Notification Subject')
+            ->from('noruzzaman@boomdevs.com', 'Noruzzaman')
+            ->greeting($this->notification['greeting'])
             ->line($this->notification['body'])
             ->action($this->notification['notificationText'], $this->notification['url'])
             ->line($this->notification['thankYou']);
