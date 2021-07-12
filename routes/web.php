@@ -25,6 +25,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\SocialController;
 use Illuminate\Support\Facades\Route;
 
@@ -242,3 +243,6 @@ Route::get('/callback/{provider}', [SocialController::class, 'callback']);
 
 //Notification
 Route::get('/notification', [NotificationController::class, 'index']);
+
+
+Route::get('/send-sms-notification', [NotificationController::class, 'sendSmsNotificaition']);
