@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\Payment;
+use App\Models\Shipping;
+use App\Models\User;
+use App\Notifications\PaymentNotification;
 use Auth;
 use Cart;
 use DB;
-use App\Models\Order;
-use App\Models\Order_detail;
-use App\Models\Shipping;
 use Illuminate\Http\Request;
 use Session;
 
@@ -31,7 +33,20 @@ class PaymentController extends Controller
         } else {
             return 'cash on delivery';
         }
+    }
 
+    public function notification()
+    {
+        $user = User::first();
+        $payment = [
+            'greeting' => 'Hello From Rubel',
+            'body' => 'Your Order Has been completed',
+            'notificationText' => 'View Order',
+            'url' => url('/dashboard'),
+            'thankYou' => 'thanks',
+        ];
+
+        $user->notify(new PaymentNotification($payment));
     }
 
     public function stripechrage(Request $request)
@@ -64,7 +79,7 @@ class PaymentController extends Controller
         $data['vat'] = $request->vat;
         $data['total'] = $request->total;
         $data['payment_type'] = $request->payment_type;
-        $data['status_code']= mt_rand(100000, 999999);
+        $data['status_code'] = mt_rand(100000, 999999);
 
         if (Session::has('coupon')) {
             $data['subtotal'] = Session::get('coupon')['balance'];

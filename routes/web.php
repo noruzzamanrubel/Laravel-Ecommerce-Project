@@ -244,5 +244,5 @@ Route::get('/callback/{provider}', [SocialController::class, 'callback']);
 //Notification
 Route::get('/notification', [NotificationController::class, 'index']);
 
+Route::get('/payment-notification', [PaymentController::class, 'notification']);
 
-Route::get('/send-sms-notification', [NotificationController::class, 'sendSmsNotificaition']);

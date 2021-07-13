@@ -21,23 +21,7 @@ class NotificationController extends Controller
                 'thankYou' => 'thanks',
             ];
 
-            $delay = now()->addMinutes(5);
-
-            $user->notify((new OffersNotification($notification))->delay($delay));
+            $user->notify(new OffersNotification($notification));
         }
-    }
-
-    public function sendSmsNotificaition()
-    {
-        $basic = new \Nexmo\Client\Credentials\Basic('Nexmo key', 'Nexmo secret');
-        $client = new \Nexmo\Client($basic);
-
-        $message = $client->message()->send([
-            'to' => '+8801737779430',
-            'from' => 'John Doe',
-            'text' => 'A simple hello message sent from Vonage SMS API',
-        ]);
-
-        dd('SMS message has been delivered.');
     }
 }
