@@ -47,7 +47,6 @@ class PaymentController extends Controller
         ];
 
         $user->notify(new PaymentNotification($payment));
-        
     }
 
     public function stripechrage(Request $request)
